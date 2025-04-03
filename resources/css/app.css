@@ -129,4 +129,14 @@
             transform: translateX(-100%);
         }
     }
+
+    .bg-gd-green-01 {
+        background: linear-gradient(104.81deg, #2dcc70 33.48%, #ffffff 155.39%);
+    }
+
+    .bg-image-card {
+        background-image: asset("assets/cp/bg-card1.png");
+        background-size: cover;
+        background-position: center;
+    }
 }

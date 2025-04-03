@@ -10,6 +10,7 @@ use App\Http\Controllers\Course\Back\MyOrdersController;
 use App\Http\Controllers\Course\Back\MyCoursesController;
 use App\Http\Controllers\Course\Front\DiskonController;
 use App\Http\Controllers\Course\Front\TransaksiController;
+use App\Http\Controllers\CP\HomeController as CPHomeController;
 
 // Company Profile
 
@@ -69,8 +70,10 @@ Route::prefix('course')->name('course.')->group(function()
     });
 });
 
-Route::get('/', function () {
-    return view('welcome');
+// CP
+Route::name('cp.')->group(function()
+{
+    Route::get('/', [CPHomeController::class, 'index'])->name('home.index');
 });
 
 Route::get('tes', function()

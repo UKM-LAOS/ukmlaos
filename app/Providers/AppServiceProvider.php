@@ -44,7 +44,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer('components.course.back.aside', function ($view) {
             $view->with('menus', config('course.back-menus'));
         });
+        View::composer('components.cp.front.navbar', function ($view) {
+            $view->with('menus', config('cp.front-menus'));
+        });
 
+        /* Course */
         // Back Component
         Blade::include('components.course.back.breadcrumbs', 'Breadcrumbs');
         Blade::include('components.course.back.my-courses-card', 'MyCoursesCard');
@@ -58,5 +62,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::include('components.course.front.elements.CheckboxInput', 'CheckboxInput');
         Blade::include('components.course.front.elements.Button', 'Button');
         Blade::include('components.course.front.elements.Toastr', 'Toastr');
+
+        /* CP */
+        // Front Component
+        Blade::include('components.cp.front.navbar', 'NavbarCP');
+        Blade::include('components.cp.front.footer', 'FooterCP');
     }
 }
