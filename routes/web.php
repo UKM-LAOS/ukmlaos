@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CP\BlogController;
 use App\Http\Controllers\Course\Front\AuthController;
 use App\Http\Controllers\Course\Front\HomeController;
 use App\Http\Controllers\Course\Back\BerandaController;
 use App\Http\Controllers\Course\Back\SettingController;
 use App\Http\Controllers\Course\Front\CourseController;
+use App\Http\Controllers\Course\Front\DiskonController;
 use App\Http\Controllers\Course\Back\MyOrdersController;
 use App\Http\Controllers\Course\Back\MyCoursesController;
-use App\Http\Controllers\Course\Front\DiskonController;
 use App\Http\Controllers\Course\Front\TransaksiController;
 use App\Http\Controllers\CP\HomeController as CPHomeController;
 
@@ -74,6 +75,12 @@ Route::prefix('course')->name('course.')->group(function()
 Route::name('cp.')->group(function()
 {
     Route::get('/', [CPHomeController::class, 'index'])->name('home.index');
+
+    Route::prefix('blog')->name('blog.')->group(function()
+    {
+        Route::get('/', [BlogController::class, 'index'])->name('index');
+        Route::get('/{slug}', [BlogController::class, 'show'])->name('show');
+    });
 });
 
 Route::get('tes', function()

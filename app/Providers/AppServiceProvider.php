@@ -67,5 +67,6 @@ class AppServiceProvider extends ServiceProvider
         // Front Component
         Blade::include('components.cp.front.navbar', 'NavbarCP');
         Blade::include('components.cp.front.footer', 'FooterCP');
+        Blade::include('components.cp.front.empty-state', 'EmptyStateCP');
     }
 }

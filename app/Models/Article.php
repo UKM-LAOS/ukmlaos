@@ -12,8 +12,6 @@ class Article extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected $guarded = ['id'];
-
     protected $casts = [
         'kategori' => KategoriEnum::class,
     ];
