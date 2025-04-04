@@ -1,4 +1,4 @@
-<section id="footer" class="flex flex-col items-center gap-[10px] md:gap-[12px] py-[16px] mt-32"
+<section id="footer" class="flex flex-col items-center gap-[10px] md:gap-[12px] py-[16px]"
     style="background: url('{{ asset('laos-cp/bg-card1.png') }}') no-repeat center center / cover;">
     <h5 class="text-body-sm-mobile md:text-h5 text-neutrals-light-01">
         Hubungi Kami
