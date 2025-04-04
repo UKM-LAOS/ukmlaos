@@ -88,6 +88,21 @@
             });
         }
 
+        function toggleChildren(event) {
+            event.preventDefault();
+            const submenu = event.currentTarget.nextElementSibling;
+            if (submenu) {
+                submenu.classList.toggle('hidden');
+                // arrow rotasi 180 derajat
+                const arrow = event.currentTarget.querySelector('svg');
+                if (arrow) {
+                    arrow.classList.toggle('rotate-180');
+                    arrow.classList.add('transition-transform', 'duration-300');
+                }
+
+            }
+        }
+
         // Add click listeners to both desktop and mobile toggle buttons
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('theme-toggle')?.addEventListener('click', toggleDarkMode);

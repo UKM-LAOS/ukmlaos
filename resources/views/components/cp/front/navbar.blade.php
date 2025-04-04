@@ -13,10 +13,7 @@
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
                 @foreach ($menus as $menu)
-                    <a href="{{ route($menu['route']) }}"
-                        class="text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 font-medium {{ Request::routeIs(isset($menu['active']) ? $menu['active'] : $menu['route']) ? 'text-green-500 dark:text-green-400' : '' }}">
-                        {{ $menu['title'] }}
-                    </a>
+                    @include('components.cp.front.navbar-partial', ['menu' => $menu])
                 @endforeach
 
                 <button id="theme-toggle"
@@ -78,8 +75,8 @@
                 <a href="/" class="flex items-center space-x-3">
                     <img alt="Laos logo" src="{{ asset('laos-cp/logo.png') }}" class="w-8 h-8" />
                     <span class="text-lg font-bold text-gray-900 dark:text-white">UKM
-                        <span class="gradient-text">LAOS</spanc>
-                        </span>
+                        <span class="gradient-text">LAOS</span>
+                    </span>
                 </a>
                 <button id="close-menu" class="text-gray-500 dark:text-gray-400">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,10 +88,7 @@
 
             <div class="space-y-6">
                 @foreach ($menus as $menu)
-                    <a href="{{ route($menu['route']) }}"
-                        class="block text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 font-medium {{ Request::routeIs(isset($menu['active']) ? $menu['active'] : $menu['route']) ? 'text-green-500 dark:text-green-400' : '' }}">
-                        {{ $menu['title'] }}
-                    </a>
+                    @include('components.cp.front.navbar-partial', ['menu' => $menu, 'isMobile' => true])
                 @endforeach
             </div>
         </div>

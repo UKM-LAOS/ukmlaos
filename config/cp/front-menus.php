@@ -9,6 +9,15 @@ return [
         'route' => 'cp.blog.index',
         'active' => 'cp.blog*',
     ],
+    [
+        'title' => 'Produk',
+        'children' => [
+            [
+                'title' => 'LAOS Course',
+                'route' => 'course.index',
+            ],
+        ],
+    ],
     // [
     //     'title' => 'Program',
     //     'route' => 'cp.program.index',
