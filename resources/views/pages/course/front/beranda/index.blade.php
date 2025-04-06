@@ -135,7 +135,7 @@
 
                         <div class="flex items-center justify-between">
                             <span
-                                class="text-green-500 dark:text-green-400 font-semibold">{{ $courseCountsByCategory[KategoriEnum::PROGRAMMING->label()] ?? 0 }}
+                                class="text-green-500 dark:text-green-400 font-semibold">{{ $courseCountsByCategory[strtolower(KategoriEnum::PROGRAMMING->label())] ?? 0 }}
                                 Courses</span>
                             <a href="{{ route('course.filter') }}?kategori={{ KategoriEnum::PROGRAMMING->label() }}"
                                 class="text-green-500 dark:text-green-400 group-hover:text-green-600 dark:group-hover:text-green-300 transition-colors transform group-hover:translate-x-2 duration-500">
@@ -170,7 +170,7 @@
 
                         <div class="flex items-center justify-between">
                             <span class="text-green-500 dark:text-green-400 font-semibold">
-                                {{ $courseCountsByCategory[KategoriEnum::CYBER_SECURITY->label()] ?? 0 }}
+                                {{ $courseCountsByCategory[strtolower(KategoriEnum::CYBER_SECURITY->label())] ?? 0 }}
                                 Courses
                             </span>
                             <a href="{{ route('course.filter') }}?kategori={{ KategoriEnum::CYBER_SECURITY->label() }}"
@@ -206,7 +206,7 @@
 
                         <div class="flex items-center justify-between">
                             <span class="text-green-500 dark:text-green-400 font-semibold">
-                                {{ $courseCountsByCategory[KategoriEnum::DESIGN->label()] ?? 0 }} Courses
+                                {{ $courseCountsByCategory[strtolower(KategoriEnum::DESIGN->label())] ?? 0 }} Courses
                             </span>
                             <a href="{{ route('course.filter') }}?kategori={{ KategoriEnum::DESIGN->label() }}"
                                 class="text-green-500 dark:text-green-400 group-hover:text-green-600 dark:group-hover:text-green-300 transition-colors transform group-hover:translate-x-2 duration-500">
@@ -241,7 +241,7 @@
 
                         <div class="flex items-center justify-between">
                             <span class="text-green-500 dark:text-green-400 font-semibold">
-                                {{ $courseCountsByCategory[KategoriEnum::DIGITAL_MARKETING->label()] ?? 0 }}
+                                {{ $courseCountsByCategory[strtolower(KategoriEnum::DIGITAL_MARKETING->label())] ?? 0 }}
                                 Courses
                             </span>
                             <a href="{{ route('course.filter') }}?kategori={{ KategoriEnum::DIGITAL_MARKETING->label() }}"

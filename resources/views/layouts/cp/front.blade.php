@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="{{ asset('assets/cp/logo.png') }}" />
+    <link rel="icon" href="{{ asset('laos-cp/logo.png') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('toastr/build/toastr.css') }}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
         // Check if dark mode is enabled
         function isDarkMode() {
@@ -19,11 +21,13 @@
         }
 
         // Apply initial theme
-        if (isDarkMode()) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        $(function() {
+            if (isDarkMode()) {
+                $('html').addClass('dark');
+            } else {
+                $('html').removeClass('dark');
+            }
+        });
     </script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
@@ -51,122 +55,112 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <!-- Initialize Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('toastr/build/toastr.min.js') }}"></script>
     <script>
-        // Dark mode toggle functionality
-        function toggleDarkMode() {
-            // Get HTML root element
-            const html = document.documentElement;
-
-            // Toggle dark class
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                localStorage.setItem('color-theme', 'light');
-                // Update button states
-                updateDarkModeButtons(false);
-            } else {
-                html.classList.add('dark');
-                localStorage.setItem('color-theme', 'dark');
-                // Update button states
-                updateDarkModeButtons(true);
-            }
-        }
-
-        // Update all dark mode toggle buttons
-        function updateDarkModeButtons(isDark) {
-            const darkIcons = document.querySelectorAll('.dark\\:block');
-            const lightIcons = document.querySelectorAll('.block.dark\\:hidden');
-
-            darkIcons.forEach(icon => {
-                icon.style.display = isDark ? 'block' : 'none';
-            });
-
-            lightIcons.forEach(icon => {
-                icon.style.display = isDark ? 'none' : 'block';
-            });
-        }
-
         function toggleChildren(event) {
             event.preventDefault();
-            const submenu = event.currentTarget.nextElementSibling;
-            if (submenu) {
-                submenu.classList.toggle('hidden');
+            const $submenu = $(event.currentTarget).next();
+            if ($submenu.length) {
+                $submenu.toggleClass('hidden');
                 // arrow rotasi 180 derajat
-                const arrow = event.currentTarget.querySelector('svg');
-                if (arrow) {
-                    arrow.classList.toggle('rotate-180');
-                    arrow.classList.add('transition-transform', 'duration-300');
+                const $arrow = $(event.currentTarget).find('svg');
+                if ($arrow.length) {
+                    $arrow.toggleClass('rotate-180');
+                    $arrow.addClass('transition-transform duration-300');
                 }
-
             }
         }
+        $(function() {
+            // Dark mode toggle functionality
+            function toggleDarkMode() {
+                // Toggle dark class
+                if ($('html').hasClass('dark')) {
+                    $('html').removeClass('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    // Update button states
+                    updateDarkModeButtons(false);
+                } else {
+                    $('html').addClass('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    // Update button states
+                    updateDarkModeButtons(true);
+                }
+            }
 
-        // Add click listeners to both desktop and mobile toggle buttons
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('theme-toggle')?.addEventListener('click', toggleDarkMode);
-            document.getElementById('mobile-theme-toggle')?.addEventListener('click', toggleDarkMode);
+            // Update all dark mode toggle buttons
+            function updateDarkModeButtons(isDark) {
+                $('.dark\\:block').each(function() {
+                    $(this).css('display', isDark ? 'block' : 'none');
+                });
+
+                $('.block.dark\\:hidden').each(function() {
+                    $(this).css('display', isDark ? 'none' : 'block');
+                });
+            }
+
+
+
+            // Add click listeners to toggle buttons
+            $('#theme-toggle').on('click', toggleDarkMode);
+            $('#mobile-theme-toggle').on('click', toggleDarkMode);
 
             // Mobile menu functionality
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const closeMenu = document.getElementById('close-menu');
-            const mobileBackdrop = document.getElementById('mobile-backdrop');
+            const $mobileMenu = $('#mobile-menu');
+            const $mobileMenuButton = $('#mobile-menu-button');
+            const $closeMenu = $('#close-menu');
+            const $mobileBackdrop = $('#mobile-backdrop');
 
             function openMobileMenu() {
-                if (!mobileMenu) return;
-                mobileMenu.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
+                if (!$mobileMenu.length) return;
+                $mobileMenu.removeClass('hidden');
+                $('body').addClass('overflow-hidden');
                 setTimeout(() => {
-                    const menuPanel = mobileMenu.querySelector('div:last-child');
-                    if (menuPanel) {
-                        menuPanel.classList.remove('translate-x-full');
+                    const $menuPanel = $mobileMenu.find('div:last-child');
+                    if ($menuPanel.length) {
+                        $menuPanel.removeClass('translate-x-full');
                     }
                 }, 10);
             }
 
             function closeMobileMenu() {
-                if (!mobileMenu) return;
-                const menuPanel = mobileMenu.querySelector('div:last-child');
-                if (menuPanel) {
-                    menuPanel.classList.add('translate-x-full');
+                if (!$mobileMenu.length) return;
+                const $menuPanel = $mobileMenu.find('div:last-child');
+                if ($menuPanel.length) {
+                    $menuPanel.addClass('translate-x-full');
                 }
                 setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                    document.body.classList.remove('overflow-hidden');
+                    $mobileMenu.addClass('hidden');
+                    $('body').removeClass('overflow-hidden');
                 }, 300);
             }
 
-            if (mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', openMobileMenu);
+            if ($mobileMenuButton.length) {
+                $mobileMenuButton.on('click', openMobileMenu);
             }
 
-            if (closeMenu) {
-                closeMenu.addEventListener('click', closeMobileMenu);
+            if ($closeMenu.length) {
+                $closeMenu.on('click', closeMobileMenu);
             }
 
-            if (mobileBackdrop) {
-                mobileBackdrop.addEventListener('click', closeMobileMenu);
+            if ($mobileBackdrop.length) {
+                $mobileBackdrop.on('click', closeMobileMenu);
             }
 
             // Handle resize
-            window.addEventListener('resize', () => {
-                if (mobileMenu && window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+            $(window).on('resize', function() {
+                if ($mobileMenu.length && $(window).width() >= 768 && !$mobileMenu.hasClass('hidden')) {
                     closeMobileMenu();
                 }
             });
 
             // Close mobile menu when clicking a link
-            if (mobileMenu) {
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', closeMobileMenu);
-                });
+            if ($mobileMenu.length) {
+                $mobileMenu.find('a').on('click', closeMobileMenu);
             }
 
             // Close mobile menu with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape' && $mobileMenu.length && !$mobileMenu.hasClass('hidden')) {
                     closeMobileMenu();
                 }
             });
@@ -200,7 +194,7 @@
             });
 
             // Initialize button states
-            updateDarkModeButtons(document.documentElement.classList.contains('dark'));
+            updateDarkModeButtons($('html').hasClass('dark'));
         });
     </script>
     @Toastr()

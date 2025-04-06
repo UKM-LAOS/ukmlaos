@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CP\BlogController;
+use App\Http\Controllers\CP\ProgramController;
 use App\Http\Controllers\Course\Front\AuthController;
 use App\Http\Controllers\Course\Front\HomeController;
 use App\Http\Controllers\Course\Back\BerandaController;
@@ -80,6 +81,12 @@ Route::name('cp.')->group(function()
     {
         Route::get('/', [BlogController::class, 'index'])->name('index');
         Route::get('/{slug}', [BlogController::class, 'show'])->name('show');
+    });
+
+    Route::prefix('program')->name('program.')->group(function()
+    {
+        Route::get('/', [ProgramController::class, 'index'])->name('index');
+        Route::get('/{slug}', [ProgramController::class, 'show'])->name('show');
     });
 });
 

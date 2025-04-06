@@ -3,7 +3,7 @@
 @section('content')
     <!-- Hero Section -->
     <section
-        class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-gray-900 dark:via-gray-800/30 dark:to-[#151E2E]">
+        class="relative pt-20 pb-20 overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-gray-900 dark:via-gray-800/30 dark:to-[#151E2E]">
         <!-- Background decorations -->
         <div class="absolute inset-0">
             <div

@@ -9,6 +9,12 @@ return [
         'route' => 'cp.blog.index',
         'active' => 'cp.blog*',
     ],
+    
+    [
+        'title' => 'Program',
+        'route' => 'cp.program.index',
+        'active' => 'cp.program*',
+    ],
     [
         'title' => 'Produk',
         'children' => [
@@ -18,11 +24,6 @@ return [
             ],
         ],
     ],
-    // [
-    //     'title' => 'Program',
-    //     'route' => 'cp.program.index',
-    //     'active' => 'cp.program*',
-    // ],
     // [
     //     'title' => 'Tentang',
     //     'route' => 'cp.tentang.index',
