@@ -3,7 +3,7 @@
 @section('content')
     <!-- Hero Section -->
     <section
-        class="relative pt-24 pb-16 min-h-[700px] overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-gray-900 dark:via-gray-800/30 dark:to-[#151E2E]">
+        class="relative pt-20 pb-20 overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-gray-900 dark:via-gray-800/30 dark:to-[#151E2E]">
         <!-- Background decorations -->
         <div class="absolute inset-0 pointer-events-none">
             <div
@@ -20,36 +20,46 @@
             <img src="{{ asset('laos-cp/Ornament.png') }}" alt="ornament" class="w-full absolute bottom-0 left-0 z-0" />
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
-                <h1 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                    Penasaran
-                    <span class="text-primary-green-base">kami ngapain</span> aja?
-                </h1>
-                <p class="mt-3 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto md:mx-0 mb-8">
-                    UKM LAOS aktif dan inovatif dalam mengembangkan potensi anggota
-                    dalam bidang ilmu komputer dengan menyelenggarakan berbagai program
-                    kerja yang bermanfaat.
-                </p>
-                <a href="#program-list"
-                    class="inline-flex items-center px-6 py-3 border-2 border-primary-green-base bg-primary-green-base text-white font-medium rounded-lg hover:bg-primary-green-600 transition duration-300 ease-in-out">
-                    Lihat Selengkapnya
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-            <div class="md:w-1/2 relative">
-                <div
-                    class="absolute -left-[40px] -bottom-2 -z-10 w-[379px] h-[379px] rounded-full bg-primary-green-200/50 dark:bg-primary-green-900/30 blur-lg">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+
+                    <!-- Hero Text -->
+                    <h1 class="text-5xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white">
+                        Penasaran
+                        <span class="gradient-text">Kami Ngapain Aja?</span>
+                    </h1>
+
+                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                        UKM LAOS aktif dan inovatif dalam mengembangkan potensi anggota
+                        dalam bidang ilmu komputer dengan menyelenggarakan berbagai program
+                        kerja yang bermanfaat.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex items-center gap-6">
+                        <a href="#manfaat"
+                            class="px-8 py-4 bg-green-500 dark:bg-green-600 text-white rounded-full hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-300 hover:scale-105 font-medium cursor-pointer">
+                            Lihat Selengkapnya
+                            <svg class="w-5 h-5 ml-2 inline-block" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <img src="{{ asset('laos-cp/maskot-2.png') }}" alt="Hero Image" class="max-w-lg mx-auto" />
+
+                <!-- Hero Image -->
+                <div class="relative hidden md:block ml-44 mt-20">
+                    <div class="absolute inset-0 bg-green-50 dark:bg-green-900/50 rounded-full blur-3xl opacity-20">
+                    </div>
+                    <img src="{{ asset('laos-cp/maskot-2.png') }}" alt="LAOS Mascot"
+                        class="relative z-10 h-auto transform hover:scale-105 transition-transform duration-500">
+                </div>
             </div>
         </div>
     </section>
-
     <!-- Programs Section -->
     <section id="program-list"
         class="py-20 md:py-24 relative overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-[#151E2E] dark:via-gray-800/30 dark:to-gray-900">

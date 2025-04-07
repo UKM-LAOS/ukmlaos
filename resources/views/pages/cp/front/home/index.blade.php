@@ -5,13 +5,19 @@
     <section
         class="relative pt-20 pb-20 overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-gray-900 dark:via-gray-800/30 dark:to-[#151E2E]">
         <!-- Background decorations -->
-        <div class="absolute inset-0">
+        <div class="absolute inset-0 pointer-events-none">
             <div
                 class="absolute top-0 right-0 w-[500px] h-[500px] bg-green-200/30 dark:bg-green-900/30 rounded-full blur-[120px]">
             </div>
             <div
                 class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-200/20 dark:bg-blue-900/20 rounded-full blur-[120px]">
             </div>
+            <img src="{{ asset('laos-cp/Icon-1.png') }}" alt="icon 1" class="hidden md:block absolute top-32 right-32" />
+            <img src="{{ asset('laos-cp/Icon-4.png') }}" alt="icon 2"
+                class="hidden md:block absolute top-20 right-[520px]" />
+            <img src="{{ asset('laos-cp/Icon-3.png') }}" alt="icon 4"
+                class="hidden md:block absolute top-52 right-[440px]" />
+            <img src="{{ asset('laos-cp/Ornament.png') }}" alt="ornament" class="w-full absolute bottom-0 left-0 z-0" />
         </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -209,7 +215,8 @@
                                 </svg>
                             </div>
                         </div>
-                        <div class="swiper-button-next absolute z-20 right-4 lg:right-8 top-1/2 transform -translate-y-1/2">
+                        <div
+                            class="swiper-button-next absolute z-20 right-4 lg:right-8 top-1/2 transform -translate-y-1/2">
                             <div
                                 class="w-12 h-12 flex items-center justify-center bg-white/90 dark:bg-gray-800/90 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-green-500 group">
                                 <svg class="w-6 h-6 text-gray-800 dark:text-white group-hover:text-white" fill="none"
