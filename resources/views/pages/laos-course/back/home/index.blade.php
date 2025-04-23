@@ -26,7 +26,7 @@
                     <div
                         class="absolute inset-0 bg-gradient-to-br from-green-400 to-blue-500 dark:from-green-500 dark:to-blue-600 rounded-xl md:rounded-2xl transform rotate-6 transition-transform duration-500 hover:rotate-12 hover:scale-105">
                     </div>
-                    <img src="{{ asset('storage/' . Auth::user()?->avatar_url) ?? 'https://ui-avatars.com/api/?name=' . Auth::user()->name . '&background=16a34a&color=fff&bold=true&font-family=Poppins&size=128' }}"
+                    <img src="{{ asset(Auth::user()?->avatar_url) ? asset('storage/' . Auth::user()->avatar_url) : 'https://ui-avatars.com/api/?name=' . Auth::user()->name . '&background=16a34a&color=fff&bold=true&font-family=Poppins&size=128' }}"
                         alt="User" class="relative w-16 h-16 md:w-20 md:h-20 rounded-xl md:rounded-2xl shadow-lg">
                 </div>
 
