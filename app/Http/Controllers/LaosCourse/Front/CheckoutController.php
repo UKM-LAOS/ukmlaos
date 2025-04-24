@@ -136,6 +136,14 @@ class CheckoutController extends Controller
         DB::beginTransaction();
         try
         {
+            Transaksi::create([
+                'order_id' => 'LCRS-' . Str::random(6),
+                'student_id' => Auth::user()->id,
+                'kursus_id' => $kursus->id,
+                'status' => 'success',
+                'total_harga' => 0,
+            ]);
+
             KursusMurid::firstOrCreate([
                 'student_id' => Auth::user()->id,
                 'kursus_id' => $kursus->id,

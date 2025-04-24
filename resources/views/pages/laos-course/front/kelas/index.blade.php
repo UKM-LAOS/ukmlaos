@@ -250,7 +250,7 @@
                         const $newCoursesGrid = $html.find('#courses-grid');
                         if ($newCoursesGrid.length) {
                             $coursesGrid.html($newCoursesGrid.html());
-                            // initCourseHoverEffects()
+                            initCourseHoverEffects()
                         } else if ($html.find('#courses-grid').length === 0 && $html.find('body')
                             .length > 0) {
                             // If we got a full page response instead of a partial
