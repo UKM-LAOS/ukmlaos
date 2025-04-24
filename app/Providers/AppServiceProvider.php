@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Filament\Custom\LogoutResponse;
 use Illuminate\Support\Facades\DB;
 use App\Interfaces\PaymentInterface;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;
 use App\Service\MidtransPaymentService;
+use Filament\Http\Responses\Auth\Contracts\LogoutResponse as LogoutResponseContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Filament DI
+        $this->app->bind(LogoutResponseContract::class, LogoutResponse::class);
+        // Midtrans DI
         $this->app->bind(PaymentInterface::class, MidtransPaymentService::class);
     }
 
