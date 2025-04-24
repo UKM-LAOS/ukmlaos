@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Custom;
+namespace App\Filament\Custom\Responses;
 
 use Filament\Http\Responses\Auth\Contracts\LogoutResponse as ContractsLogoutResponse;
 use Illuminate\Http\RedirectResponse;

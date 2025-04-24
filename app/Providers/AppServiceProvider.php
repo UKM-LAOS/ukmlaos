@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Filament\Custom\LogoutResponse;
+use App\Filament\Custom\Responses\LogoutResponse;
 use Illuminate\Support\Facades\DB;
 use App\Interfaces\PaymentInterface;
 use Illuminate\Support\Facades\View;
