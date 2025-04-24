@@ -63,6 +63,7 @@ class CheckoutController extends Controller
         return ResponseFormatterController::success($diskon, 'Kode diskon berhasil ditemukan');
     }
 
+    // Kursus Premium
     public function checkout(Request $request, Kursus $kursus)
     {
         $request->validate([
@@ -122,8 +123,36 @@ class CheckoutController extends Controller
         }
     }
 
+    // Kursus Gratis
+    public function daftar(Kursus $kursus)
+    {
+        // Validasi checkout
+        [$hasil, $errorMessage] = $this->checkoutValidation($kursus);
+        if(!$hasil)
+        {
+            return redirect()->back()->with('error', $errorMessage);
+        }
+
+        DB::beginTransaction();
+        try
+        {
+            KursusMurid::firstOrCreate([
+                'student_id' => Auth::user()->id,
+                'kursus_id' => $kursus->id,
+            ]);
+
+            DB::commit();
+            return redirect()->route('course.dashboard.my-courses.show', $kursus->slug);
+        }catch(Exception $e)
+        {
+            DB::rollBack();
+            Log::error('Daftar error: ' . $e->getMessage());
+            return ResponseFormatterController::error('Terjadi kesalahan saat mendaftar kursus', 500);
+        }
+    }
+
     /**
-     * Validasi checkout untuk kursus
+     * Validasi checkout/daftar untuk kursus
      * 
      * @param Kursus $kursus
      * @return bool true jika validasi berhasil, false jika gagal

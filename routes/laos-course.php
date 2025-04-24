@@ -51,6 +51,7 @@ Route::prefix('course')->name('course.')->group(function()
             Route::get('/diskon-check', [CheckoutController::class, 'discountChecker'])->name('diskon-check');
             Route::get('/{kursus:slug}', [CheckoutController::class, 'index'])->name('index');
             Route::post('/{kursus:slug}', [CheckoutController::class, 'checkout'])->name('beli');
+            Route::post('/{kursus:slug}/daftar', [CheckoutController::class, 'daftar'])->name('daftar');
         });
 
         Route::prefix('dashboard')->name('dashboard.')->group(function()

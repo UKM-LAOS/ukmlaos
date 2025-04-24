@@ -240,7 +240,7 @@
                                 Daftar Sekarang
                             </a>
                         @else
-                            <form action="#" method="post">
+                            <form action="{{ route('course.checkout.daftar', $course->slug) }}" method="post">
                                 @csrf
                                 <button type="submit"
                                     class="w-full py-3 mb-3 bg-green-500 dark:bg-green-600 text-white rounded-xl hover:bg-green-600 dark:hover:bg-green-700 transition-colors font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform flex items-center justify-center gap-2">
@@ -252,7 +252,6 @@
                                 </button>
                             </form>
                         @endif
-
                         <p class="text-xs text-center text-gray-500 dark:text-gray-400">Pembayaran aman & terverifikasi</p>
                     </div>
                 </div>
