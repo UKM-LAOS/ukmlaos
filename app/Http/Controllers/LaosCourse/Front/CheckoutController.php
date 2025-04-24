@@ -162,7 +162,7 @@ class CheckoutController extends Controller
         $errors = [
             'admin' => 'Admin tidak bisa membeli course',
             'creator' => 'Anda tidak bisa membeli course yang anda buat sendiri',
-            'registered' => 'Anda sudah terdaftar di course ini'
+            'registered' => 'Anda sudah terdaftar di course ini. Silahkan masuk ke dashboard untuk mempelajari course ini',
         ];
         
         $hasil = true;
