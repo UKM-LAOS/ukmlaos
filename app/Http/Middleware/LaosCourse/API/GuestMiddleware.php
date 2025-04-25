@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\LaosCourse;
+namespace App\Http\Middleware\LaosCourse\API;
 
+use App\Http\Controllers\Helpers\ResponseFormatterController;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthMiddleware
+class GuestMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,9 +16,11 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!auth()->check()) {
-            return redirect()->route('course.auth.login');
+        if(auth('api')->check())
+        {
+            return ResponseFormatterController::error('You are already logged in', 401);
         }
+
         return $next($request);
     }
 }

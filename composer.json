@@ -20,6 +20,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "midtrans/midtrans-php": "^2.6",
+        "php-open-source-saver/jwt-auth": "^2.3",
         "ralphjsmit/laravel-seo": "^1.7",
         "spatie/laravel-medialibrary": "^11.12",
         "spatie/laravel-permission": "^6.17"
