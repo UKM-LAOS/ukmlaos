@@ -4,8 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Service\MidtransPaymentService;
 use App\Http\Controllers\LaosCourse\API\AuthController;
-use App\Http\Controllers\LaosCourse\API\CheckoutController;
 use App\Http\Controllers\LaosCourse\API\KelasController;
+use App\Http\Controllers\LaosCourse\API\MyOrderController;
+use App\Http\Controllers\LaosCourse\API\CheckoutController;
 
 Route::post('payment-callback', [MidtransPaymentService::class, 'midtransCallback']);
 Route::prefix('course')->group(function()
@@ -48,6 +49,12 @@ Route::prefix('course')->group(function()
             Route::get('/{slug}', [CheckoutController::class, 'index']);
             Route::post('/{slug}/beli', [CheckoutController::class, 'checkout']);
             Route::post('/{slug}/daftar', [CheckoutController::class, 'daftar']);
+        });
+
+        // Dashboard
+        Route::prefix('dashboard')->group(function()
+        {
+            Route::get('my-orders', [MyOrderController::class, 'index']);
         });
     });
 });
