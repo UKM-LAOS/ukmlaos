@@ -7,6 +7,7 @@ use App\Http\Controllers\LaosCourse\API\AuthController;
 use App\Http\Controllers\LaosCourse\API\KelasController;
 use App\Http\Controllers\LaosCourse\API\MyOrderController;
 use App\Http\Controllers\LaosCourse\API\CheckoutController;
+use App\Http\Controllers\LaosCourse\API\MyCourseController;
 
 Route::post('payment-callback', [MidtransPaymentService::class, 'midtransCallback']);
 Route::prefix('course')->group(function()
@@ -54,6 +55,14 @@ Route::prefix('course')->group(function()
         // Dashboard
         Route::prefix('dashboard')->group(function()
         {
+            // My Courses
+            Route::prefix('my-courses')->group(function()
+            {
+                Route::get('/', [MyCourseController::class, 'index']);
+                Route::get('/search', [MyCourseController::class, 'search']);
+            });
+
+            // My Orders
             Route::get('my-orders', [MyOrderController::class, 'index']);
         });
     });
