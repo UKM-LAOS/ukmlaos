@@ -11,8 +11,8 @@ class KelasController extends Controller
 {
     public function index()
     {
-        $kursus = Kursus::withCount(['mentors', 'students'])
-            ->with(['materi', 'flashSale', 'media'])->withAvg        ('reviews as avg_rating', 'kursus_murids.rating')
+        $kursus = Kursus::withCount(['mentors', 'students', 'media'])
+            ->with(['materi', 'flashSale', 'media' => fn($q) => $q->whereCollectionName('kursus-thumbnail')])->withAvg('reviews as avg_rating', 'kursus_murids.rating')
             ->whereIsPublished(true)
             ->latest()
             ->paginate(6);
@@ -23,7 +23,7 @@ class KelasController extends Controller
     {
         $kategori = $request->has('kategori') ? explode(',', $request->kategori) : [];
 
-        $kursus = Kursus::with(['flashSale', 'materi', 'media'])->withCount(['mentors', 'students'])
+        $kursus = Kursus::with(['flashSale', 'materi', 'media' => fn($q) => $q->whereCollectionName('kursus-thumbnail')])->withCount(['mentors', 'students'])
             ->whereIsPublished(true)
             ->withAvg('reviews as avg_rating', 'kursus_murids.rating')
             ->when(!empty($kategori), function ($query) use ($kategori) {
@@ -48,7 +48,7 @@ class KelasController extends Controller
         }
         
         // Get matching courses
-        $kursus = Kursus::with('media')->whereIsPublished(true)
+        $kursus = Kursus::with(['media' => fn($q) => $q->whereCollectionName('kursus-thumbnail')])->whereIsPublished(true)
                         ->where('judul', 'like', "%{$query}%")
                         ->orWhere('kategori', 'like', "%{$query}%")
                         ->limit(8) // Limit to 8 results for better UX
@@ -73,7 +73,7 @@ class KelasController extends Controller
 
     public function show($slug)
     {
-        $kursus = Kursus::with(['media', 'bab.materi', 'mentors', 'techStacks.media', 'materi', 'reviews' => function ($query) {
+        $kursus = Kursus::with(['media' => fn($q) => $q->whereCollectionName('kursus-thumbnail'), 'bab.materi', 'mentors', 'techStacks.media', 'materi', 'reviews' => function ($query) {
                 $query->with('student');
             }, 'flashSale'])
             ->withCount(['bab', 'mentors', 'students', 'materi', 'reviews'])
