@@ -41,7 +41,9 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return ResponseFormatterController::success($user, 'User registered successfully');
+        $user->assignRole('student');
+
+        return ResponseFormatterController::success($user, 'Berhasil Daftar');
     }
 
     /**
@@ -67,7 +69,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (! $token = auth('api')->attempt($credentials)) {
-            return ResponseFormatterController::error('Unauthorized', 401);
+            return ResponseFormatterController::error('Unauthenticated', 401);
         }
 
         return $this->respondWithToken($token);
@@ -80,7 +82,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return ResponseFormatterController::success(auth('api')->user(), 'User data retrieved successfully');
+        return ResponseFormatterController::success(auth('api')->user(), 'Berhasil mendapatkan data user');
     }
 
     /**
@@ -92,7 +94,7 @@ class AuthController extends Controller
     {
         auth('api')->logout();
 
-        return ResponseFormatterController::success(null, 'User logged out successfully');
+        return ResponseFormatterController::success(null, 'Berhasil Log Out');
     }
 
     /**
@@ -124,6 +126,6 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60
-        ], 'Token generated successfully');
+        ], 'Berhasil mendapatkan token');
     }
 }

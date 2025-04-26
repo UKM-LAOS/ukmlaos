@@ -16,7 +16,7 @@ class KelasController extends Controller
             ->whereIsPublished(true)
             ->latest()
             ->paginate(6);
-        return ResponseFormatterController::success($kursus, 'Kursus retrieved successfully');
+        return ResponseFormatterController::success($kursus, 'Berhasil mendapatkan data kursus');
     }
 
     public function filter(Request $request)
@@ -35,7 +35,7 @@ class KelasController extends Controller
         // Preserve query parameters in pagination links
         $kursus->appends($request->all());
 
-        return ResponseFormatterController::success($kursus, 'Kursus retrieved successfully');
+        return ResponseFormatterController::success($kursus, 'Berhasil mendapatkan data kursus');
     }
 
     public function search(Request $request)
@@ -65,10 +65,10 @@ class KelasController extends Controller
                             ];
                         });
         if ($kursus->isEmpty()) {
-            return ResponseFormatterController::error('No courses found', 404);
+            return ResponseFormatterController::error('Kursus tidak ditemukan', 404);
         }
         
-        return ResponseFormatterController::success($kursus, 'Courses retrieved successfully');
+        return ResponseFormatterController::success($kursus, 'Berhasil mendapatkan data kursus', 200);
     }
 
     public function show($slug)
@@ -79,13 +79,14 @@ class KelasController extends Controller
             ->withCount(['bab', 'mentors', 'students', 'materi', 'reviews'])
             ->withAvg('reviews as avg_rating', 'kursus_murids.rating')
             ->whereSlug($slug)
+            ->whereIsPublished(true)
             ->first();
         
         if(!$kursus)
         {
-            return ResponseFormatterController::error('Course not found', 404); 
+            return ResponseFormatterController::error('Kursus tidak ditemukan', 404); 
         }
 
-        return ResponseFormatterController::success($kursus, 'Course retrieved successfully');
+        return ResponseFormatterController::success($kursus, 'Berhasil mendapatkan data kursus', 200);
     }
 }

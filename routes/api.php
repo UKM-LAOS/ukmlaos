@@ -4,23 +4,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Service\MidtransPaymentService;
 use App\Http\Controllers\LaosCourse\API\AuthController;
+use App\Http\Controllers\LaosCourse\API\CheckoutController;
 use App\Http\Controllers\LaosCourse\API\KelasController;
 
 Route::post('payment-callback', [MidtransPaymentService::class, 'midtransCallback']);
-Route::prefix('course')->name('course.')->group(function()
+Route::prefix('course')->group(function()
 {
     // Guest Middleware
     Route::middleware('guest.api')->group(function()
     {
         // Auth Routes
-        Route::prefix('auth')->name('auth.')->group(function()
+        Route::prefix('auth')->group(function()
         {
             Route::post('register', [AuthController::class, 'register']);
             Route::post('login', [AuthController::class, 'login']);        
         });
 
         // Kelas Routes
-        Route::prefix('kelas')->name('kelas.')->group(function()
+        Route::prefix('kelas')->group(function()
         {
             Route::get('/', [KelasController::class, 'index']);
             Route::get('/filter', [KelasController::class, 'filter']);
@@ -33,11 +34,20 @@ Route::prefix('course')->name('course.')->group(function()
     Route::middleware('auth.api')->group(function()
     {
         // Auth Routes
-        Route::prefix('auth')->name('auth.')->group(function()
+        Route::prefix('auth')->group(function()
         {
             Route::get('me', [AuthController::class, 'me']);
             Route::post('logout', [AuthController::class, 'logout']);
             Route::post('refresh', [AuthController::class, 'refresh']);
+        });
+
+        // Checkout Routes
+        Route::prefix('checkout')->group(function()
+        {
+            Route::get('/diskon-check', [CheckoutController::class, 'discountChecker']);
+            Route::get('/{slug}', [CheckoutController::class, 'index']);
+            Route::post('/{slug}/beli', [CheckoutController::class, 'checkout']);
+            Route::post('/{slug}/daftar', [CheckoutController::class, 'daftar']);
         });
     });
 });

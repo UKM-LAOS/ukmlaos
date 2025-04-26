@@ -26,7 +26,7 @@ class CheckoutController extends Controller
 
     public function index(Kursus $kursus)
     {
-        $kursus->load('mentors')->loadCount(['bab', 'materi', 'mentors', 'students'])->loadAvg('reviews as reviews_avg', 'rating');
+        $kursus->load('flashSale')->loadCount(['bab', 'materi', 'mentors', 'students'])->loadAvg('reviews as reviews_avg', 'rating');
         
         // Common checkout validation
         [$hasil, $errorMessage] = $this->checkoutValidation($kursus);
@@ -44,15 +44,18 @@ class CheckoutController extends Controller
 
     public function discountChecker(Request $request)
     {
-        $request->validate([
-            'kode' => 'required|string|exists:diskons,kode',
-        ], [
-            'kode.required' => 'Kode diskon harus diisi',
-            'kode.string' => 'Kode diskon harus berupa teks',
-            'kode.exists' => 'Kode diskon tidak ditemukan',
-        ]);
+        // jika kode diskon tidak ada
+        if(!$request->input('kode'))
+        {
+            return ResponseFormatterController::error('Kode diskon tidak boleh kosong', 400);
+        }
 
         $diskon = Diskon::whereKode($request->kode)->first();
+
+        if(!$diskon)
+        {
+            return ResponseFormatterController::error('Kode diskon tidak ditemukan', 404);
+        }
 
         if(!$diskon->isActive)
         {
