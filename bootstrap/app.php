@@ -13,8 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'auth' => App\Http\Middleware\LaosCourse\AuthMiddleware::class,
-            'guest' => App\Http\Middleware\LaosCourse\GuestMiddleware::class,
+            'auth' => App\Http\Middleware\LaosCourse\Web\AuthMiddleware::class,
+            'guest' => App\Http\Middleware\LaosCourse\Web\GuestMiddleware::class,
+            'auth.api' => App\Http\Middleware\LaosCourse\API\AuthMiddleware::class,
+            'guest.api' => App\Http\Middleware\LaosCourse\API\GuestMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
