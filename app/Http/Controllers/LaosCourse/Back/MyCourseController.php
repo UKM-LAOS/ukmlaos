@@ -103,6 +103,14 @@ class MyCourseController extends Controller
             $q->whereKursusId($kursus->id)->whereStudentId(Auth::user()->id);
         })->update(['is_current' => false]);
 
+        // cek apakah materi yang diakses benar benar materi dari kursus yang diambil
+        if(Kursus::whereId($kursus->id)->whereHas('bab.materi', function($q) use ($kursusBabMateri)
+        {
+            $q->whereId($kursusBabMateri->id);
+        })->count() === 0) {
+            return redirect()->route('course.dashboard.my-courses.index')->with('error', 'Materi tidak ditemukan');
+        }
+
         // update is_current to true
         $progres = KursusMuridProgres::whereKursusBabMateriId($kursusBabMateri->id)
             ->whereHas('kursusMurid', function($q) use ($kursus)
@@ -150,7 +158,7 @@ class MyCourseController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'rating_value' => 'required|min:1|max:5',
+            'rating_value' => 'required|numeric|min:1|max:5',
             'komentar' => 'required|string',
         ], [
             'rating_value.required' => 'Rating tidak boleh kosong',

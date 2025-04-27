@@ -60,6 +60,7 @@ Route::prefix('course')->group(function()
             {
                 Route::get('/', [MyCourseController::class, 'index']);
                 Route::get('/search', [MyCourseController::class, 'search']);
+                Route::put('/{slug}/testimoni', [MyCourseController::class, 'createTestimoni']);
             });
 
             // My Orders
