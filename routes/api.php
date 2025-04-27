@@ -60,7 +60,9 @@ Route::prefix('course')->group(function()
             {
                 Route::get('/', [MyCourseController::class, 'index']);
                 Route::get('/search', [MyCourseController::class, 'search']);
-                Route::put('/{slug}/testimoni', [MyCourseController::class, 'createTestimoni']);
+                Route::get('/{slug}', [MyCourseController::class, 'show']);
+                Route::get('/{slug}/watch/{kursusBabMateri}', [MyCourseController::class, 'watch'])->name('api.course.dashboard.my-courses.watch');
+                Route::post('/{slug}/testimoni', [MyCourseController::class, 'createTestimoni']);
             });
 
             // My Orders

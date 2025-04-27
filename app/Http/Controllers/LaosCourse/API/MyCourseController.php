@@ -5,6 +5,8 @@ namespace App\Http\Controllers\LaosCourse\API;
 use App\Models\Kursus;
 use App\Models\KursusMurid;
 use Illuminate\Http\Request;
+use App\Models\KursusBabMateri;
+use App\Models\KursusMuridProgres;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +54,119 @@ class MyCourseController extends Controller
         ->latest()
         ->paginate(6);
         return ResponseFormatterController::success($enrolledKursus,  'Berhasil mendapatkan data kursus yang terdaftar');
+    }
+
+    public function show($slug)
+    {
+        $kursus = Kursus::whereIsPublished(true)
+            ->whereSlug($slug)
+            ->first();
+        if(!$kursus)
+        {
+            return ResponseFormatterController::error('Kursus tidak ditemukan', 404);
+        }
+        // First get the kursusMurid record that matches the criteria
+        $kursusMurid = KursusMurid::where('kursus_id', $kursus->id)
+            ->where('student_id', Auth::guard('api')->user()->id)
+            ->first();
+
+        // If kursusMurid exists, use its ID in the firstOrCreate method
+        if ($kursusMurid) {
+            $progres = KursusMuridProgres::with([
+                    'kursusMurid' => function($q) {
+                        $q->with(['kursus.bab.materi']);
+                    },
+                    'materi'
+                ])
+                ->whereIsCurrent(true)
+                ->whereKursusMuridId($kursusMurid->id)
+                ->first();
+
+            if(!$progres) {
+                $progres = KursusMuridProgres::firstOrCreate([
+                    'kursus_murid_id' => $kursusMurid->id,
+                    'kursus_bab_materi_id' => $kursus->bab->first()->materi->first()->id,
+                    'is_current' => true,
+                ]);
+            }
+        }
+
+        return redirect()->route('api.course.dashboard.my-courses.watch', [
+            'slug' => $progres->kursusMurid->kursus->slug,
+            'kursusBabMateri' => $progres->materi->id,
+        ]);
+    }
+
+    public function watch($slug, $kursusBabMateri)
+    {
+        $kursus = Kursus::whereIsPublished(true)
+            ->whereSlug($slug)
+            ->first();
+        if(!$kursus)
+        {
+            return ResponseFormatterController::error('Kursus tidak ditemukan', 404);
+        }
+
+        $kursusBabMateri = KursusBabMateri::whereId($kursusBabMateri)->first();
+        if(!$kursusBabMateri)
+        {
+            return ResponseFormatterController::error('Materi tidak ditemukan', 404);
+        }
+
+        // update is_current to false
+        KursusMuridProgres::whereHas('kursusMurid', function($q) use ($kursus)
+        {
+            $q->whereKursusId($kursus->id)->whereStudentId(Auth::guard('api')->user()->id);
+        })->update(['is_current' => false]);
+
+        // cek apakah materi yang diakses benar benar materi dari kursus yang diambil
+        if(Kursus::whereId($kursus->id)->whereHas('bab.materi', function($q) use ($kursusBabMateri)
+        {
+            $q->whereId($kursusBabMateri->id);
+        })->count() === 0) {
+            return ResponseFormatterController::error('Materi kursus yang diakses tidak ditemukan', 404);
+        }
+
+        // update is_current to true
+        $progres = KursusMuridProgres::whereKursusBabMateriId($kursusBabMateri->id)
+            ->whereHas('kursusMurid', function($q) use ($kursus)
+            {
+                $q->whereKursusId($kursus->id)->whereStudentId(Auth::guard('api')->user()->id);
+            })
+            ->first();
+        if($progres) {
+            $progres->update(['is_current' => true]);
+        } else {
+            $progres = KursusMuridProgres::create([
+                'kursus_murid_id' => KursusMurid::whereKursusId($kursus->id)->whereStudentId(Auth::guard('api')->user()->id)->first()->id,
+                'kursus_bab_materi_id' => $kursusBabMateri->id,
+                'is_current' => true,
+            ]);
+        }
+
+        // jika jumlah progres === jumlah materi, update is_selesai pada kursus_murid
+        $jumlahMateri = $kursus->loadCount('materi')->materi_count;
+        $jumlahProgres = KursusMuridProgres::whereKursusMuridId($progres->kursus_murid_id)->count();
+        if($jumlahMateri === $jumlahProgres) {
+            KursusMurid::whereKursusId($kursus->id)->whereStudentId(Auth::guard('api')->user()->id)->update(['is_selesai' => true]);
+        }
+        $kursus->load([
+            'bab' => function($q)
+            {
+                $q->with([
+                    'materi.progres'
+                ]);
+            },
+            'reviews' => function($q)
+            {
+                $q->whereStudentId(Auth::guard('api')->user()->id);
+            },
+        ]);
+
+        return ResponseFormatterController::success([
+            'kursus' => $kursus,
+            'materi' => $kursusBabMateri->load('bab'),
+        ], 'Berhasil mendapatkan data kursus yang terdaftar');
     }
 
     public function createTestimoni(Request $request, $slug)
