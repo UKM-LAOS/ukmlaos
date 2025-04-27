@@ -313,12 +313,8 @@
             }
 
             $.ajax({
-                url: `{{ route('course.checkout.diskon-check') }}`,
+                url: `{{ route('course.checkout.diskon-check') }}?kode=${diskon}`,
                 type: 'GET',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    kode: diskon,
-                },
                 beforeSend: function() {
                     $('#loadingSpinner').removeClass('hidden');
                     $('button#applyPromo').attr('disabled', true);

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\LaosCourse\Front;
+namespace App\Http\Controllers\LaosCourse\API;
 
+use App\Enums\LaosCourse\Kursus\TipeEnum;
 use Exception;
 use App\Models\Diskon;
 use App\Models\Kursus;
@@ -14,7 +15,6 @@ use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Interfaces\PaymentInterface;
 use Illuminate\Support\Facades\Auth;
-use App\Enums\LaosCourse\Diskon\JenisEnum;
 use App\Http\Controllers\Helpers\ResponseFormatterController;
 
 class CheckoutController extends Controller
@@ -24,27 +24,30 @@ class CheckoutController extends Controller
     )
     {}
 
-    public function index(Kursus $kursus)
+    public function index($slug)
     {
-        $kursus->load('flashSale')->loadCount(['bab', 'materi', 'mentors', 'students'])->loadAvg('reviews as reviews_avg', 'rating');
+        $kursus = Kursus::with(['flashSale', 'media' => function($q) {
+            $q->whereCollectionName('kursus-thumbnail');
+        }])->withCount(['bab', 'materi', 'mentors', 'students'])->withAvg('reviews as reviews_avg', 'rating')->whereSlug($slug)->whereIsPublished(true)->first();
+
+        if(!$kursus)
+        {
+            return ResponseFormatterController::error('Kursus tidak ditemukan', 404);
+        }
         
         // Common checkout validation
         [$hasil, $errorMessage] = $this->checkoutValidation($kursus);
 
         if(!$hasil)
         {
-            return redirect()->route('course.kelas.show', $kursus->slug)->with('error', $errorMessage);
+            return ResponseFormatterController::error($errorMessage);
         }
 
-        return view('pages.laos-course.front.checkout.index', [
-            'title' => 'Checkout',
-            'course' => $kursus,
-        ]);
+        return ResponseFormatterController::success($kursus, 'Berhasil mendapatkan data kursus yang akan dicheckout');
     }
 
     public function discountChecker(Request $request)
     {
-        // jika kode diskon tidak ada
         if(!$request->input('kode'))
         {
             return ResponseFormatterController::error('Kode diskon tidak boleh kosong', 400);
@@ -67,7 +70,7 @@ class CheckoutController extends Controller
     }
 
     // Kursus Premium
-    public function checkout(Request $request, Kursus $kursus)
+    public function checkout(Request $request, $slug)
     {
         $request->validate([
             'kode' => 'nullable|string|exists:diskons,kode',
@@ -75,6 +78,13 @@ class CheckoutController extends Controller
             'kode.string' => 'Kode diskon harus berupa teks',
             'kode.exists' => 'Kode diskon tidak ditemukan',
         ]);
+
+        $kursus = Kursus::with('flashSale')->whereSlug($slug)->whereIsPublished(true)->first();
+
+        if(!$kursus)
+        {
+            return ResponseFormatterController::error('Kursus tidak ditemukan', 404);
+        }
         
         $harga = $kursus->flashSale ? $kursus->harga * (1 - $kursus->flashSale->persentase / 100) : $kursus->harga;
         
@@ -103,7 +113,7 @@ class CheckoutController extends Controller
         try
         {
             $transaksi = Transaksi::updateOrCreate([
-                'student_id' => Auth::user()->id,
+                'student_id' => Auth::guard('api')->user()->id,
                 'kursus_id' => $kursus->id,
             ], [
                 'status' => 'pending',
@@ -116,6 +126,7 @@ class CheckoutController extends Controller
 
             DB::commit();
             return ResponseFormatterController::success([
+                'transaksi' => $transaksi,
                 'snap_token' => $snapToken,
             ], 'Berhasil melakukan checkout');
         }catch(Exception $e)
@@ -127,13 +138,25 @@ class CheckoutController extends Controller
     }
 
     // Kursus Gratis
-    public function daftar(Kursus $kursus)
-    {
+    public function daftar($slug)
+    {   
+        $kursus = Kursus::whereSlug($slug)->whereIsPublished(true)->first();
+
+        if(!$kursus)
+        {
+            return ResponseFormatterController::error('Kursus tidak ditemukan', 404);
+        }
+
+        if($kursus->tipe === TipeEnum::PREMIUM)
+        {
+            return ResponseFormatterController::error('Anda tidak bisa mendaftar kursus premium sebelum membeli kelas', 400);
+        }
+
         // Validasi checkout
         [$hasil, $errorMessage] = $this->checkoutValidation($kursus);
         if(!$hasil)
         {
-            return redirect()->back()->with('error', $errorMessage);
+            return ResponseFormatterController::error($errorMessage);
         }
 
         DB::beginTransaction();
@@ -141,19 +164,19 @@ class CheckoutController extends Controller
         {
             Transaksi::create([
                 'order_id' => 'LCRS-' . Str::random(6),
-                'student_id' => Auth::user()->id,
+                'student_id' => Auth::guard('api')->user()->id,
                 'kursus_id' => $kursus->id,
                 'status' => 'success',
                 'total_harga' => 0,
             ]);
 
             KursusMurid::firstOrCreate([
-                'student_id' => Auth::user()->id,
+                'student_id' => Auth::guard('api')->user()->id,
                 'kursus_id' => $kursus->id,
             ]);
 
             DB::commit();
-            return redirect()->route('course.dashboard.my-courses.show', $kursus->slug);
+            return ResponseFormatterController::success(null, 'Berhasil mendaftar kursus');
         }catch(Exception $e)
         {
             DB::rollBack();
@@ -196,16 +219,16 @@ class CheckoutController extends Controller
 
     private function checkIfCourseIsCreatedByUser($kursus)
     {
-        return in_array(Auth::user()->id, $kursus->mentors()->pluck('id')->toArray());
+        return in_array(Auth::guard('api')->user()->id, $kursus->mentors()->pluck('id')->toArray());
     }
 
     private function checkIsRegistered($kursus)
     {
-        return KursusMurid::whereKursusId($kursus->id)->whereStudentId(Auth::user()->id)->exists();
+        return KursusMurid::whereKursusId($kursus->id)->whereStudentId(Auth::guard('api')->user()->id)->exists();
     }
 
     private function checkIsAdmin()
     {
-        return Auth::user()->hasRole('super_admin');
+        return Auth::guard('api')->user()->hasRole('super_admin');
     }
 }
