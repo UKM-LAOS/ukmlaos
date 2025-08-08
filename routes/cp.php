@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CP\Front\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CP\Front\BlogController;
 use App\Http\Controllers\CP\Front\HomeController;
@@ -22,5 +23,11 @@ Route::name('cp.')->group(function () {
         Route::get('/', [ProgramController::class, 'index'])->name('index');
         Route::get('/{program:slug}', [ProgramController::class, 'show'])->name('show');
     });
+
+    Route::prefix('tentang-kami')->name('tentang-kami.')->group(function () {
+        Route::get('/', [AboutController::class, 'index'])->name('index');
+    });
 })
+
+
     ?>
