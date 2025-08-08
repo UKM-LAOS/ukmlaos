@@ -83,21 +83,6 @@ class BlogController extends Controller
         ]);
     }
 
-    public function byCategory($kategori)
-    {
-        $articles = Blog::published()
-            ->with(['divisi', 'author'])
-            ->byKategori($kategori)
-            ->latest()
-            ->paginate(9);
-
-        return view('pages.cp.front.blog.category', [
-            'title' => 'Artikel Kategori: ' . ucfirst(str_replace('-', ' ', $kategori)),
-            'articles' => $articles,
-            'kategori' => $kategori,
-        ]);
-    }
-
     public function search(Request $request)
     {
         $query = $request->get('q');

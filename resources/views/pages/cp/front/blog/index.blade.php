@@ -187,7 +187,7 @@
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
                         @if ($activeKategori !== 'semua')
                             Belum ada artikel untuk kategori
-                            "{{ $categories[$activeKategori] ?? ucfirst($activeKategori) }}".
+                            "{{ data_get($categories, $activeKategori, ucfirst((string) $activeKategori)) }}".
                         @else
                             Belum ada artikel yang dipublikasikan.
                         @endif
