@@ -1,200 +1,265 @@
 @extends('layouts.cp.front')
 
 @section('content')
-    <section
-        class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-gray-900 dark:via-gray-800/30 dark:to-[#151E2E]">
-        <!-- Background decorations -->
-        <div class="absolute inset-0">
-            <div
-                class="absolute top-0 right-0 w-[500px] h-[500px] bg-green-200/30 dark:bg-green-900/30 rounded-full blur-[120px]">
-            </div>
-            <div
-                class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-200/20 dark:bg-blue-900/20 rounded-full blur-[120px]">
-            </div>
-        </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-                    Artikel <span class="gradient-text">Unggulan</span>
-                </h2>
-            </div>
-
-            <div class="relative">
-                @if ($popularArticles->count() > 0)
-                    <div class="swiper featuredArticlesSwiper">
-                        <div class="swiper-wrapper">
-                            @foreach ($popularArticles as $article)
-                                <div class="swiper-slide">
-                                    <a href="{{ route('cp.blog.show', $article->slug) }}"
-                                        class="group block bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
-                                        <div class="relative h-[200px] md:h-[250px] overflow-hidden">
-                                            <img src="{{ $article->getFirstMediaUrl('blog-thumbnail') }}"
-                                                alt="{{ $article->judul }}"
-                                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
-                                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
-                                            </div>
-                                        </div>
-                                        <div class="p-6">
-                                            <h4
-                                                class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-green-base mb-3">
-                                                {{ $article->judul }}
-                                            </h4>
-                                            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                                    fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                {{ $article->created_at->translatedFormat('d F Y') }}
-                                            </div>
-                                        </div>
-                                    </a>
+    <section class="relative h-[500px] overflow-hidden">
+        <div class="flex h-full mt-16 transition-transform duration-500 ease-in-out" id="slider">
+            @if ($popularArticles->count() > 0)
+                @foreach ($popularArticles as $index => $article)
+                    <div class="min-w-full h-full relative">
+                        <div class="absolute inset-0 bg-black opacity-50"></div>
+                        <img src="{{ $article->featured_image_url }}" alt="{{ $article->judul }}"
+                            class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="max-w-7xl px-4 sm:px-6 lg:px-8 text-white text-center">
+                                <div class="mb-12">
+                                    <p class="text-lg font-medium tracking-wide text-gray-200 uppercase mb-2">
+                                        {{ $article->category_label }}
+                                    </p>
+                                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                                        {{ $article->judul }}
+                                    </h1>
+                                    <p class="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto">
+                                        {{ $article->excerpt }}
+                                    </p>
+                                    <div class="mt-6">
+                                        <a href="{{ route('cp.blog.show', $article->slug) }}"
+                                            class="inline-block px-6 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-300">
+                                            Baca Selengkapnya
+                                        </a>
+                                    </div>
                                 </div>
-                            @endforeach
-                        </div>
-
-                        <!-- Enhanced Navigation Buttons -->
-                        <div
-                            class="swiper-button-prev !left-4 !md:left-8 !w-12 !h-12 !bg-white/90 dark:!bg-gray-800/90 !rounded-full !shadow-lg backdrop-blur-sm transition-all duration-300 hover:!bg-green-500 after:!text-gray-800 dark:after:!text-white hover:after:!text-white">
-                        </div>
-                        <div
-                            class="swiper-button-next !right-4 !md:right-8 !w-12 !h-12 !bg-white/90 dark:!bg-gray-800/90 !rounded-full !shadow-lg backdrop-blur-sm transition-all duration-300 hover:!bg-green-500 after:!text-gray-800 dark:after:!text-white hover:after:!text-white">
+                            </div>
                         </div>
                     </div>
-                @else
-                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center">
-                        <svg class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-600 mb-4" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                        </svg>
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Artikel Unggulan Belum Tersedia
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400">Artikel unggulan akan segera ditambahkan</p>
+                @endforeach
+            @else
+                <div class="min-w-full h-full relative">
+                    <div class="absolute inset-0 bg-black opacity-50"></div>
+                    <img src="{{ asset('assets/cp/hero/hero.jpg') }}" alt="UKM LAOS Background"
+                        class="w-full h-full object-cover">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="max-w-7xl px-4 sm:px-6 lg:px-8 text-white text-center">
+                            <div class="mb-12">
+                                <p class="text-lg font-medium tracking-wide text-gray-200 uppercase mb-2">Artikel terbaru
+                                </p>
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                                    Cerita, Inovasi, dan Aksi dari UKM LAOS
+                                </h1>
+                                <p class="text-base sm:text-lg text-gray-200 max-w-3xl mx-auto">
+                                    Ikuti perjalanan inspiratif, program kreatif, dan kisah penggerak perubahan dari
+                                    berbagai kegiatan UKM LAOS.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                @endif
-            </div>
+                </div>
+            @endif
         </div>
+
+        @if ($popularArticles->count() > 1)
+            <div class="absolute bottom-8 left-0 right-0 flex justify-center space-x-2 z-10">
+                @foreach ($popularArticles as $index => $article)
+                    <button
+                        class="w-3 h-3 {{ $index === 0 ? 'bg-white' : 'bg-gray-400' }} rounded-full cursor-pointer slider-dot"
+                        data-slide="{{ $index }}"></button>
+                @endforeach
+            </div>
+        @endif
     </section>
-    <section
-        class="py-24 relative overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-[#151E2E] dark:via-gray-800/30 dark:to-gray-900">
-        <!-- Background decorations -->
-        <div class="absolute inset-0">
-            <div class="absolute top-0 right-0 w-72 h-72 bg-green-200/30 dark:bg-green-900/30 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-200/30 dark:bg-blue-900/30 rounded-full blur-3xl"></div>
-        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                    Semua <span class="gradient-text">Artikel</span>
-                </h2>
+    <section class="py-12 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <div
+                    class="inline-block px-6 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-full text-gray-700 dark:text-gray-300 font-semibold mb-4">
+                    BERITA
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Temukan Berita Terbaru dari UKM LAOS</h2>
             </div>
 
-            <!-- Categories -->
-            <div class="flex justify-center mb-12">
-                <div
-                    class="inline-flex flex-wrap justify-center gap-4 p-2 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-full">
-                    @foreach ($categories as $value => $label)
-                        <a href="{{ route('cp.blog.index', ['kategori' => $value === 'semua' ? null : $value]) }}"
-                            class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300
-                            {{ $activeKategori === $value
-                                ? 'bg-green-500 text-white shadow-lg'
-                                : 'text-gray-600 dark:text-gray-300 hover:bg-green-500/10 dark:hover:bg-green-500/20' }}">
+            <div class="max-w-md mx-auto mb-8">
+                <form action="{{ route('cp.blog.search') }}" method="GET" class="relative">
+                    <input type="text" name="q" value="{{ request('q') }}" placeholder="Cari artikel..."
+                        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <button type="submit"
+                        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-green-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <div class="flex items-center justify-center relative my-8">
+                <button
+                    class="absolute left-0 -ml-12 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300 category-scroll-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div class="flex space-x-4 overflow-x-auto whitespace-nowrap scroll-smooth py-2 px-10 no-scrollbar"
+                    id="categoryFilter">
+                    @foreach ($categories as $key => $label)
+                        <a href="{{ $key === 'semua' ? route('cp.blog.index') : route('cp.blog.index', ['kategori' => $key]) }}"
+                            class="flex-shrink-0 px-6 py-2 border border-gray-300 dark:border-gray-600 rounded-full font-medium transition-colors duration-300
+                            {{ $activeKategori === $key ? 'bg-green-500 text-white' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700' }}">
                             {{ $label }}
                         </a>
                     @endforeach
                 </div>
+                <button
+                    class="absolute right-0 -mr-12 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-300 category-scroll-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10l-3.293-3.293a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
             </div>
 
-            <!-- Articles Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @forelse ($articles as $article)
-                    <a href="{{ route('cp.blog.show', $article->slug) }}"
-                        class="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+            @if ($articles->count() > 0)
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="articles-container">
+                    @foreach ($articles as $article)
                         <div
-                            class="absolute inset-0 bg-gradient-to-br from-green-50 dark:from-green-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        </div>
-                        <div class="relative">
-                            <div class="mb-6 relative overflow-hidden rounded-xl">
-                                <img src="{{ $article->getFirstMediaUrl('blog-thumbnail') }}" alt="{{ $article->judul }}"
-                                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-500" />
+                            class="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                            <div class="h-48 overflow-hidden">
+                                <img src="{{ $article->featured_image_thumb }}" alt="{{ $article->judul }}"
+                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                             </div>
-                            <h3
-                                class="text-xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-primary-green-base">
-                                {{ $article->judul }}
-                            </h3>
-                            <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                {{ $article->created_at->translatedFormat('d F Y') }}
+                            <div class="p-6">
+                                <div class="flex items-center mb-2">
+                                    <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                                        {{ $article->category_label }}
+                                    </span>
+                                    @if ($article->divisi)
+                                        <span class="ml-2 text-xs text-gray-500">{{ $article->divisi->nama }}</span>
+                                    @endif
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                    <a href="{{ route('cp.blog.show', $article->slug) }}"
+                                        class="hover:text-green-600 transition-colors duration-300">
+                                        {{ $article->judul }}
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">{{ $article->excerpt }}</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        @if ($article->author)
+                                            {{ $article->author->name }}:
+                                        @endif
+                                        {{ $article->formatted_date }}
+                                    </div>
+                                    <a href="{{ route('cp.blog.show', $article->slug) }}"
+                                        class="text-green-600 hover:text-green-800 text-sm font-medium">
+                                        Baca →
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </a>
-                @empty
-                    <div class="col-span-full">
-                        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 text-center">
-                            <svg class="w-16 h-16 mx-auto text-gray-400 dark:text-gray-600 mb-4" fill="none"
-                                stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                            </svg>
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Artikel Belum Tersedia</h3>
-                            <p class="text-gray-600 dark:text-gray-400">Artikel akan segera ditambahkan</p>
-                        </div>
-                    </div>
-                @endforelse
-            </div>
-
-            <div class="mt-12 {{ !$articles->hasPages() ? 'hidden' : '' }}">
-                <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-full p-5 inline-block w-full">
-                    {{ $articles->appends(['kategori' => $activeKategori !== 'semua' ? $activeKategori : null])->links() }}
+                    @endforeach
                 </div>
-            </div>
+
+                @if ($articles->hasMorePages())
+                    <div class="text-center mt-12">
+                        <button id="load-more-btn" data-next-page="{{ $articles->nextPageUrl() }}"
+                            class="inline-block px-8 py-3 bg-green-500 text-white rounded-full font-medium hover:bg-green-600 transition-colors duration-300">
+                            Muat Lebih Banyak
+                        </button>
+                    </div>
+                @endif
+            @else
+                <div class="text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">Tidak ada artikel</h3>
+                    <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                        @if ($activeKategori !== 'semua')
+                            Belum ada artikel untuk kategori
+                            "{{ $categories[$activeKategori] ?? ucfirst($activeKategori) }}".
+                        @else
+                            Belum ada artikel yang dipublikasikan.
+                        @endif
+                    </p>
+                </div>
+            @endif
         </div>
     </section>
-@endsection
 
-@push('scripts')
-    <!-- Add Swiper JS at the end of your body tag -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            @if ($popularArticles->count() > 0)
-                const featuredSwiper = new Swiper('.featuredArticlesSwiper', {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                    grabCursor: true,
-                    centeredSlides: true,
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                    breakpoints: {
-                        640: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                            centeredSlides: false,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                            spaceBetween: 30,
-                            centeredSlides: false,
-                        },
-                        1024: {
-                            slidesPerView: 3,
-                            spaceBetween: 45,
-                            centeredSlides: false,
-                        },
-                    },
+    @push('scripts')
+        <script>
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('#slider > div');
+            const dots = document.querySelectorAll('.slider-dot');
+            const totalSlides = slides.length;
+
+            if (totalSlides > 1) {
+                function showSlide(index) {
+                    const slider = document.getElementById('slider');
+                    slider.style.transform = `translateX(-${index * 100}%)`;
+
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('bg-white', i === index);
+                        dot.classList.toggle('bg-gray-400', i !== index);
+                    });
+                }
+
+                setInterval(() => {
+                    currentSlide = (currentSlide + 1) % totalSlides;
+                    showSlide(currentSlide);
+                }, 5000);
+            }
+
+            const categoryFilter = document.getElementById('categoryFilter');
+            document.querySelector('.category-scroll-left')?.addEventListener('click', () => {
+                categoryFilter.scrollLeft -= 200;
+            });
+
+            document.querySelector('.category-scroll-right')?.addEventListener('click', () => {
+                categoryFilter.scrollLeft += 200;
+            });
+
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const articlesContainer = document.getElementById('articles-container');
+
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', async () => {
+                    const nextPageUrl = loadMoreBtn.getAttribute('data-next-page');
+                    if (!nextPageUrl) return;
+
+                    try {
+                        const response = await fetch(nextPageUrl);
+                        const data = await response.text();
+
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = data;
+
+                        const newArticles = tempDiv.querySelector('#articles-container').innerHTML;
+                        articlesContainer.insertAdjacentHTML('beforeend', newArticles);
+
+                        const newLoadMoreBtn = tempDiv.querySelector('#load-more-btn');
+                        if (newLoadMoreBtn) {
+                            loadMoreBtn.setAttribute('data-next-page', newLoadMoreBtn.getAttribute(
+                                'data-next-page'));
+                        } else {
+                            loadMoreBtn.style.display = 'none';
+                        }
+                    } catch (error) {
+                        console.error('Error loading more articles:', error);
+                    }
                 });
-            @endif
-        });
-    </script>
-@endpush
+            }
+        </script>
+    @endpush
+@endsection
