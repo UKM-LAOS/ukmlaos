@@ -70,6 +70,16 @@ class Blog extends Model implements HasMedia
             ->performOnCollections('featured_image', 'gallery');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->where('approved', true)->latest();
+    }
+
+    public function allComments()
+    {
+        return $this->hasMany(Comment::class)->latest();
+    }
+
     public function divisi()
     {
         return $this->belongsTo(Divisi::class);

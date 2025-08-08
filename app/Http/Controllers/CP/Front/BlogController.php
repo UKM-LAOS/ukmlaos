@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CP\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Comment;
 use App\Models\Divisi;
 use Illuminate\Http\Request;
 
@@ -44,10 +45,10 @@ class BlogController extends Controller
             'tips-trik' => 'Tips dan Trik',
             'press-release' => 'Press Release',
         ])->merge(
-            collect($categoriesFromDb)->mapWithKeys(function ($cat) {
-                return [$cat => ucfirst(str_replace('-', ' ', $cat))];
-            })
-        )->unique();
+                collect($categoriesFromDb)->mapWithKeys(function ($cat) {
+                    return [$cat => ucfirst(str_replace('-', ' ', $cat))];
+                })
+            )->unique();
 
         return view('pages.cp.front.blog.index', [
             'title' => 'Blog',
@@ -95,10 +96,10 @@ class BlogController extends Controller
             ->with(['divisi', 'author'])
             ->where(function ($q) use ($query) {
                 $q->where('judul', 'like', "%{$query}%")
-                  ->orWhere('konten', 'like', "%{$query}%")
-                  ->orWhereHas('divisi', function ($divQ) use ($query) {
-                      $divQ->where('nama', 'like', "%{$query}%");
-                  });
+                    ->orWhere('konten', 'like', "%{$query}%")
+                    ->orWhereHas('divisi', function ($divQ) use ($query) {
+                        $divQ->where('nama', 'like', "%{$query}%");
+                    });
             })
             ->latest()
             ->paginate(9);
@@ -108,5 +109,36 @@ class BlogController extends Controller
             'articles' => $articles,
             'query' => $query,
         ]);
+    }
+
+    public function storeComment(Request $request, Blog $blog)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'content' => 'required|string|max:1000',
+        ]);
+
+        $comment = new Comment([
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => $request->content,
+            'approved' => false,
+        ]);
+
+        if (auth()->check()) {
+            $comment->user_id = auth()->id();
+        }
+
+        $blog->comments()->save($comment);
+
+        if ($request->remember) {
+            return back()
+                ->with('success', 'Komentar Anda telah dikirim dan menunggu persetujuan.')
+                ->cookie('comment_name', $request->name, 60 * 24 * 30)
+                ->cookie('comment_email', $request->email, 60 * 24 * 30);
+        }
+
+        return back()->with('success', 'Komentar Anda telah dikirim dan menunggu persetujuan.');
     }
 }

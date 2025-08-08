@@ -14,6 +14,7 @@ Route::name('cp.')->group(function () {
         Route::get('/', [BlogController::class, 'index'])->name('index');
         Route::get('/search', [BlogController::class, 'search'])->name('search');
         Route::get('/{blog:slug}', [BlogController::class, 'show'])->name('show');
+        Route::post('/{blog}/comment', [BlogController::class, 'storeComment'])->name('comment');
     });
 
     // Program
