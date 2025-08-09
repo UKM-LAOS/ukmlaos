@@ -136,4 +136,47 @@
         background-size: cover;
         background-position: center;
     }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translateY(0px) rotate(45deg);
+        }
+
+        50% {
+            transform: translateY(-10px) rotate(45deg);
+        }
+    }
+
+    @keyframes float-delay {
+
+        0%,
+        100% {
+            transform: translateY(0px) rotate(12deg);
+        }
+
+        50% {
+            transform: translateY(-8px) rotate(12deg);
+        }
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-delay {
+        animation: float-delay 6s ease-in-out infinite;
+        animation-delay: 2s;
+    }
+
+    #periodSelector {
+        background-image: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    #periodSelector:focus {
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    }
 }
