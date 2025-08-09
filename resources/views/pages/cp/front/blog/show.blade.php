@@ -1,119 +1,245 @@
 @extends('layouts.cp.front')
 
 @section('content')
-    <main
-        class="relative overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-gray-900 dark:via-gray-800/30 dark:to-[#151E2E]">
-        <!-- Background decorations -->
-        <div class="absolute inset-0">
-            <div
-                class="absolute top-0 right-0 w-[500px] h-[500px] bg-green-200/30 dark:bg-green-900/30 rounded-full blur-[120px]">
-            </div>
-            <div
-                class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-200/20 dark:bg-blue-900/20 rounded-full blur-[120px]">
-            </div>
-        </div>
+    <article class="py-12 bg-white dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto mt-12 px-4 sm:px-6 lg:px-8">
+            <nav class="mb-8">
+                <ol class="flex items-center space-x-2 text-sm text-gray-500">
+                    <li><a href="{{ route('cp.blog.index') }}" class="hover:text-green-600">Blog</a></li>
+                    <li class="flex items-center">
+                        <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span class="text-gray-900 dark:text-white">{{ $article->judul }}</span>
+                    </li>
+                </ol>
+            </nav>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 lg:mt-20">
-            <!-- Featured Image with enhanced styling -->
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-12 max-w-5xl mx-auto">
-                <div class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-blue-500/20 mix-blend-overlay"></div>
-                <img src="{{ $article->getFirstMediaUrl('blog-thumbnail') }}" alt="{{ $article->slug }}"
-                    class="w-full h-[400px] object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            </div>
+            <header class="mb-8">
+                <div class="flex items-center mb-4">
+                    <span class="px-3 py-1 text-sm font-medium bg-green-100 text-green-800 rounded-full">
+                        {{ $article->category_label }}
+                    </span>
+                    @if ($article->divisi)
+                        <span class="ml-3 text-sm text-gray-500">{{ $article->divisi->nama }}</span>
+                    @endif
+                </div>
 
-            <!-- Article Container -->
-            <div class="max-w-4xl mx-auto">
-                <!-- Article Header -->
-                <div class="mb-8">
-                    <div class="flex items-center gap-2 mb-4">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-50 dark:bg-green-900/50 rounded-full">
-                            <svg class="w-4 h-4 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z"
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">{{ $article->judul }}</h1>
+
+                <div class="flex items-center text-gray-500 dark:text-gray-400">
+                    @if ($article->author)
+                        <div class="flex items-center mr-6">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                                     clip-rule="evenodd" />
                             </svg>
-                            <span
-                                class="text-green-800 dark:text-green-300 text-sm font-medium">{{ ucwords($article->kategori->getLabel()) }}</span>
+                            <span>{{ $article->author->name }}</span>
                         </div>
-                        <span class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            {{ $article->created_at->format('d F Y') }}
-                        </span>
+                    @endif
+
+                    <div class="flex items-center mr-6">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span>{{ $article->formatted_date }}</span>
                     </div>
 
-                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
-                        {{ $article->judul }}
-                    </h1>
-
-                    <div class="flex items-center gap-3 mb-8">
-                        <img src="https://i.pinimg.com/736x/cf/0d/9d/cf0d9d6269d928b9a41a17ff5dd081b0.jpg" alt="Author"
-                            class="w-10 h-10 rounded-full object-cover shadow-md ring-2 ring-white dark:ring-gray-800" />
-                        <div>
-                            <p class="text-sm text-gray-900 dark:text-white">
-                                Ditulis oleh
-                                <span class="text-green-600 dark:text-green-400 font-medium">Divisi
-                                    {{ $article->divisi->nama }}</span>
-                            </p>
-                        </div>
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            <path fill-rule="evenodd"
+                                d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span>{{ number_format($article->views) }} views</span>
                     </div>
                 </div>
+            </header>
 
-                <!-- Article Content -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl p-6 md:p-8 shadow-lg">
-                    <article class="prose prose-lg prose-green dark:prose-invert mx-auto dark:text-white">
-                        {!! $article->konten !!}
-                    </article>
+            @if ($article->getFirstMedia('featured_image'))
+                <div class="mb-8">
+                    <img src="{{ $article->getFirstMedia('featured_image')->getUrl('large') }}" alt="{{ $article->judul }}"
+                        class="w-full h-64 md:h-96 object-cover rounded-lg">
+                </div>
+            @endif
 
-                    <!-- Article Footer -->
-                    <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
-                        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-                            <div class="flex items-center gap-3">
-                                <span class="text-sm text-gray-600 dark:text-gray-400">Bagikan:</span>
-                                <div class="flex gap-2">
-                                    <button
-                                        class="p-2 rounded-full bg-green-50 hover:bg-green-100 dark:bg-green-900/50 dark:hover:bg-green-800/50 transition-all duration-300">
-                                        <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
-                                        </svg>
-                                    </button>
-                                    <button
-                                        class="p-2 rounded-full bg-green-50 hover:bg-green-100 dark:bg-green-900/50 dark:hover:bg-green-800/50 transition-all duration-300">
-                                        <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                                        </svg>
-                                    </button>
-                                    <button
-                                        class="p-2 rounded-full bg-green-50 hover:bg-green-100 dark:bg-green-900/50 dark:hover:bg-green-800/50 transition-all duration-300">
-                                        <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path
-                                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                        </svg>
-                                    </button>
+            <div class="prose prose-lg max-w-none dark:prose-invert">
+                {!! $article->konten !!}
+            </div>
+
+            @if ($article->getMedia('gallery')->count() > 0)
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Galeri</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        @foreach ($article->getMedia('gallery') as $media)
+                            <img src="{{ $media->getUrl('thumb') }}" alt="Gallery image"
+                                class="w-full h-32 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity"
+                                onclick="openModal('{{ $media->getUrl() }}')">
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+            <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Bagikan Artikel</h3>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}"
+                        target="_blank"
+                        class="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                        Facebook
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text={{ urlencode($article->judul) }}&url={{ urlencode(request()->fullUrl()) }}"
+                        target="_blank"
+                        class="flex items-center px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                        </svg>
+                        Twitter
+                    </a>
+                    <a href="https://wa.me/?text={{ urlencode($article->judul . ' ' . request()->fullUrl()) }}"
+                        target="_blank"
+                        class="flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                        </svg>
+                        WhatsApp
+                    </a>
+                </div>
+                <div class="mt-12 pt-12 border-t border-gray-200 dark:border-gray-700">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Komentar</h3>
+
+                    @if ($article->comments->count() > 0)
+                        <div class="space-y-6 mb-8">
+                            @foreach ($article->comments as $comment)
+                                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <div class="font-semibold text-gray-900 dark:text-white">{{ $comment->name }}</div>
+                                        <span
+                                            class="text-gray-500 dark:text-gray-400 text-sm ml-2">{{ $comment->created_at->diffForHumans() }}</span>
+                                    </div>
+                                    <p class="text-gray-700 dark:text-gray-300">{{ $comment->content }}</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="text-gray-500 dark:text-gray-400 mb-8">Belum ada komentar. Jadilah yang pertama
+                            berkomentar!
+                        </p>
+                    @endif
+
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Tinggalkan Komentar</h4>
+                        <form action="{{ route('cp.blog.comment', $article->slug) }}" method="POST">
+                            @csrf
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="name"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nama*</label>
+                                    <input type="text" id="name" name="name" required
+                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-800 dark:text-white"
+                                        value="{{ old('name', auth()->check() ? auth()->user()->name : '') }}">
+                                </div>
+                                <div>
+                                    <label for="email"
+                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email*</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-800 dark:text-white"
+                                        value="{{ old('email', auth()->check() ? auth()->user()->email : '') }}">
                                 </div>
                             </div>
-                            <a href="{{ route('cp.blog.index') }}"
-                                class="group px-4 py-2 bg-green-500 dark:bg-green-600 text-white rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-300 text-sm font-medium flex items-center gap-2">
-                                <span>Kembali ke Artikel</span>
-                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none"
-                                    stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-                                </svg>
-                            </a>
-                        </div>
+                            <div class="mb-4">
+                                <label for="content"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Komentar*</label>
+                                <textarea id="content" name="content" rows="4" required
+                                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 dark:bg-gray-800 dark:text-white">{{ old('content') }}</textarea>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <input type="checkbox" id="remember" name="remember"
+                                    class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 dark:border-gray-600 rounded dark:bg-gray-800">
+                                <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                                    Simpan nama, email, dan situs web saya di browser ini untuk waktu berikutnya saya
+                                    berkomentar.
+                                </label>
+                            </div>
+                            <button type="submit"
+                                class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                Kirim Komentar
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
+    </article>
+
+    @if ($relatedArticles->count() > 0)
+        <section class="py-12 bg-gray-50 dark:bg-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">Artikel Terkait</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    @foreach ($relatedArticles as $related)
+                        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden">
+                            <div class="h-48 overflow-hidden">
+                                <img src="{{ $related->featured_image_thumb }}" alt="{{ $related->judul }}"
+                                    class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-6">
+                                <span class="px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full">
+                                    {{ $related->category_label }}
+                                </span>
+                                <h3 class="text-lg font-bold text-gray-900 dark:text-white mt-2 mb-2">
+                                    <a href="{{ route('cp.blog.show', $related->slug) }}"
+                                        class="hover:text-green-600 transition-colors duration-300">
+                                        {{ $related->judul }}
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm">{{ $related->excerpt }}</p>
+                                <div class="mt-4 text-xs text-gray-500">{{ $related->formatted_date }}</div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="relative max-w-4xl max-h-full">
+            <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
-    </main>
+    </div>
+
+    @push('scripts')
+        <script>
+            function openModal(imageSrc) {
+                document.getElementById('modalImage').src = imageSrc;
+                document.getElementById('imageModal').classList.remove('hidden');
+            }
+
+            function closeModal() {
+                document.getElementById('imageModal').classList.add('hidden');
+            }
+
+            document.getElementById('imageModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        </script>
+    @endpush
 @endsection

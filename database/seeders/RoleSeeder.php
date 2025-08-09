@@ -2,22 +2,15 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        $superAdmin = Role::findOrCreate('super_admin');
-        $mentor = Role::findOrCreate('mentor');
-        $student = Role::findOrCreate('student');
-
-        $mentor->givePermissionTo([
+        $permissions = [
             // Kursus
             'view_any_kursus',
             'view_kursus',
@@ -35,6 +28,16 @@ class RoleSeeder extends Seeder
             // Transaksi
             'view_any_transaksi',
             'view_transaksi',
-        ]);
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission, 'guard_name' => 'web']);
+        }
+
+        $superAdmin = Role::findOrCreate('super_admin');
+        $mentor = Role::findOrCreate('mentor');
+        $student = Role::findOrCreate('student');
+
+        $mentor->givePermissionTo($permissions);
     }
 }

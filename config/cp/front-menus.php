@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
     [
         'title' => 'Home',
@@ -9,11 +9,16 @@ return [
         'route' => 'cp.blog.index',
         'active' => 'cp.blog*',
     ],
-    
+
     [
         'title' => 'Program',
         'route' => 'cp.program.index',
         'active' => 'cp.program*',
+    ],
+    [
+        'title' => 'Tentang Kami',
+        'route' => 'cp.tentang-kami.index',
+        'active' => 'cp.tentang-kami*',
     ],
     [
         'title' => 'Produk',

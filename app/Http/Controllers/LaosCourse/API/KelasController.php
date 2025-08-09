@@ -11,8 +11,8 @@ class KelasController extends Controller
 {
     public function index()
     {
-        $kursus = Kursus::withCount(['mentors', 'students', 'media'])
-            ->with(['materi', 'flashSale', 'media' => fn($q) => $q->whereCollectionName('kursus-thumbnail')])->withAvg('reviews as avg_rating', 'kursus_murids.rating')
+        $kursus = Kursus::withCount(['mentors', 'students'])
+            ->with(['flashSale', 'media' => fn($q) => $q->whereCollectionName('kursus-thumbnail')])->withAvg('reviews as avg_rating', 'kursus_murids.rating')
             ->whereIsPublished(true)
             ->latest()
             ->paginate(6);

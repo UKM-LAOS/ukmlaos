@@ -206,6 +206,49 @@
             updateDarkModeButtons($('html').hasClass('dark'));
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.flex.h-full');
+            const slides = document.querySelectorAll('.min-w-full');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.slider-prev');
+            const nextBtn = document.querySelector('.slider-next');
+            let currentIndex = 0;
+            const slideCount = slides.length;
+
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('bg-white', index === currentIndex);
+                    dot.classList.toggle('bg-gray-400', index !== currentIndex);
+                });
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    currentIndex = parseInt(this.getAttribute('data-slide'));
+                    updateSlider();
+                });
+            });
+
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                updateSlider();
+            });
+
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+            });
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slideCount;
+                updateSlider();
+            }, 5000);
+        });
+    </script>
     @stack('scripts')
 </body>
 
