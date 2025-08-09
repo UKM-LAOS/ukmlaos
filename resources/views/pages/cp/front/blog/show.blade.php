@@ -68,7 +68,7 @@
                 </div>
             @endif
 
-            <div class="prose prose-lg max-w-none dark:prose-invert">
+            <div class="prose prose-lg max-w-none dark:prose-invert dark:text-white">
                 {!! $article->konten !!}
             </div>
 
