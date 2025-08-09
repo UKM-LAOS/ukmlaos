@@ -208,6 +208,30 @@
     </script>
 
     <script>
+        function changePeriod() {
+            const select = document.getElementById('periodSelector');
+            const selectedPeriod = select.value;
+
+            const url = new URL(window.location);
+            url.searchParams.set('periode', selectedPeriod);
+            window.location.href = url.toString();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('periode')) {
+                const pengurusSection = document.querySelector('section:last-child');
+                if (pengurusSection) {
+                    pengurusSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    </script>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const slider = document.querySelector('.flex.h-full');
             const slides = document.querySelectorAll('.min-w-full');

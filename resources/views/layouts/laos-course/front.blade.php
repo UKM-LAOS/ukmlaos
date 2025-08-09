@@ -109,6 +109,64 @@
             });
         });
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqToggles = document.querySelectorAll('.faq-toggle');
+
+            faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const content = document.getElementById(targetId);
+                    const arrow = this.querySelector('.faq-arrow');
+                    const isCollapsed = content.classList.contains('collapsed');
+
+                    faqToggles.forEach(otherToggle => {
+                        if (otherToggle !== toggle) {
+                            const otherTargetId = otherToggle.getAttribute('data-target');
+                            const otherContent = document.getElementById(otherTargetId);
+                            const otherArrow = otherToggle.querySelector('.faq-arrow');
+
+                            otherContent.classList.remove('expanded');
+                            otherContent.classList.add('collapsed');
+                            otherArrow.classList.remove('expanded');
+                            otherArrow.classList.add('collapsed');
+
+                            otherContent.style.maxHeight = '0px';
+                        }
+                    });
+
+                    if (isCollapsed) {
+                        content.classList.remove('collapsed');
+                        content.classList.add('expanded');
+                        arrow.classList.remove('collapsed');
+                        arrow.classList.add('expanded');
+
+                        content.style.maxHeight = 'none';
+                        const height = content.scrollHeight;
+                        content.style.maxHeight = '0px';
+
+                        requestAnimationFrame(() => {
+                            content.style.maxHeight = height + 'px';
+                        });
+                    } else {
+                        content.classList.remove('expanded');
+                        content.classList.add('collapsed');
+                        arrow.classList.remove('expanded');
+                        arrow.classList.add('collapsed');
+
+                        content.style.maxHeight = '0px';
+                    }
+                });
+            });
+
+            faqToggles.forEach(toggle => {
+                const targetId = toggle.getAttribute('data-target');
+                const content = document.getElementById(targetId);
+                content.style.maxHeight = '0px';
+            });
+        });
+    </script>
     @Toastr()
     @stack('scripts')
 </body>

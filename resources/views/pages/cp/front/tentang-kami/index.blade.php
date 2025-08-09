@@ -37,7 +37,7 @@
             Unit Kegiatan Mahasiswa Linux and Open Source atau disebut juga UKM LAOS merupakan salah satu organisasi
             yang berfokus untuk memajukan kreativitas dalam pengembangan Linux dan Open Source di Fakultas Ilmu Komputer
             Universitas Jember. UKM LAOS berada di bawah naungan BEM Fakultas Ilmu Komputer. UKM LAOS didirikan pada tanggal
-            19 Desember 2009 dengan berasaskan “Pancasila” dan bersifat “Kekeluargaan”.
+            19 Desember 2009 dengan berasaskan "Pancasila" dan bersifat "Kekeluargaan".
         </p>
     </section>
 
@@ -68,8 +68,8 @@
                         </svg>
                     </span>
                     <p class="text-gray-700">
-                        <span class="font-semibold">Warna:</span> “Kuning” melambangkan dasar Universitas Jember yang
-                        berarti “Kejayaan”
+                        <span class="font-semibold">Warna:</span> "Kuning" melambangkan dasar Universitas Jember yang
+                        berarti "Kejayaan"
                     </p>
                 </div>
                 <div class="flex items-start">
@@ -79,7 +79,7 @@
                         </svg>
                     </span>
                     <p class="text-gray-700">
-                        <span class="font-semibold">Gambar:</span> berwarna “Hijau” merupakan logo Open Source
+                        <span class="font-semibold">Gambar:</span> berwarna "Hijau" merupakan logo Open Source
                     </p>
                 </div>
             </div>
@@ -144,31 +144,133 @@
         </div>
     </section>
 
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2
+                    class="inline-block px-6 py-2 border-2 border-gray-300 dark:border-gray-600 rounded-full text-gray-700 dark:text-gray-300 font-semibold">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-emerald-500">
+                        Struktur Pengurus {{ $selectedPeriod }}
+                    </span>
+                </h2>
+                <div class="mt-3">
+                    <span class="inline-block h-1 w-20 rounded-full bg-emerald-500"></span>
+                    <span class="inline-block h-1 w-8 rounded-full bg-emerald-300 mx-1"></span>
+                    <span class="inline-block h-1 w-4 rounded-full bg-emerald-200"></span>
+                </div>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
+                    Susunan Pengurus UKM LAOS Tahun Masa Bhakti {{ $selectedPeriod }}
+                </p>
 
-    <section class="py-12">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-6">
-                <span class="inline-block bg-gray-200 text-gray-800 px-4 py-1 rounded-full text-sm font-medium mb-2">
-                    STRUKTUR PENGURUS
-                </span>
-                <h2 class="text-2xl font-bold">UKM LAOS Periode 2024 – 2025</h2>
+                {{-- Dropdown Pemilihan Periode --}}
+                <div class="mt-8 flex justify-center">
+                    <div class="relative inline-block">
+                        <select id="periodSelector" onchange="changePeriod()"
+                            class="bg-white border-2 border-green-300 text-gray-700 px-6 py-3 pr-10 rounded-full focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg">
+                            @foreach ($availablePeriods as $period)
+                                <option value="{{ $period }}" {{ $period == $selectedPeriod ? 'selected' : '' }}>
+                                    Periode {{ $period }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 @foreach ($pengurus as $p)
-                    <div class="bg-green-100 rounded-xl overflow-hidden shadow relative">
-                        <div class="absolute top-2 left-2 z-10">
-                            <img src="{{ asset('logo.png') }}" alt="Logo" class="w-8 h-8">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-3xl opacity-75 group-hover:opacity-100 blur transition duration-500">
                         </div>
-                        <img src="{{ asset($p['foto']) }}" alt="{{ $p['nama'] }}" class="w-full object-cover h-40">
-                        <div class="p-4 text-center">
-                            <h3 class="font-bold text-gray-800">{{ $p['nama'] }}</h3>
-                            <p class="text-sm text-gray-600">{{ $p['jabatan'] }}</p>
-                        </div>
-                        <div class="flex justify-center gap-1 pb-3">
-                            @for ($i = 0; $i < 4; $i++)
-                                <span class="w-2 h-2 rounded-full {{ $i == 0 ? 'bg-green-500' : 'bg-gray-300' }}"></span>
-                            @endfor
+
+                        <div
+                            class="relative h-full bg-white rounded-3xl shadow-xl overflow-hidden transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-2 flex flex-col">
+                            <div class="relative bg-gradient-to-r from-emerald-500 to-green-400 h-48 p-4 overflow-hidden">
+                                <div
+                                    class="absolute bg-white/10 w-24 h-24 rounded-lg -top-4 -left-16 transform rotate-45 animate-float">
+                                </div>
+                                <div
+                                    class="absolute bg-white/10 w-28 h-28 rounded-lg -bottom-16 right-4 transform rotate-12 animate-float-delay">
+                                </div>
+                                <div
+                                    class="absolute bg-white/5 w-20 h-20 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse">
+                                </div>
+
+                                <div class="relative flex items-center -mt-10 justify-center space-x-3 h-full">
+                                    <div
+                                        class="bg-white w-10 h-10 rounded-md flex items-center justify-center shadow-sm transform group-hover:rotate-12 transition duration-300">
+                                        <img src="{{ asset('logo.png') }}" alt="Logo" class="w-6 h-6 object-contain">
+                                    </div>
+                                    <span class="text-white font-bold text-xl drop-shadow-md">UKM LAOS</span>
+                                </div>
+                            </div>
+
+                            <div class="relative px-6 -mt-20 flex-grow flex flex-col">
+                                <div class="relative flex justify-center">
+                                    <div
+                                        class="bg-white p-1.5 rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-300">
+                                        <div class="relative overflow-hidden w-28 h-28 sm:w-32 sm:h-32 rounded-xl">
+                                            <img src="{{ asset($p['foto']) }}" alt="Foto Profil {{ $p['nama'] }}"
+                                                class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center mt-5">
+                                    <h2
+                                        class="text-xl sm:text-2xl font-bold text-gray-800 group-hover:text-emerald-600 transition duration-300">
+                                        {{ $p['nama'] }}
+                                    </h2>
+                                    <p class="text-gray-500 mt-1 group-hover:text-gray-700 transition duration-300">
+                                        {{ $p['jabatan'] }}
+                                    </p>
+                                </div>
+
+                                <div class="flex justify-center items-center space-x-3 mt-auto pt-6 pb-4">
+                                    <a href="{{ $p['sosmed']['instagram'] ?? '#' }}" title="Instagram"
+                                        class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-gradient-to-br hover:from-pink-600 hover:to-amber-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                        </svg>
+                                    </a>
+
+                                    <a href="{{ $p['sosmed']['facebook'] ?? '#' }}" title="Facebook"
+                                        class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M22.675 0h-21.35C.732 0 .192.593.192 1.325v21.351c0 .731.54 1.324 1.213 1.324h11.495v-9.294H9.77v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.673 0 1.213-.593 1.213-1.325V1.325C23.888.593 23.348 0 22.675 0z" />
+                                        </svg>
+                                    </a>
+
+                                    <a href="{{ $p['sosmed']['github'] ?? '#' }}" title="GitHub"
+                                        class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                                        </svg>
+                                    </a>
+
+                                    <a href="{{ $p['sosmed']['linkedin'] ?? '#' }}" title="LinkedIn"
+                                        class="w-9 h-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764S7.466 6.732 6.5 6.732zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endforeach

@@ -3,33 +3,32 @@
 namespace App\Http\Controllers\CP\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $pengurus = [
-            [
-                'nama' => 'Farah Fairuz',
-                'jabatan' => 'Sekretaris',
-                'foto' => 'assets/cp/img/foto-pengurus/2324/Bashori1.png'
-            ],
-            [
-                'nama' => 'Irfan Rafif Gunawan',
-                'jabatan' => 'Ketua Umum',
-                'foto' => 'assets/cp/img/foto-pengurus/2324/Bashori1.png'
-            ],
-            [
-                'nama' => 'Suhailah Nuryah Fahma',
-                'jabatan' => 'Wakil Ketua Umum',
-                'foto' => 'assets/cp/img/foto-pengurus/2324/Bashori1.png'
-            ],
-        ];
+        $availablePeriods = Pengurus::getAvailablePeriods();
+
+        if (empty($availablePeriods)) {
+            $availablePeriods = ['2024-2025'];
+        }
+
+        $selectedPeriod = $request->get('periode', $availablePeriods[0]);
+
+        if (!in_array($selectedPeriod, $availablePeriods)) {
+            $selectedPeriod = $availablePeriods[0];
+        }
+
+        $pengurus = Pengurus::getByPeriode($selectedPeriod);
 
         return view('pages.cp.front.tentang-kami.index', [
             'title' => 'Tentang Kami',
             'pengurus' => $pengurus,
+            'selectedPeriod' => $selectedPeriod,
+            'availablePeriods' => $availablePeriods,
         ]);
     }
 }
