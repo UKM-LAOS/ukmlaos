@@ -4,9 +4,7 @@
 @endphp
 @section('content')
     <!-- Hero Section -->
-    <section
-        class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-green-100/20 dark:from-gray-900 dark:via-gray-800/30 dark:to-[#151E2E]">
-        <!-- Background decorations -->
+    <section class="relative pt-24 pb-32 overflow-hidden bg-white dark:bg-gray-900">
         <div class="absolute inset-0">
             <div
                 class="absolute top-0 right-0 w-[500px] h-[500px] bg-green-200/30 dark:bg-green-900/30 rounded-full blur-[120px]">
@@ -19,36 +17,24 @@
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
-                    <!-- Badge -->
-                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-50 dark:bg-green-900/50 rounded-full">
-                        <svg class="w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        <span class="text-green-800 dark:text-green-300 font-medium">Belajar dari mentor terbaik di
-                            bidangnya</span>
-                    </div>
-
-                    <!-- Hero Text -->
-                    <h1 class="text-5xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white">
-                        Kuasai Keterampilan Baru untuk
-                        <span class="gradient-text">Masa Depan Cerah</span>
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight text-gray-900 dark:text-white">
+                        Kuasai Keterampilan Baru untuk<br>
+                        <span class="text-green-500 dark:text-green-400">Masa Depan Cerah</span>
                     </h1>
 
-                    <p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
                         Transformasikan karir Anda dengan kursus yang relevan dengan industri. Belajar dengan kecepatan
                         sendiri didampingi oleh ahli dan proyek langsung yang menantang.
                     </p>
 
-                    <!-- CTA Buttons -->
-                    <div class="flex items-center gap-6">
+                    <div class="flex flex-wrap items-center gap-4 mt-8">
                         <a href="#"
-                            class="px-8 py-4 bg-green-500 dark:bg-green-600 text-white rounded-full hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-300 hover:scale-105 font-medium cursor-pointer">
+                            class="px-6 py-3 bg-green-500 dark:bg-green-600 text-white rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-all duration-300 font-medium cursor-pointer">
                             Jelajahi Kursus
                         </a>
                         <button
-                            class="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 transition-colors cursor-pointer">
-                            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20">
+                            class="flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:text-green-500 dark:hover:text-green-400 transition-colors cursor-pointer">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
                                     d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
                                     clip-rule="evenodd" />
@@ -56,30 +42,30 @@
                             <span class="font-medium">Tonton Demo</span>
                         </button>
                     </div>
-
-                    <!-- Stats -->
-                    <div class="flex items-center gap-8 mt-12">
-                        <div class="text-center">
+                    <div class="flex flex-wrap items-center gap-8 mt-12">
+                        <div class="flex flex-col items-center gap-1">
                             <h3 class="text-3xl font-bold text-green-500 dark:text-green-400">50K+</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mt-1">Student Aktif</p>
+                            <p class="text-gray-600 dark:text-gray-400">Mahasiswa Aktif</p>
                         </div>
-                        <div class="text-center">
+                        <div class="flex flex-col items-center gap-1">
                             <h3 class="text-3xl font-bold text-green-500 dark:text-green-400">100+</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mt-1">Mentor Ahli</p>
+                            <p class="text-gray-600 dark:text-gray-400">Mentor Ahli</p>
                         </div>
-                        <div class="text-center">
+                        <div class="flex flex-col items-center gap-1">
                             <h3 class="text-3xl font-bold text-green-500 dark:text-green-400">200+</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mt-1">Kursus Profesional</p>
+                            <p class="text-gray-600 dark:text-gray-400">Kursus Profesional</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Hero Image -->
-                <div class="relative hidden md:block mt-24">
-                    <div class="absolute inset-0 bg-green-50 dark:bg-green-900/50 rounded-full blur-3xl opacity-20">
+                <div class="relative hidden md:block h-full overflow-visible">
+                    <div class="relative z-10 w-[120%] translate-x-[20%] scale-x-[-1]">
+                        <img src="{{ asset('assets/laos-course/img/hero-ilustration.png') }}" alt="Hero Illustration"
+                            class="w-full h-auto">
                     </div>
-                    <img src="{{ asset('assets/laos-course/img/hero-ilustration.png') }}" alt="Hero"
-                        class="relative z-10 w-full h-auto float">
+                    <div class="absolute z-20 bottom-[-60px] left-[10%] w-[60%] scale-110 rounded-lg overflow-hidden">
+                        <img src="{{ asset('assets/laos-course/img/hero-ilustration-2.png') }}" alt="Secondary Image"
+                            class="w-full h-auto">
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,7 +91,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                    Temukan Learning Path Yang Sempurna <span class="gradient-text">Untuk Anda</span>
+                    Temukan Learning Path Yang Sempurna Untuk Anda
                 </h2>
                 <p class="text-gray-600 dark:text-gray-300 text-lg">
                     Pilih dari koleksi kursus IT unggulan kami yang dirancang khusus untuk memenuhi kebutuhan industri dan
@@ -113,115 +99,80 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Programming Card -->
-                <div
-                    class="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex flex-col space-y-8">
                     <div
-                        class="absolute inset-0 bg-gradient-to-br from-green-50 dark:from-green-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-
-                    <div class="relative">
-                        <div class="mb-6 relative">
-                            <div
-                                class="absolute inset-0 bg-green-100 dark:bg-green-700 rounded-2xl transform rotate-6 transition-transform group-hover:rotate-12 duration-500">
-                            </div>
-                            <img src="{{ asset('assets/laos-course/img/programming.png') }}" alt="Programming"
-                                class="relative w-16 h-16 mx-auto transform group-hover:scale-110 transition-transform duration-500" />
-                        </div>
-
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Programming</h3>
-                        <p class="text-gray-500 dark:text-gray-400 mb-4">Kuasai bahasa pemrograman dan framework modern</p>
-
-                        <div class="flex items-center justify-between">
-                            <span
-                                class="text-green-500 dark:text-green-400 font-semibold">{{ $courseCountsByCategory[KategoriEnum::PROGRAMMING->value] ?? 0 }}
-                                Courses</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cyber Security Card -->
-                <div
-                    class="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-blue-50 dark:from-blue-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-
-                    <div class="relative">
-                        <div class="mb-6 relative">
-                            <div
-                                class="absolute inset-0 bg-blue-100 dark:bg-blue-700 rounded-2xl transform rotate-6 transition-transform group-hover:rotate-12 duration-500">
-                            </div>
-                            <img src="{{ asset('assets/laos-course/img/cyber-security.png') }}" alt="Cyber Security"
-                                class="relative w-16 h-16 mx-auto transform group-hover:scale-110 transition-transform duration-500" />
-                        </div>
-
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Cyber Security</h3>
-                        <p class="text-gray-500 dark:text-gray-400 mb-4">Pelajari praktik dan protokol keamanan cyber
-                            tingkat lanjut</p>
-
-                        <div class="flex items-center justify-between">
-                            <span class="text-green-500 dark:text-green-400 font-semibold">
-                                {{ $courseCountsByCategory[KategoriEnum::CYBER_SECURITY->value] ?? 0 }}
-                                Courses
+                        class="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-between">
+                        <div class="flex-1 pr-4">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Programming</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                Cocok buat kamu yang ingin menjadi web developer, mobile app developer, atau automation
+                                engineer.
+                            </p>
+                            <span class="text-xs text-green-500 dark:text-green-400 font-medium">
+                                {{ $courseCountsByCategory[KategoriEnum::PROGRAMMING->value] ?? 0 }} Courses
                             </span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- UI/UX Design Card -->
-                <div
-                    class="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-purple-50 dark:from-purple-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-
-                    <div class="relative">
-                        <div class="mb-6 relative">
-                            <div
-                                class="absolute inset-0 bg-purple-100 dark:bg-purple-700 rounded-2xl transform rotate-6 transition-transform group-hover:rotate-12 duration-500">
-                            </div>
-                            <img src="{{ asset('assets/laos-course/img/design.png') }}" alt="Design"
-                                class="relative w-16 h-16 mx-auto transform group-hover:scale-110 transition-transform duration-500" />
+                        <div
+                            class="bg-green-100 dark:bg-green-700 rounded-xl w-20 h-20 flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
+                            <img src="{{ asset('assets/laos-course/img/programming.png') }}" alt="Programming"
+                                class="w-12 h-12" />
                         </div>
-
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">UI/UX Design</h3>
-                        <p class="text-gray-500 dark:text-gray-400 mb-4">Ciptakan pengalaman pengguna yang indah dan
-                            intuitif</p>
-
-                        <div class="flex items-center justify-between">
-                            <span class="text-green-500 dark:text-green-400 font-semibold">
+                    </div>
+                    <div
+                        class="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-between">
+                        <div class="flex-1 pr-4">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">UI/UX Design</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                Cocok buat kamu yang tertarik dengan desain digital, psikologi pengguna, dan problem solving
+                                melalui visual.
+                            </p>
+                            <span class="text-xs text-green-500 dark:text-green-400 font-medium">
                                 {{ $courseCountsByCategory[KategoriEnum::DESIGN->value] ?? 0 }} Courses
                             </span>
                         </div>
+                        <div
+                            class="bg-purple-100 dark:bg-purple-700 rounded-xl w-20 h-20 flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
+                            <img src="{{ asset('assets/laos-course/img/design.png') }}" alt="UI/UX Design"
+                                class="w-12 h-12" />
+                        </div>
                     </div>
                 </div>
-
-                <!-- Digital Marketing Card -->
-                <div
-                    class="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+                <div class="flex flex-col space-y-8">
                     <div
-                        class="absolute inset-0 bg-gradient-to-br from-yellow-50 dark:from-yellow-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-
-                    <div class="relative">
-                        <div class="mb-6 relative">
-                            <div
-                                class="absolute inset-0 bg-yellow-100 dark:bg-yellow-700 rounded-2xl transform rotate-6 transition-transform group-hover:rotate-12 duration-500">
-                            </div>
-                            <img src="{{ asset('assets/laos-course/img/digital-marketing.png') }}" alt="Digital Marketing"
-                                class="relative w-16 h-16 mx-auto transform group-hover:scale-110 transition-transform duration-500" />
-                        </div>
-
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Digital Marketing</h3>
-                        <p class="text-gray-500 dark:text-gray-400 mb-4">Kuasai strategi pemasaran digital modern</p>
-
-                        <div class="flex items-center justify-between">
-                            <span class="text-green-500 dark:text-green-400 font-semibold">
-                                {{ $courseCountsByCategory[KategoriEnum::DIGITAL_MARKETING->value] ?? 0 }}
-                                Courses
+                        class="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-between">
+                        <div class="flex-1 pr-4">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Cyber Security</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                Cocok untuk kamu yang ingin jadi cyber analyst, security engineer, atau sekadar memahami
+                                dunia hacker yang aktif.
+                            </p>
+                            <span class="text-xs text-green-500 dark:text-green-400 font-medium">
+                                {{ $courseCountsByCategory[KategoriEnum::CYBER_SECURITY->value] ?? 0 }} Courses
                             </span>
+                        </div>
+                        <div
+                            class="bg-blue-100 dark:bg-blue-700 rounded-xl w-20 h-20 flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
+                            <img src="{{ asset('assets/laos-course/img/cyber-security.png') }}" alt="Cyber Security"
+                                class="w-12 h-12" />
+                        </div>
+                    </div>
+                    <div
+                        class="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center justify-between">
+                        <div class="flex-1 pr-4">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Digital Marketing</h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                                Cocok buat kamu yang ingin jadi content strategist, social media specialist, atau digital
+                                marketer professional.
+                            </p>
+                            <span class="text-xs text-green-500 dark:text-green-400 font-medium">
+                                {{ $courseCountsByCategory[KategoriEnum::DIGITAL_MARKETING->value] ?? 0 }} Courses
+                            </span>
+                        </div>
+                        <div
+                            class="bg-yellow-100 dark:bg-yellow-700 rounded-xl w-20 h-20 flex items-center justify-center transform group-hover:rotate-6 transition-transform duration-300 flex-shrink-0">
+                            <img src="{{ asset('assets/laos-course/img/digital-marketing.png') }}" alt="Digital Marketing"
+                                class="w-12 h-12" />
                         </div>
                     </div>
                 </div>
@@ -247,7 +198,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                    Kursus <span class="gradient-text">Terbaru</span>
+                    Kursus Terbaru
                 </h2>
                 <p class="text-gray-600 dark:text-gray-300 text-lg">
                     Temukan peluang belajar terbaru kami yang dirancang untuk menjaga Anda tetap terdepan di bidang Anda
@@ -284,7 +235,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                    Pesan Kesan <span class="gradient-text">Student Kami</span>
+                    Pesan Kesan Student Kami
                 </h2>
                 <p class="text-gray-600 dark:text-gray-300 text-lg">
                     Temukan bagaimana UKM LAOS telah membantu ribuan siswa mencapai tujuan karir mereka
@@ -338,55 +289,218 @@
     </section>
 
     <!-- FAQ Section -->
-    <section
-        class="py-24 relative overflow-hidden bg-gradient-to-b from-white to-green-50/30 dark:from-[#141D2C] dark:to-gray-800/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-24 relative overflow-hidden bg-white dark:bg-gray-900">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-green-100/20 dark:bg-green-900/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-100/20 dark:bg-blue-900/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-                    Frequently Asked
-                    <span class="gradient-text">Questions</span>
+                    Pertanyaan yang Sering Diajukan
                 </h2>
-                <p class="text-gray-600 dark:text-gray-300 text-lg md:text-xl">
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300">
                     Dapatkan jawaban cepat untuk pertanyaan umum tentang kursus dan proses pembelajaran kami
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-                <!-- FAQ Item 1 - Course Price -->
+            <div class="max-w-4xl mx-auto space-y-4">
                 <div
-                    class="group bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-green-100 dark:hover:border-green-800 relative overflow-hidden">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-green-50/30 dark:from-green-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    </div>
-                    <div class="flex items-start gap-4 relative">
-                        <div
-                            class="w-8 h-8 flex items-center justify-center bg-green-100 dark:bg-green-900 rounded-lg flex-shrink-0">
-                            <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                                Apa saja yang termasuk dalam harga kursus?
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left group"
+                        data-target="faq-content-1">
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 mt-1 mr-4 p-2 bg-green-100 dark:bg-green-900 rounded-lg transition-colors duration-300 group-hover:bg-green-200 dark:group-hover:bg-green-800">
+                                <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                                Apakah kursus di UKM LAOS berbayar?
                             </h3>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                                Akses penuh ke semua materi kursus, file proyek, sesi mentoring, sertifikat penyelesaian,
-                                dan pembaruan seumur hidup.
+                        </div>
+                        <svg class="w-6 h-6 text-gray-400 dark:text-gray-500 faq-arrow collapsed" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-content-1" class="faq-content collapsed px-6 pb-0 ml-14">
+                        <div class="prose dark:prose-invert max-w-none pt-2 pb-6">
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                Apa saja kursus yang tersedia?<br>
+                                Kami menyediakan berbagai jalur pembelajaran di bidang teknologi dan digital kreatif,
+                                seperti:
                             </p>
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 pl-0">
+                                <li class="flex items-start">
+                                    <span class="flex-shrink-0 mt-1 mr-2 text-green-500 dark:text-green-400">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                    <span class="text-gray-600 dark:text-gray-300">Programming (HTML, CSS, JavaScript,
+                                        Python)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="flex-shrink-0 mt-1 mr-2 text-green-500 dark:text-green-400">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                    <span class="text-gray-600 dark:text-gray-300">Cyber Security (CTF, OSINT, Ethical
+                                        Hacking)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="flex-shrink-0 mt-1 mr-2 text-green-500 dark:text-green-400">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                    <span class="text-gray-600 dark:text-gray-300">UI/UX Design (Wireframing, Prototyping,
+                                        Figma)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="flex-shrink-0 mt-1 mr-2 text-green-500 dark:text-green-400">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                    <span class="text-gray-600 dark:text-gray-300">Digital Marketing (SEO, Social
+                                        Media)</span>
+                                </li>
+                            </ul>
+                            <div
+                                class="mt-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-100 dark:border-green-800">
+                                <p class="text-gray-600 dark:text-gray-300">
+                                    <span class="font-semibold text-green-600 dark:text-green-400">Update Terkini:</span>
+                                    Kursus-kursus ini terus dikembangkan dan di-update sesuai tren industri dan kebutuhan
+                                    anggota.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Decorative Elements -->
-            <div class="absolute inset-0 -z-10">
                 <div
-                    class="absolute top-0 left-0 w-72 h-72 bg-green-100/30 dark:bg-green-900/30 rounded-full blur-3xl animate-pulse">
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left group"
+                        data-target="faq-content-2">
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 mt-1 mr-4 p-2 bg-blue-100 dark:bg-blue-900 rounded-lg transition-colors duration-300 group-hover:bg-blue-200 dark:group-hover:bg-blue-800">
+                                <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                Apakah bisa ikut lebih dari satu kursus?
+                            </h3>
+                        </div>
+                        <svg class="w-6 h-6 text-gray-400 dark:text-gray-500 faq-arrow collapsed" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-content-2" class="faq-content collapsed px-6 pb-0 ml-14">
+                        <div class="prose dark:prose-invert max-w-none pt-2 pb-6">
+                            <div class="flex items-start mb-4">
+                                <div class="flex-shrink-0 mt-1 mr-3 text-blue-500 dark:text-blue-400">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 dark:text-gray-300 font-medium">
+                                        Ya, Anda bisa mengikuti lebih dari satu kursus sekaligus. Kami mendorong anggota
+                                        untuk eksplorasi berbagai bidang.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1 mr-3 text-blue-500 dark:text-blue-400">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-gray-600 dark:text-gray-300 font-medium">
+                                        Kursus ini sangat cocok untuk pemula karena materi disusun secara bertahap dari
+                                        dasar hingga menengah.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div
-                    class="absolute bottom-0 right-0 w-72 h-72 bg-green-100/20 dark:bg-green-900/20 rounded-full blur-3xl">
+                    class="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700">
+                    <button class="faq-toggle w-full flex justify-between items-center p-6 text-left group"
+                        data-target="faq-content-3">
+                        <div class="flex items-start">
+                            <div
+                                class="flex-shrink-0 mt-1 mr-4 p-2 bg-purple-100 dark:bg-purple-900 rounded-lg transition-colors duration-300 group-hover:bg-purple-200 dark:group-hover:bg-purple-800">
+                                <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="currentColor"
+                                    viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <h3
+                                class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                                Berapa lama durasi tiap kursus?
+                            </h3>
+                        </div>
+                        <svg class="w-6 h-6 text-gray-400 dark:text-gray-500 faq-arrow collapsed" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="faq-content-3" class="faq-content collapsed px-6 pb-0 ml-14">
+                        <div class="prose dark:prose-invert max-w-none pt-2 pb-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div
+                                    class="p-4 bg-gradient-to-br from-purple-50 to-white dark:from-purple-900/20 dark:to-gray-800 rounded-lg border border-purple-100 dark:border-purple-800">
+                                    <h4 class="font-semibold text-purple-600 dark:text-purple-400 mb-2">Durasi Kursus</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">
+                                        Durasi kursus bervariasi tergantung kompleksitas materi, rata-rata 4-8 minggu per
+                                        kursus dengan intensitas belajar 5-10 jam per minggu.
+                                    </p>
+                                </div>
+                                <div
+                                    class="p-4 bg-gradient-to-br from-green-50 to-white dark:from-green-900/20 dark:to-gray-800 rounded-lg border border-green-100 dark:border-green-800">
+                                    <h4 class="font-semibold text-green-600 dark:text-green-400 mb-2">Sertifikat</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">
+                                        Ya, peserta yang menyelesaikan kursus akan mendapatkan sertifikat penyelesaian yang
+                                        bisa digunakan untuk portofolio dan dilengkapi dengan ID verifikasi.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -410,8 +524,7 @@
                 <div class="space-y-8">
                     <h2
                         class="text-4xl font-bold leading-tight text-gray-900 dark:text-white transition-colors duration-300">
-                        Siap Memulai Perjalanan Belajar Anda bersama
-                        <span class="gradient-text">UKM LAOS?</span>
+                        Siap Memulai Perjalanan Belajar Anda bersama UKM LAOS?
                     </h2>
 
                     <!-- Features List -->
