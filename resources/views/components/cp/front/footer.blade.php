@@ -82,7 +82,7 @@
         <div>
             <h4 class="text-lg font-semibold mb-3">Kontak</h4>
             <ul class="space-y-2">
-                <li class="text-sm">Malang, East Java, Indonesia</li>
+                <li class="text-sm">Jember, East Java, Indonesia</li>
                 <li class="text-sm">info@ukmlaos.com</li>
                 <li class="text-sm">+82 812 3456 7890</li>
             </ul>

@@ -23,7 +23,7 @@
         </div>
 
         <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="grid items-center gap-12 md:grid-cols-2">
+            <div class="grid items-center gap-12 md:grid-cols-2 pt-20">
                 <div class="space-y-8">
 
                     <!-- Hero Text -->
@@ -42,7 +42,7 @@
                     <!-- CTA Buttons -->
                     <div class="flex items-center gap-6">
                         <a class="cursor-pointer rounded-full bg-green-500 px-8 py-4 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-green-600 dark:bg-green-600 dark:hover:bg-green-700"
-                            href="#manfaat">
+                            href="#program-list">
                             Gabung Sekarang
                             <svg class="ml-2 inline-block h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"
@@ -54,11 +54,33 @@
                 </div>
 
                 <!-- Hero Image -->
-                <div class="relative ml-44 mt-20 hidden md:block">
-                    <div class="absolute inset-0 rounded-full bg-green-50 opacity-20 blur-3xl dark:bg-green-900/50">
+                <div class="relative ml-26 hidden md:block xl:ml-32">
+                    {{-- <div class="absolute inset-0 rounded-full bg-green-50 opacity-20 blur-3xl dark:bg-green-900/50">
                     </div>
                     <img class="relative z-10 h-auto transform transition-transform duration-500 hover:scale-105"
-                        src="{{ asset('assets/cp/img/maskot-2.png') }}" alt="LAOS Mascot">
+                        src="{{ asset('assets/cp/img/maskot-2.png') }}" alt="LAOS Mascot"> --}}
+
+                    <div class="grid h-[28rem] grid-flow-col grid-cols-2 grid-rows-5 gap-4">
+                        <div class="row-span-2 overflow-hidden rounded-2xl ">
+                            <img class="h-full w-full object-cover"
+                                src="{{ asset('assets/cp/img/proker-hero/Gola.png') }}" alt="">
+                        </div>
+                        <div class="col-start-1 row-start-3 overflow-hidden rounded-2xl">
+                            <img class="h-full w-full object-cover"
+                                src="{{ asset('assets/cp/img/proker-hero/Lawos.jpg') }}" alt="">
+
+                        </div>
+                        <div class="row-span-3 col-start-2 row-start-1 overflow-hidden rounded-2xl ">
+                            <img class="h-full w-full object-cover"
+                                src="{{ asset('assets/cp/img/proker-hero/Bashrc.png') }}" alt="">
+
+                        </div>
+                        <div class="col-span-2 row-span-2 row-start-4 overflow-hidden rounded-2xl ">
+                            <img class="object-cover object-center" src="{{ asset('assets/cp/img/proker-hero/Lawos2.jpg') }}"
+                                alt="">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -74,16 +96,16 @@
         </div>
 
         <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="mx-auto mb-16 max-w-3xl text-center">
-                <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
-                    Program Kerja <span class="gradient-text text-primary-green-base">Kami</span>
+            <div class="mx-auto mb-16 max-w-3xl text-center lg:mb-24">
+                <h2 class="mb-4 text-3xl font-bold text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+                    Program Kerja <span class="text-primary-green-base">Kami</span>
                 </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300">
+                <p class="text-lg text-gray-600 md:text-xl dark:text-gray-300">
                     Program kami nggak cuma seru, tapi juga bikin kamu makin berkembang. Kepoin sekarang yuk!
                 </p>
             </div>
 
-            <section class="grid grid-cols-1 gap-8" id="manfaat">
+            <section class="grid grid-cols-1 gap-8">
                 @foreach ($programs as $program)
                     {{-- <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
                         <div
@@ -130,7 +152,7 @@
                     <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
                         <div class="rounded-xl border border-gray-100 p-2 shadow-lg dark:border-gray-700 dark:bg-gray-800">
                             <div class="relative">
-                                <img class="h-full w-full max-h-60 rounded-lg object-cover transition-all duration-500 hover:scale-110"
+                                <img class="h-full max-h-60 w-full rounded-lg object-cover transition-all duration-500 hover:scale-110"
                                     src="{{ $program->getFirstMediaUrl('program-thumbnail', 'thumb') }}"
                                     alt="{{ $program->judul_kegiatan }}">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -139,9 +161,8 @@
 
                         <div class="flex h-full flex-grow flex-col justify-between p-6">
                             <div>
-                                <a
-                                href="{{ route('cp.program.show', $program->slug) }}"
-                                    class="mb-3 text-xl lg:text-3xl font-bold text-gray-900 transition-colors duration-300 hover:text-primary-green-base dark:text-white">
+                                <a class="mb-3 text-xl font-bold text-gray-900 transition-colors duration-300 hover:text-primary-green-base lg:text-3xl dark:text-white"
+                                    href="{{ route('cp.program.show', $program->slug) }}">
                                     {{ $program->judul_kegiatan }}
                                 </a>
 
