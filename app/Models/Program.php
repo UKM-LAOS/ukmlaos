@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Program extends Model implements HasMedia
 {
