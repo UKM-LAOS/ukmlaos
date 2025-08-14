@@ -88,7 +88,7 @@
                             </div>
                         @else
                             <div
-                                class="dark:bg-gray-850 rounded-xl border border-gray-200 bg-gray-50 py-16 text-center text-gray-600 dark:border-gray-700 dark:text-white">
+                                class="dark:bg-gray-850 rounded-xl border border-gray-200 bg-gray-50  py-16 text-center text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
                                 <svg class="mx-auto mb-4 h-16 w-16 text-gray-600" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -225,7 +225,7 @@
                             <div class="mb-4 h-[200px] w-full overflow-hidden rounded-lg shadow-md">
                                 <iframe
                                     src="https://maps.google.com/maps?q=-8.1822364782803,113.66155261659&z=12&output=embed"
-                                    style="border:0" width="100%" height="450" frameborder="0"
+                                    style="border:0" width="100%" height="450" frameborder="0"  
                                     allowfullscreen></iframe>
                             </div>
                             <h3 class="font-medium text-gray-600 dark:text-white" id="location-name">
