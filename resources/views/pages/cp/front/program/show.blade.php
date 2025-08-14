@@ -181,7 +181,7 @@
                                                     {{ $schedule['jadwal'] ?? 'Jadwal' }}
                                                 </h3>
                                                 <p class="text- mt-1 text-sm dark:text-white">
-                                                    {{ Carbon\Carbon::parse($schedule['tanggal'])->translatedFormat('l, d F Y') }}
+                                                    {{ Carbon\Carbon::parse($schedule['waktu'])->translatedFormat('l, d F Y') }}
                                                 </p>
                                             </div>
                                         </div>
@@ -225,7 +225,7 @@
                             <div class="mb-4 h-[200px] w-full overflow-hidden rounded-lg shadow-md">
                                 <iframe
                                     src="https://maps.google.com/maps?q=-8.1822364782803,113.66155261659&z=12&output=embed"
-                                    style="border:0" width="100%" height="450" frameborder="0"  
+                                    style="border:0" width="100%" height="450" frameborder="0"
                                     allowfullscreen></iframe>
                             </div>
                             <h3 class="font-medium text-gray-600 dark:text-white" id="location-name">
