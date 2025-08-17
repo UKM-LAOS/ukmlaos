@@ -22,7 +22,6 @@ class UserSeeder extends Seeder
             'name' => 'Admin Laos',
             'email' => 'admin@laos.test',
             'password' => Hash::make('password'),
-            'role' => 'admin',
         ]);
 
         for ($i = 0; $i < 5; $i++) {
@@ -30,7 +29,6 @@ class UserSeeder extends Seeder
                 'name' => $faker->name,
                 'email' => $faker->unique()->safeEmail,
                 'password' => Hash::make('password'),
-                'role' => 'user',
             ]);
         }
     }

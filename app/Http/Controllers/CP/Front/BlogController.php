@@ -46,7 +46,8 @@ class BlogController extends Controller
             'press-release' => 'Press Release',
         ])->merge(
                 collect($categoriesFromDb)->mapWithKeys(function ($cat) {
-                    return [$cat => ucfirst(str_replace('-', ' ', $cat))];
+                    $catValue = $cat instanceof \App\Enums\CP\Blog\KategoriEnum ? $cat->value : $cat;
+                    return [$catValue => ucfirst(str_replace('-', ' ', $catValue))];
                 })
             )->unique();
 

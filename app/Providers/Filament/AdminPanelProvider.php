@@ -83,15 +83,15 @@ class AdminPanelProvider extends PanelProvider
                     ->shouldRegisterNavigation(false)
                     ->shouldShowAvatarForm(
                         value: true,
-                        directory: 'avatars', // image will be stored in 'storage/app/public/avatars
-                        rules: 'mimes:jpeg,png,jpg,webp|max:1024' //only accept jpeg and png files with a maximum size of 1MB
+                        directory: 'avatars',
+                        rules: 'mimes:jpeg,png,jpg,webp|max:1024'
                     ),
             ])
             // topbar
             ->userMenuItems([
                 MenuItem::make()
                     ->label(fn() => "Edit Profile")
-                    ->url(fn (): string => EditProfilePage::getUrl())
+                    ->url(fn(): string => EditProfilePage::getUrl())
                     ->icon('heroicon-m-cog-6-tooth'),
             ])
             // sidebar

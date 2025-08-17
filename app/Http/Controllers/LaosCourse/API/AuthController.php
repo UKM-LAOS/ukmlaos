@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Helpers\ResponseFormatterController;
 
+
 class AuthController extends Controller
 {
     /**
      * Create a new User
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request)

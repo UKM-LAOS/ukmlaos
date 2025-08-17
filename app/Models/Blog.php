@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CP\Blog\KategoriEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,13 +24,18 @@ class Blog extends Model implements HasMedia
         'konten',
         'is_unggulan',
         'status',
-        'author_id'
+        'author_id',
+        'views',
+        'meta_description',
+        'published_at'
     ];
 
     protected $casts = [
+        'kategori' => KategoriEnum::class, // Cast ke enum
         'is_unggulan' => 'boolean',
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
+        'published_at' => 'datetime'
     ];
 
     public function getSlugOptions(): SlugOptions
@@ -47,6 +53,10 @@ class Blog extends Model implements HasMedia
 
     public function registerMediaCollections(): void
     {
+        $this->addMediaCollection('blog-thumbnail') // Sesuaikan dengan BlogResource
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+
         $this->addMediaCollection('featured_image')
             ->singleFile()
             ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
@@ -61,13 +71,13 @@ class Blog extends Model implements HasMedia
             ->width(300)
             ->height(200)
             ->sharpen(10)
-            ->performOnCollections('featured_image', 'gallery');
+            ->performOnCollections('blog-thumbnail', 'featured_image', 'gallery');
 
         $this->addMediaConversion('large')
             ->width(800)
             ->height(600)
             ->quality(85)
-            ->performOnCollections('featured_image', 'gallery');
+            ->performOnCollections('blog-thumbnail', 'featured_image', 'gallery');
     }
 
     public function comments()
@@ -100,9 +110,10 @@ class Blog extends Model implements HasMedia
         return $query->where('is_unggulan', true);
     }
 
-    public function scopeByKategori(Builder $query, string $kategori): Builder
+    public function scopeByKategori(Builder $query, KategoriEnum|string $kategori): Builder
     {
-        return $query->where('kategori', $kategori);
+        $kategoriValue = $kategori instanceof KategoriEnum ? $kategori->value : $kategori;
+        return $query->where('kategori', $kategoriValue);
     }
 
     public function getFormattedDateAttribute(): string
@@ -117,20 +128,12 @@ class Blog extends Model implements HasMedia
 
     public function getCategoryLabelAttribute(): string
     {
-        $categories = [
-            'informasi' => 'Informasi',
-            'tutorial' => 'Tutorial',
-            'mitos-fakta' => 'Mitos dan Fakta',
-            'tips-trik' => 'Tips dan Trik',
-            'press-release' => 'Press Release'
-        ];
-
-        return $categories[$this->kategori] ?? ucfirst($this->kategori);
+        return $this->kategori->getLabel();
     }
 
     public function getFeaturedImageUrlAttribute(): string
     {
-        $media = $this->getFirstMedia('featured_image');
+        $media = $this->getFirstMedia('blog-thumbnail') ?? $this->getFirstMedia('featured_image');
 
         if ($media) {
             return $media->getUrl();
@@ -141,7 +144,7 @@ class Blog extends Model implements HasMedia
 
     public function getFeaturedImageThumbAttribute(): string
     {
-        $media = $this->getFirstMedia('featured_image');
+        $media = $this->getFirstMedia('blog-thumbnail') ?? $this->getFirstMedia('featured_image');
 
         if ($media) {
             return $media->getUrl('thumb');
@@ -165,6 +168,7 @@ class Blog extends Model implements HasMedia
             'press-release' => 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
         ];
 
-        return $images[$this->kategori] ?? 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
+        $kategoriValue = $this->kategori instanceof KategoriEnum ? $this->kategori->value : $this->kategori;
+        return $images[$kategoriValue] ?? 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60';
     }
 }

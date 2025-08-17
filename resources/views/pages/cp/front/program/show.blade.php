@@ -1,25 +1,25 @@
 @extends('layouts.cp.front')
 
 @section('content')
-    <div class="min-h-screen bg-white dark:bg-gray-900 text-gray-600 dark:text-white">
-        <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="min-h-screen bg-white text-gray-600 dark:bg-gray-900 dark:text-white">
+        <div class="mx-auto max-w-6xl px-4 py-10">
             <!-- Program Header -->
             <div
-                class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden mb-8 mt-12 md:mt-24">
+                class="mb-8 mt-12 overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-md md:mt-24 dark:border-gray-700 dark:bg-gray-800">
                 <!-- Program Image Banner -->
-                <div class="relative h-64 md:h-80 w-full overflow-hidden">
-                    <img src="{{ $program->getFirstMediaUrl('program-thumbnail') }}" alt="{{ $program->judul_kegiatan }}"
-                        class="w-full h-full object-cover" />
+                <div class="relative h-64 w-full overflow-hidden md:h-80">
+                    <img class="h-full w-full object-cover" src="{{ $program->getFirstMediaUrl('program-thumbnail') }}"
+                        alt="{{ $program->judul_kegiatan }}" />
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 w-full p-6 text-white">
-                        <div class="flex items-center gap-2 mb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-green-base" fill="none"
+                        <div class="mb-2 flex items-center gap-2">
+                            <svg class="h-5 w-5 text-primary-green-base" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                             </svg>
                             <span class="text-sm font-medium">Detail Program</span>
                         </div>
-                        <h1 class="text-3xl md:text-4xl font-bold">
+                        <h1 class="text-3xl font-bold md:text-4xl">
                             {{ $program->judul_kegiatan }}
                         </h1>
                     </div>
@@ -28,8 +28,9 @@
                 <!-- Program Info -->
                 <div class="p-6">
                     <div class="flex items-center gap-4">
-                        <img src="https://ui-avatars.com/api/?name={{ $program->divisi->nama }}&background=374151&color=D1D5DB&size=48"
-                            alt="Divisi {{ $program->divisi->nama }}" class="w-12 h-12 rounded-full object-cover" />
+                        <img class="h-12 w-12 rounded-full object-cover"
+                            src="https://ui-avatars.com/api/?name={{ $program->divisi->nama }}&background=374151&color=D1D5DB&size=48"
+                            alt="Divisi {{ $program->divisi->nama }}" />
                         <div>
                             <p class="text-base text-gray-600 dark:text-white">
                                 Program dari
@@ -45,14 +46,14 @@
             </div>
 
             <!-- Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
                 <!-- Main Content -->
-                <div class="lg:col-span-2 space-y-8">
+                <div class="space-y-8 lg:col-span-2">
                     <!-- About Program Section -->
                     <section
-                        class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-                        <div class="flex items-center gap-2 p-6 border-b border-gray-200 dark:border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-green-base" fill="none"
+                        class="overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-md dark:border-gray-700 dark:bg-gray-800">
+                        <div class="flex items-center gap-2 border-b border-gray-200 p-6 dark:border-gray-700">
+                            <svg class="h-5 w-5 text-primary-green-base" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -64,7 +65,7 @@
 
                         <div class="p-6">
                             <div
-                                class="prose prose-sm md:prose max-w-none text-gray-600 prose-headings:text-gray-600 prose-a:text-primary-green-base dark:text-white">
+                                class="prose prose-sm md:prose prose-headings:text-gray-600 prose-a:text-primary-green-base max-w-none text-gray-600 dark:text-white">
                                 {!! $program->konten !!}
                             </div>
                         </div>
@@ -75,20 +76,20 @@
                         @if (isset($documentations) && count($documentations) > 0)
                             <div class="relative">
                                 <!-- Thumbnails Gallery -->
-                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
+                                <div class="mb-4 grid grid-cols-2 gap-4 sm:grid-cols-3">
                                     @foreach ($documentations as $index => $documentation)
-                                        <div class="aspect-square rounded-lg overflow-hidden  hover:opacity-80 transition-opacity border border-gray-700 shadow-md cursor-zoom-in"
+                                        <div class="aspect-square cursor-zoom-in overflow-hidden rounded-lg border border-gray-700 shadow-md transition-opacity hover:opacity-80"
                                             onclick="openGalleryModal({{ $index - 1 }})">
-                                            <img src="{{ $documentation['url'] }}" alt="{{ $program->judul_kegiatan }}"
-                                                class="w-full h-full object-cover" />
+                                            <img class="h-full w-full object-cover" src="{{ $documentation['url'] }}"
+                                                alt="{{ $program->judul_kegiatan }}" />
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
                         @else
                             <div
-                                class="py-16 text-center text-gray-600 dark:text-white bg-gray-50 dark:bg-gray-850 rounded-xl border border-gray-200 dark:border-gray-700">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-4 text-gray-600"
+                                class="dark:bg-gray-850 rounded-xl border border-gray-200 bg-gray-50  py-16 text-center text-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+                                <svg class="mx-auto mb-4 h-16 w-16 text-gray-600" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -100,13 +101,13 @@
                     </div>
 
                     <!-- Gallery Modal -->
-                    <div id="galleryModal"
-                        class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center p-4">
-                        <div class="relative w-full max-w-4xl mx-auto">
+                    <div class="fixed inset-0 z-50 flex hidden items-center justify-center bg-black bg-opacity-75 p-4"
+                        id="galleryModal">
+                        <div class="relative mx-auto w-full max-w-4xl">
                             <!-- Close Button -->
-                            <button onclick="closeGalleryModal()"
-                                class="absolute top-4 right-4 text-white hover:text-gray-300 z-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            <button class="absolute right-4 top-4 z-10 text-white hover:text-gray-300"
+                                onclick="closeGalleryModal()">
+                                <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12" />
@@ -114,18 +115,20 @@
                             </button>
 
                             <!-- Navigation Buttons -->
-                            <button id="prevButton" onclick="changeGalleryImage(-1)"
-                                class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+                            <button
+                                class="absolute left-4 top-1/2 z-10 -translate-y-1/2 transform text-white hover:text-gray-300"
+                                id="prevButton" onclick="changeGalleryImage(-1)">
+                                <svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 19l-7-7 7-7" />
                                 </svg>
                             </button>
 
-                            <button id="nextButton" onclick="changeGalleryImage(1)"
-                                class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 z-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+                            <button
+                                class="absolute right-4 top-1/2 z-10 -translate-y-1/2 transform text-white hover:text-gray-300"
+                                id="nextButton" onclick="changeGalleryImage(1)">
+                                <svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 5l7 7-7 7" />
@@ -133,13 +136,13 @@
                             </button>
 
                             <!-- Image Container -->
-                            <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-2xl">
+                            <div class="overflow-hidden rounded-xl bg-white shadow-2xl dark:bg-gray-800">
                                 <div class="relative pb-[75%]">
-                                    <img id="modalImage" src="" alt="Gallery Image"
-                                        class="absolute inset-0 w-full h-full object-contain" />
+                                    <img class="absolute inset-0 h-full w-full object-contain" id="modalImage"
+                                        src="" alt="Gallery Image" />
                                 </div>
-                                <div class="p-4 bg-white dark:bg-gray-800 text-gray-600 dark:text-white">
-                                    <p id="imageCounter" class="text-center text-sm"></p>
+                                <div class="bg-white p-4 text-gray-600 dark:bg-gray-800 dark:text-white">
+                                    <p class="text-center text-sm" id="imageCounter"></p>
                                 </div>
                             </div>
                         </div>
@@ -150,9 +153,9 @@
                 <div class="space-y-8">
                     <!-- Time & Schedule Section  -->
                     <section
-                        class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-                        <div class="flex items-center gap-2 p-6 border-b border-gray-200 dark:border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-green-base"
+                        class="overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-md dark:border-gray-700 dark:bg-gray-800">
+                        <div class="flex items-center gap-2 border-b border-gray-200 p-6 dark:border-gray-700">
+                            <svg class="h-5 w-5 text-primary-green-base" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -165,19 +168,19 @@
                         <div class="p-6">
                             <!-- Schedule Timeline -->
                             <div
-                                class="relative pl-8 space-y-8 before:absolute before:inset-y-0 before:left-3 before:w-0.5 before:bg-gray-600">
+                                class="relative space-y-8 pl-8 before:absolute before:inset-y-0 before:left-3 before:w-0.5 before:bg-gray-600">
                                 @if (isset($program->jadwal_kegiatan) && count($program->jadwal_kegiatan) > 0)
                                     @foreach ($program->jadwal_kegiatan as $key => $schedule)
                                         <div class="relative">
                                             <div
-                                                class="absolute left-[-32px] top-0 w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center">
-                                                <div class="w-3 h-3 rounded-full bg-gray-800"></div>
+                                                class="absolute left-[-32px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-amber-500">
+                                                <div class="h-3 w-3 rounded-full bg-gray-800"></div>
                                             </div>
                                             <div>
                                                 <h3 class="font-medium text-gray-600 dark:text-white">
                                                     {{ $schedule['jadwal'] ?? 'Jadwal' }}
                                                 </h3>
-                                                <p class="mt-1 text-sm text- dark:text-white">
+                                                <p class="text- mt-1 text-sm dark:text-white">
                                                     {{ Carbon\Carbon::parse($schedule['waktu'])->translatedFormat('l, d F Y') }}
                                                 </p>
                                             </div>
@@ -186,8 +189,8 @@
                                 @else
                                     <div class="relative">
                                         <div
-                                            class="absolute left-[-32px] top-0 w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center">
-                                            <div class="w-3 h-3 rounded-full bg-gray-800"></div>
+                                            class="absolute left-[-32px] top-0 flex h-6 w-6 items-center justify-center rounded-full bg-amber-500">
+                                            <div class="h-3 w-3 rounded-full bg-gray-800"></div>
                                         </div>
                                         <div>
                                             <h3 class="font-medium text-gray-600 dark:text-white">
@@ -204,9 +207,9 @@
                     </section>
 
                     <section
-                        class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-                        <div class="flex items-center gap-2 p-6 border-b border-gray-200 dark:border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-green-base"
+                        class="overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-md dark:border-gray-700 dark:bg-gray-800">
+                        <div class="flex items-center gap-2 border-b border-gray-200 p-6 dark:border-gray-700">
+                            <svg class="h-5 w-5 text-primary-green-base" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -219,16 +222,16 @@
                         </div>
 
                         <div class="p-6">
-                            <div class="w-full h-[200px] rounded-lg overflow-hidden shadow-md mb-4">
+                            <div class="mb-4 h-[200px] w-full overflow-hidden rounded-lg shadow-md">
                                 <iframe
                                     src="https://maps.google.com/maps?q=-8.1822364782803,113.66155261659&z=12&output=embed"
-                                    width="100%" height="450" frameborder="0" style="border:0"
+                                    style="border:0" width="100%" height="450" frameborder="0"
                                     allowfullscreen></iframe>
                             </div>
-                            <h3 id="location-name" class="font-medium text-gray-600 dark:text-white">
+                            <h3 class="font-medium text-gray-600 dark:text-white" id="location-name">
                                 {{ $program->location_name ?? 'Memuat...' }}
                             </h3>
-                            <p id="location-address" class="mt-1 text-sm text-gray-600 dark:text-white">
+                            <p class="mt-1 text-sm text-gray-600 dark:text-white" id="location-address">
                                 {{ $program->location_address ?? 'Memuat alamat...' }}
                             </p>
                         </div>
@@ -236,9 +239,9 @@
 
                     <!-- Add this after the Location section in the Sidebar Content -->
                     <section
-                        class="bg-gray-100 dark:bg-gray-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden">
-                        <div class="flex items-center gap-2 p-6 border-b border-gray-200 dark:border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-green-base"
+                        class="overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-md dark:border-gray-700 dark:bg-gray-800">
+                        <div class="flex items-center gap-2 border-b border-gray-200 p-6 dark:border-gray-700">
+                            <svg class="h-5 w-5 text-primary-green-base" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
@@ -248,7 +251,7 @@
                             </h2>
                         </div>
 
-                        <div class="p-6 space-y-4">
+                        <div class="space-y-4 p-6">
                             <!-- Committee Registration Button -->
                             @php
                                 $now = \Carbon\Carbon::now();
@@ -265,58 +268,62 @@
                                 <h3 class="font-medium text-gray-600 dark:text-white">Pendaftaran Panitia</h3>
 
                                 @if ($isPanitiaRegisOpen)
-                                    <a href="{{ $program->gform_panitia }}" target="_blank"
-                                        class="block w-full py-3 px-4 bg-primary-green-base hover:bg-primary-green-dark text-white font-medium rounded-lg text-center transition-colors shadow-md">
+                                    <a class="hover:bg-primary-green-dark block w-full rounded-lg bg-primary-green-base px-4 py-3 text-center font-medium text-white shadow-md transition-colors"
+                                        href="{{ $program->gform_panitia }}" target="_blank">
                                         Daftar Sebagai Panitia
                                     </a>
-                                    <p class="text-sm text-gray-600 dark:text-white mt-1">
+                                    <p class="mt-1 text-sm text-gray-600 dark:text-white">
                                         Pendaftaran dibuka sampai {{ $closeRegisPanitia->translatedFormat('d F Y') }}
                                     </p>
                                 @elseif($now->lt($openRegisPanitia))
-                                    <button disabled
-                                        class="block w-full py-3 px-4 bg-gray-400 text-white font-medium rounded-lg text-center cursor-not-allowed">
+                                    <button
+                                        class="block w-full cursor-not-allowed rounded-lg bg-gray-400 px-4 py-3 text-center font-medium text-white"
+                                        disabled>
                                         Pendaftaran Belum Dibuka
                                     </button>
-                                    <p class="text-sm text-gray-600 dark:text-white mt-1">
+                                    <p class="mt-1 text-sm text-gray-600 dark:text-white">
                                         Dibuka pada {{ $openRegisPanitia->translatedFormat('d F Y') }}
                                     </p>
                                 @else
-                                    <button disabled
-                                        class="block w-full py-3 px-4 bg-gray-400 text-white font-medium rounded-lg text-center cursor-not-allowed">
+                                    <button
+                                        class="block w-full cursor-not-allowed rounded-lg bg-gray-400 px-4 py-3 text-center font-medium text-white"
+                                        disabled>
                                         Pendaftaran Ditutup
                                     </button>
-                                    <p class="text-sm text-gray-600 dark:text-white mt-1">
+                                    <p class="mt-1 text-sm text-gray-600 dark:text-white">
                                         Ditutup sejak {{ $closeRegisPanitia->translatedFormat('d F Y') }}
                                     </p>
                                 @endif
                             </div>
 
                             <!-- Participant Registration Button -->
-                            <div class="space-y-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+                            <div class="space-y-2 border-t border-gray-200 pt-2 dark:border-gray-700">
                                 <h3 class="font-medium text-gray-600 dark:text-white">Pendaftaran Peserta</h3>
 
                                 @if ($isPesertaRegisOpen)
-                                    <a href="{{ $program->gform_peserta }}" target="_blank"
-                                        class="block w-full py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg text-center transition-colors shadow-md">
+                                    <a class="block w-full rounded-lg bg-amber-500 px-4 py-3 text-center font-medium text-white shadow-md transition-colors hover:bg-amber-600"
+                                        href="{{ $program->gform_peserta }}" target="_blank">
                                         Daftar Sebagai Peserta
                                     </a>
-                                    <p class="text-sm text-gray-600 dark:text-white mt-1">
+                                    <p class="mt-1 text-sm text-gray-600 dark:text-white">
                                         Pendaftaran dibuka sampai {{ $closeRegisPeserta->translatedFormat('d F Y') }}
                                     </p>
                                 @elseif($now->lt($openRegisPeserta))
-                                    <button disabled
-                                        class="block w-full py-3 px-4 bg-gray-400 text-white font-medium rounded-lg text-center cursor-not-allowed">
+                                    <button
+                                        class="block w-full cursor-not-allowed rounded-lg bg-gray-400 px-4 py-3 text-center font-medium text-white"
+                                        disabled>
                                         Pendaftaran Belum Dibuka
                                     </button>
-                                    <p class="text-sm text-gray-600 dark:text-white mt-1">
+                                    <p class="mt-1 text-sm text-gray-600 dark:text-white">
                                         Dibuka pada {{ $openRegisPeserta->translatedFormat('d F Y') }}
                                     </p>
                                 @else
-                                    <button disabled
-                                        class="block w-full py-3 px-4 bg-gray-400 text-white font-medium rounded-lg text-center cursor-not-allowed">
+                                    <button
+                                        class="block w-full cursor-not-allowed rounded-lg bg-gray-400 px-4 py-3 text-center font-medium text-white"
+                                        disabled>
                                         Pendaftaran Ditutup
                                     </button>
-                                    <p class="text-sm text-gray-600 dark:text-white mt-1">
+                                    <p class="mt-1 text-sm text-gray-600 dark:text-white">
                                         Ditutup sejak {{ $closeRegisPeserta->translatedFormat('d F Y') }}
                                     </p>
                                 @endif
