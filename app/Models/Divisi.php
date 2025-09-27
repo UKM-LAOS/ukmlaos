@@ -12,7 +12,8 @@ class Divisi extends Model
     protected $fillable = [
         'nama',
         'slug',
-        'deskripsi'
+        'deskripsi',
+        'logo',
     ];
 
     public function getRouteKeyName(): string
@@ -23,5 +24,10 @@ class Divisi extends Model
     public function blogs()
     {
         return $this->hasMany(Blog::class);
+    }
+
+    public function getLogoUrlAttribute()
+    {
+        return $this->logo ? asset('storage/' . $this->logo) : asset('logo.png');
     }
 }

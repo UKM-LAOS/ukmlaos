@@ -15,28 +15,40 @@ class DivisiSeeder extends Seeder
             [
                 'nama' => 'Divisi Teknologi Informasi',
                 'slug' => 'teknologi-informasi',
-                'deskripsi' => 'Divisi yang menangani pengembangan teknologi dan sistem informasi'
+                'deskripsi' => 'Divisi yang menangani pengembangan teknologi dan sistem informasi',
+                'logo'      => null,
             ],
             [
                 'nama' => 'Divisi Pemasaran',
                 'slug' => 'pemasaran',
-                'deskripsi' => 'Divisi yang menangani strategi pemasaran dan branding'
+                'deskripsi' => 'Divisi yang menangani strategi pemasaran dan branding',
+                'logo'      => null,
             ],
             [
                 'nama' => 'Divisi Keuangan',
                 'slug' => 'keuangan',
-                'deskripsi' => 'Divisi yang menangani pengelolaan keuangan dan akuntansi'
+                'deskripsi' => 'Divisi yang menangani pengelolaan keuangan dan akuntansi',
+                'logo'      => null,
             ],
             [
                 'nama' => 'Divisi Operasional',
                 'slug' => 'operasional',
-                'deskripsi' => 'Divisi yang menangani operasional harian dan administrasi'
+                'deskripsi' => 'Divisi yang menangani operasional harian dan administrasi',
+                'logo'      => null,
+            ],
+            [
+                'nama' => 'Divisi Penjualan',
+                'slug' => 'penjualan',
+                'deskripsi' => 'Divisi yang menangani penjualan produk dan layanan kepada konsumen',
+                'logo'      => null,
             ],
             [
                 'nama' => 'Divisi Penelitian dan Pengembangan',
                 'slug' => 'penelitian-pengembangan',
-                'deskripsi' => 'Divisi yang menangani penelitian dan pengembangan produk/layanan'
+                'deskripsi' => 'Divisi yang menangani penelitian dan pengembangan produk/layanan',
+                'logo'      => null,
             ]
+
         ];
 
         foreach ($divisis as $divisi) {

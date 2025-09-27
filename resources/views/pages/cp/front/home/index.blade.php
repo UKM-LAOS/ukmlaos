@@ -17,10 +17,10 @@
              xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin slice">
             <defs>
                 <pattern id="arcPattern" width="240" height="240" patternUnits="userSpaceOnUse">
-                    <!-- Arc besar -->
+
                     <path d="M120 0 A120 120 0 0 1 240 120 L120 120 Z"
                           fill="currentColor" fill-opacity="0.15"/>
-                    <!-- Arc terbalik -->
+
                     <path d="M0 120 A120 120 0 0 1 120 240 L0 240 Z"
                           fill="currentColor" fill-opacity="0.08"/>
                 </pattern>
@@ -276,8 +276,9 @@
         </div>
     </section>
     <!-- Division Section -->
-  <section class="py-24 relative overflow-hidden bg-[#E3F7F2] dark:bg-[#151E2E]">
-    <!-- Background decorations -->
+  
+<section class="py-24 relative overflow-hidden bg-[#E3F7F2] dark:bg-[#151E2E]">
+
     <div class="absolute inset-0">
         <div class="absolute top-0 left-0 w-72 h-72 bg-purple-200/30 dark:bg-purple-900/30 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 right-0 w-72 h-72 bg-green-200/30 dark:bg-green-900/30 rounded-full blur-3xl"></div>
@@ -286,96 +287,78 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                Divisi Kami
-            </h2>
+            <h2 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white">Divisi Kami</h2>
             <p class="text-gray-600 dark:text-gray-300 text-lg">
-                Lima divisi unggulan yang bersinergi mengembangkan potensi dalam bidang teknologi
+                Divisi unggulan yang bersinergi mengembangkan potensi dalam bidang teknologi
             </p>
         </div>
 
-        <!-- Main Cards (4 cards in 2x2 grid) -->
+        @php
+
+            $total   = $divisis->count();
+            $top     = $total > 4 ? 4 : $total;
+            $sisa    = $total - $top;
+            $genap   = $total % 2 === 0;
+        @endphp
+
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-[1200px] mx-auto">
-            <!-- Humas Card -->
+            @foreach($divisis->take($top) as $d)
             <div class="w-full h-[240px]">
                 <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex h-full">
                     <div class="w-1/3 p-6 flex items-center justify-center bg-green-300 dark:bg-green-900/30 rounded-l-2xl">
-                        <img src="{{ asset('assets/cp/img/divisi/humas.png') }}" alt="Humas"
+                        <img src="{{ $d->logo ? asset('storage/' . $d->logo) : asset('logo.png') }}"
+                             alt="{{ $d->nama }}"
                              class="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300">
                     </div>
                     <div class="w-2/3 p-8 flex flex-col justify-center">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Hubungan Masyarakat</h3>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            Divisi yang bertanggung jawab dalam penyebaran informasi di lingkup Fakultas Ilmu Komputer
-                        </p>
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{{ $d->nama }}</h3>
+                        <p class="text-gray-600 dark:text-gray-400">{{ $d->deskripsi }}</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Programming Card -->
-            <div class="w-full h-[240px]">
-                <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex h-full">
-                    <div class="w-1/3 p-6 flex items-center justify-center bg-green-300 dark:bg-green-900/30 rounded-l-2xl">
-                        <img src="{{ asset('assets/cp/img/divisi/pemro.png') }}" alt="Programming"
-                             class="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300">
-                    </div>
-                    <div class="w-2/3 p-8 flex flex-col justify-center">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Pemrograman</h3>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            Divisi yang berfokus pada pemrograman untuk mewujudkan tujuan UKM LAOS dalam menyebarkan open source
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cyber Security Card -->
-            <div class="w-full h-[240px]">
-                <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex h-full">
-                    <div class="w-1/3 p-6 flex items-center justify-center bg-green-300 dark:bg-green-900/30 rounded-l-2xl">
-                        <img src="{{ asset('assets/cp/img/divisi/cyber.png') }}" alt="Cyber Security"
-                             class="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300">
-                    </div>
-                    <div class="w-2/3 p-8 flex flex-col justify-center">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Cyber Security</h3>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            Divisi yang memberikan wawasan mengenai Linux, jaringan komputer, dan keamanan siber
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Multimedia Card -->
-            <div class="w-full h-[240px]">
-                <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex h-full">
-                    <div class="w-1/3 p-6 flex items-center justify-center bg-green-300 dark:bg-green-900/30 rounded-l-2xl">
-                        <img src="{{ asset('assets/cp/img/divisi/mulmed.png') }}" alt="Multimedia"
-                             class="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300">
-                    </div>
-                    <div class="w-2/3 p-8 flex flex-col justify-center">
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Multimedia</h3>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            Divisi yang berfokus pada desain UI/UX dan pengelolaan konten media sosial UKM LAOS
-                        </p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
-        <!-- Center Card (Positioned below) -->
-        <div class="max-w-[562px] mx-auto h-[240px]">
-            <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex h-full">
-                <div class="w-1/3 p-6 flex items-center justify-center bg-green-300 dark:bg-green-900/30 rounded-l-2xl">
-                    <img src="{{ asset('assets/cp/img/divisi/hrm.png') }}" alt="Center Division"
-                         class="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300">
+
+        @if($sisa > 0)
+            @if($sisa === 1 || !$genap)
+
+                <div class="max-w-[562px] mx-auto h-[240px]">
+                    @php $d = $divisis->slice($top)->first(); @endphp
+                    <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex h-full">
+                        <div class="w-1/3 p-6 flex items-center justify-center bg-green-300 dark:bg-green-900/30 rounded-l-2xl">
+                            <img src="{{ $d->logo ? asset('storage/' . $d->logo) : asset('logo.png') }}"
+                                 alt="{{ $d->nama }}"
+                                 class="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <div class="w-2/3 p-8 flex flex-col justify-center">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{{ $d->nama }}</h3>
+                            <p class="text-gray-600 dark:text-gray-400">{{ $d->deskripsi }}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="w-2/3 p-8 flex flex-col justify-center">
-                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Human Resource Management</h3>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Divisi yang mendukung pengembangan soft skill dan produktivitas pengurus melalui pelatihan internal
-                    </p>
+            @else
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1200px] mx-auto">
+                    @foreach($divisis->slice($top) as $d)
+                    <div class="w-full h-[240px]">
+                        <div class="group bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex h-full">
+                            <div class="w-1/3 p-6 flex items-center justify-center bg-green-300 dark:bg-green-900/30 rounded-l-2xl">
+                                <img src="{{ $d->logo ? asset('storage/' . $d->logo) : asset('logo.png') }}"
+                                     alt="{{ $d->nama }}"
+                                     class="w-32 h-32 object-contain transform group-hover:scale-110 transition-transform duration-300">
+                            </div>
+                            <div class="w-2/3 p-8 flex flex-col justify-center">
+                                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">{{ $d->nama }}</h3>
+                                <p class="text-gray-600 dark:text-gray-400">{{ $d->deskripsi }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
-            </div>
-        </div>
+            @endif
+        @endif
     </div>
 </section>
 @endsection
