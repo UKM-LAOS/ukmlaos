@@ -30,7 +30,7 @@ class InitStudentCommand extends Command
             'name' => 'Student',
             'email' => 'student@ukmlaos.test',
         ], [
-            'password' => bcrypt('password'),
+            'password' => bcrypt('studentLaos2025sellagawl'),
         ])->assignRole(['student', 'mentor']);
         $this->info('Student created successfully');
     }
