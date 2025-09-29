@@ -39,6 +39,10 @@ class DivisiResource extends Resource
                             ->unique(ignoreRecord: true)
                             ->maxLength(255),
 
+                        TextInput::make('slug')
+                            ->required()
+                            ->label('Slug'),
+
                         TextInput::make('deskripsi')
                             ->label('Deskripsi')
                             ->columnSpanFull(),
