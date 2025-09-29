@@ -22,7 +22,7 @@ class BlogController extends Controller
             ->get();
 
         $latestArticlesQuery = Blog::published()
-            ->with(['divisi', 'author'])
+            ->with(['divisi','author'])
             ->latest();
 
         if ($kategori && $kategori !== 'semua') {

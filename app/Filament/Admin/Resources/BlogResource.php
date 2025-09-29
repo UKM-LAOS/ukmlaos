@@ -44,13 +44,20 @@ class BlogResource extends Resource
                             ->required()
                             ->unique(ignoreRecord: true)
                             ->maxLength(255),
-                        Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
+                        Forms\Components\SpatieMediaLibraryFileUpload::make('blog-thumbnail')
                             ->label('Thumbnail (Max. 1 file, 1 MB)')
                             ->required()
                             ->image()
                             ->collection('blog-thumbnail')
+                            ->disk('public')
+                            ->visibility('public')
                             ->optimize('webp')
-                            ->maxFiles(1),
+                            ->maxFiles(1)
+                            ->imageResizeMode('cover')
+                            ->imageCropAspectRatio('16:9')
+                            ->imageResizeTargetWidth('800')
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                            ->helperText('Format: JPEG, PNG, WebP. Rasio 16:9 recommended.'),
                         Forms\Components\Select::make('kategori')
                             ->required()
                             ->options(KategoriEnum::class),
@@ -60,6 +67,15 @@ class BlogResource extends Resource
                         Forms\Components\Toggle::make('is_unggulan')
                             ->label('Apakah merupakan artikel unggulan?')
                             ->required(),
+                        Forms\Components\Select::make('status')
+                            ->label('Status')
+                            ->required()
+                            ->options([
+                                'draft' => 'Draft',
+                                'published' => 'Published',
+                                'archived' => 'Archived',
+                            ])
+                            ->default('draft'),
                     ])
             ]);
     }
@@ -73,8 +89,12 @@ class BlogResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('judul')
                     ->searchable(),
-                Tables\Columns\SpatieMediaLibraryImageColumn::make('thumbnail')
-                    ->collection('blog-thumbnail'),
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('blog-thumbnail')
+                    ->collection('blog-thumbnail')
+                    ->conversion('thumb')
+                    ->width(100)
+                    ->height(70)
+                    ->square(),
                 Tables\Columns\TextColumn::make('kategori')
                     ->badge()
                     ->getStateUsing(fn(Blog $blog) => $blog->kategori->getLabel()),
@@ -88,9 +108,24 @@ class BlogResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status')
+                    ->sortable()
+                    ->badge()
+                    ->colors([
+                        'primary' => 'draft',
+                        'success' => 'published',
+                        'secondary' => 'archived',
+                    ]),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('status')
+                    ->label('Filter Status')
+                    ->options([
+                        'draft' => 'Draft',
+                        'published' => 'Published',
+                        'archived' => 'Archived',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

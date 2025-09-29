@@ -7,8 +7,8 @@
                 @foreach ($popularArticles as $index => $article)
                     <div class="min-w-full h-full relative">
                         <div class="absolute inset-0 bg-black opacity-50"></div>
-                        <img src="{{ $article->featured_image_url }}" alt="{{ $article->judul }}"
-                            class="w-full h-full object-cover">
+                        <img src="{{ $article->getFirstMediaUrl('blog-thumbnail') ?: $article->featured_image_url }}"
+                            alt="{{ $article->judul }}">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="max-w-7xl px-4 sm:px-6 lg:px-8 text-white text-center">
                                 <div class="mb-12">
@@ -126,7 +126,8 @@
                         <div
                             class="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                             <div class="h-48 overflow-hidden">
-                                <img src="{{ $article->featured_image_thumb }}" alt="{{ $article->judul }}"
+                                <img src="{{ $article->getFirstMediaUrl('blog-thumbnail', 'thumb') ?: $article->featured_image_thumb }}"
+                                    alt="{{ $article->judul }}"
                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                             </div>
                             <div class="p-6">
