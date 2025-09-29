@@ -8,7 +8,7 @@
                     <div class="min-w-full h-full relative">
                         <div class="absolute inset-0 bg-black opacity-50"></div>
                         <img src="{{ $article->getFirstMediaUrl('blog-thumbnail') ?: $article->featured_image_url }}"
-                            alt="{{ $article->judul }}">
+                            alt="{{ $article->judul }}" class="w-full h-full object-cover">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="max-w-7xl px-4 sm:px-6 lg:px-8 text-white text-center">
                                 <div class="mb-12">
