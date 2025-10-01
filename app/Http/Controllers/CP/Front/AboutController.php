@@ -22,7 +22,10 @@ class AboutController extends Controller
             $selectedPeriod = $availablePeriods[0];
         }
 
-        $pengurus = Pengurus::getByPeriode($selectedPeriod);
+        $pengurus = Pengurus::getByPeriode($selectedPeriod)->map(function ($p) {
+            $p->foto = $p->foto ? 'storage/' . $p->foto : 'logo.png';
+            return $p;
+        });
 
         return view('pages.cp.front.tentang-kami.index', [
             'title' => 'Tentang Kami',

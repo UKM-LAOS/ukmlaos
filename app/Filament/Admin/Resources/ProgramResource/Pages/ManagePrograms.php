@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources\ProgramResource\Pages;
 use App\Filament\Admin\Resources\ProgramResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
+use Filament\Notifications\Notification;
 
 class ManagePrograms extends ManageRecords
 {
@@ -14,7 +15,13 @@ class ManagePrograms extends ManageRecords
     {
         return [
             Actions\CreateAction::make()
-                ->closeModalByClickingAway(false),
+                ->closeModalByClickingAway(false)
+                ->successNotification(
+                    Notification::make()
+                        ->success()
+                        ->title('Program berhasil dibuat')
+                        ->body('Program kerja baru telah ditambahkan.'),
+                ),
         ];
     }
 }

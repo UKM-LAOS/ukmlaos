@@ -38,16 +38,28 @@ class ProgramResource extends Resource
                         Forms\Components\TextInput::make('judul_program')
                             ->required()
                             ->unique(ignoreRecord: true)
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('judul_kegiatan')
+                            ->maxLength(255)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(function (Set $set, ?string $state) {
+                                if ($state) {
+                                    $set('slug', str($state)->slug());
+                                }
+                            }),
+                        Forms\Components\TextInput::make('slug')
                             ->required()
                             ->unique(ignoreRecord: true)
+                            ->maxLength(255)
+                            ->readOnly()
+                            ->dehydrated(),
+                        Forms\Components\TextInput::make('judul_kegiatan')
+                            ->required()
                             ->maxLength(255),
                         Forms\Components\SpatieMediaLibraryFileUpload::make('thumbnail')
                             ->required()
                             ->maxFiles(1)
                             ->optimize('webp')
                             ->image()
+                            ->maxSize(1024)
                             ->label('Thumbnail (Max 1 file, Max 1MB)')
                             ->collection('program-thumbnail'),
                         Forms\Components\RichEditor::make('konten')
@@ -62,28 +74,42 @@ class ProgramResource extends Resource
                             ->schema([
                                 Forms\Components\DatePicker::make('open_regis_panitia')
                                     ->required()
-                                    ->label('Tanggal Pembukaan Pendaftaran Panitia'),
+                                    ->label('Tanggal Pembukaan Pendaftaran Panitia')
+                                    ->native(false)
+                                    ->displayFormat('d/m/Y'),
                                 Forms\Components\DatePicker::make('close_regis_panitia')
                                     ->required()
-                                    ->label('Tanggal Penutupan Pendaftaran Panitia'),
+                                    ->label('Tanggal Penutupan Pendaftaran Panitia')
+                                    ->native(false)
+                                    ->displayFormat('d/m/Y')
+                                    ->after('open_regis_panitia'),
                             ]),
                         Forms\Components\TextInput::make('gform_panitia')
                             ->required()
                             ->url()
+                            ->label('Link Google Form Panitia')
+                            ->placeholder('https://forms.gle/xxxxx')
                             ->columnSpanFull(),
                         Forms\Components\Grid::make()
                             ->columns(2)
                             ->schema([
                                 Forms\Components\DatePicker::make('open_regis_peserta')
                                     ->required()
-                                    ->label('Tanggal Pembukaan Pendaftaran Peserta'),
+                                    ->label('Tanggal Pembukaan Pendaftaran Peserta')
+                                    ->native(false)
+                                    ->displayFormat('d/m/Y'),
                                 Forms\Components\DatePicker::make('close_regis_peserta')
                                     ->required()
-                                    ->label('Tanggal Penutupan Pendaftaran Peserta'),
+                                    ->label('Tanggal Penutupan Pendaftaran Peserta')
+                                    ->native(false)
+                                    ->displayFormat('d/m/Y')
+                                    ->after('open_regis_peserta'),
                             ]),
                         Forms\Components\TextInput::make('gform_peserta')
                             ->required()
                             ->url()
+                            ->label('Link Google Form Peserta')
+                            ->placeholder('https://forms.gle/xxxxx')
                             ->columnSpanFull(),
                         Map::make('location')
                             ->label('Lokasi Kegiatan')
@@ -93,9 +119,11 @@ class ProgramResource extends Resource
                                 $set('long', $state['lng']);
                             })
                             ->afterStateHydrated(function ($state, $record, Set $set): void {
-                                $set('location', [
-                                        'lat'     => $record->lat ?? -8.165516031480806,
-                                        'lng'     => $record->long ?? 113.71727423131937,
+                                $set(
+                                    'location',
+                                    [
+                                        'lat' => $record->lat ?? -8.165516031480806,
+                                        'lng' => $record->long ?? 113.71727423131937,
                                     ]
                                 );
                             })
@@ -111,19 +139,31 @@ class ProgramResource extends Resource
                             ->showMyLocationButton()
                             ->extraTileControl([])
                             ->extraControl([
-                                'zoomDelta'           => 1,
-                                'zoomSnap'            => 2,
+                                'zoomDelta' => 1,
+                                'zoomSnap' => 2,
                             ]),
                         Forms\Components\TextInput::make('lat')
                             ->required()
                             ->live()
-                            ->columns(2)
-                            ->readOnly(),
+                            ->numeric()
+                            ->readOnly()
+                            ->label('Latitude'),
                         Forms\Components\TextInput::make('long')
                             ->required()
                             ->live()
-                            ->columns(2)
-                            ->readOnly(),
+                            ->numeric()
+                            ->readOnly()
+                            ->label('Longitude'),
+                        Forms\Components\TextInput::make('location_name')
+                            ->label('Nama Lokasi (Opsional)')
+                            ->maxLength(255)
+                            ->placeholder('Contoh: Gedung Ilmu Komputer')
+                            ->helperText('Kosongkan untuk menggunakan nama dari koordinat'),
+                        Forms\Components\Textarea::make('location_address')
+                            ->label('Alamat Lokasi (Opsional)')
+                            ->rows(2)
+                            ->placeholder('Contoh: Jl. Kalimantan No.37, Jember')
+                            ->helperText('Kosongkan untuk menggunakan alamat dari koordinat'),
                     ]),
                 Forms\Components\Fieldset::make('Jadwal Kegiatan')
                     ->columns(1)
@@ -132,10 +172,22 @@ class ProgramResource extends Resource
                             ->required()
                             ->schema([
                                 Forms\Components\TextInput::make('jadwal')
-                                    ->required(),
+                                    ->required()
+                                    ->label('Nama Kegiatan')
+                                    ->placeholder('Contoh: Pembukaan')
+                                    ->maxLength(255),
                                 Forms\Components\DatePicker::make('waktu')
-                                    ->required(),
+                                    ->required()
+                                    ->label('Tanggal')
+                                    ->native(false)
+                                    ->displayFormat('d/m/Y'),
                             ])
+                            ->defaultItems(1)
+                            ->addActionLabel('Tambah Jadwal')
+                            ->reorderable()
+                            ->collapsible()
+                            ->cloneable()
+                            ->itemLabel(fn(array $state): ?string => $state['jadwal'] ?? 'Jadwal'),
                     ]),
                 Forms\Components\Fieldset::make('Dokumentasi')
                     ->columns(1)
@@ -144,8 +196,12 @@ class ProgramResource extends Resource
                             ->multiple()
                             ->image()
                             ->optimize('webp')
-                            ->label('Dokumentasi (Optional)')
-                            ->collection('program-dokumentasi'),
+                            ->maxSize(2048)
+                            ->maxFiles(10)
+                            ->label('Dokumentasi (Optional, Max 10 files)')
+                            ->helperText('Upload foto dokumentasi kegiatan')
+                            ->collection('program-dokumentasi')
+                            ->reorderable(),
                     ])
             ]);
     }
@@ -156,14 +212,46 @@ class ProgramResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('divisi.nama')
                     ->label('Divisi')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->badge()
+                    ->color('success'),
                 Tables\Columns\TextColumn::make('judul_program')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->limit(30)
+                    ->tooltip(function (Tables\Columns\TextColumn $column): ?string {
+                        $state = $column->getState();
+                        if (strlen($state) <= 30) {
+                            return null;
+                        }
+                        return $state;
+                    }),
                 Tables\Columns\TextColumn::make('judul_kegiatan')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->limit(30),
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('program-thumbnail')
                     ->collection('program-thumbnail')
-                    ->label('Thumbnail'),
+                    ->label('Thumbnail')
+                    ->circular(),
+                Tables\Columns\TextColumn::make('open_regis_peserta')
+                    ->label('Pendaftaran Peserta')
+                    ->date('d M Y')
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\IconColumn::make('status_pendaftaran')
+                    ->label('Status')
+                    ->state(function (Program $record): bool {
+                        $now = now();
+                        return $now->between($record->open_regis_peserta, $record->close_regis_peserta);
+                    })
+                    ->boolean()
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->falseIcon('heroicon-o-x-circle')
+                    ->trueColor('success')
+                    ->falseColor('danger')
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -174,17 +262,24 @@ class ProgramResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('divisi')
+                    ->relationship('divisi', 'nama')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->requiresConfirmation(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->requiresConfirmation(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getPages(): array

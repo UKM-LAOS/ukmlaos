@@ -18,6 +18,7 @@ use Filament\Navigation\NavigationBuilder;
 use App\Filament\Admin\Resources\BlogResource;
 use Illuminate\Session\Middleware\StartSession;
 use App\Filament\Admin\Resources\DivisiResource;
+use App\Filament\Admin\Resources\PengurusResource;
 use App\Filament\Admin\Resources\KursusResource;
 use App\Filament\Admin\Resources\MentorResource;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -106,6 +107,7 @@ class AdminPanelProvider extends PanelProvider
                             ...DivisiResource::getNavigationItems(),
                             ...BlogResource::getNavigationItems(),
                             ...ProgramResource::getNavigationItems(),
+                            ...PengurusResource::getNavigationItems(),
                         ]),
                     NavigationGroup::make('LAOS Course')
                         ->items([
