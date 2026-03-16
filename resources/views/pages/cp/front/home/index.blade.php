@@ -59,7 +59,8 @@
                     <p
                         class="text-gray-600 dark:text-gray-300 text-lg md:text-xl leading-relaxed max-w-[30rem] ml-0 md:-ml-1">
                         UKM LAOS adalah Unit Kegiatan Mahasiswa yang berfokus sebagai wadah untuk memajukan kreativitas
-                        dalam pengembangan Linux dan Open Source di Fakultas Ilmu Komputer Universitas Jember.
+                        dalam bidang Software Development, Cyber Security, dan Open Source di Fakultas Ilmu Komputer
+                        Universitas Jember.
                     </p>
 
                     <!-- CTA Buttons -->
@@ -160,9 +161,10 @@
                     <!-- Content -->
                     <div class="p-8 flex-grow relative">
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Relasi</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-lg">
-                            Menambah wawasan membebaskan dari permasalahan. Relasi yang tepat membuka ide, solusi, dan
-                            pengalaman berharga.
+                        <p class="text-gray-600 dark:text-gray-400 text-lg text-justify">
+                            Bangun jaringan luas untuk memperkaya wawasan dan membebaskanmu dari berbagai kendala teknis.
+                            Relasi yang tepat akan membuka pintu bagi ide kreatif, solusi inovatif, dan pengalaman
+                            kolaboratif yang berharga
                         </p>
                     </div>
                 </div>
@@ -181,9 +183,10 @@
                     <!-- Content -->
                     <div class="p-8 flex-grow relative">
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Bakat</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-lg">
-                            Meningkatkan dan mengembangkan potensi yang ada pada setiap mahasiswa secara optimal melalui
-                            berbagai kegiatan
+                        <p class="text-gray-600 dark:text-gray-400 text-lg text-justify">
+                            Wadah untuk mengasah dan memaksimalkan potensi teknis setiap mahasiswa. Melalui berbagai proyek
+                            dan kegiatan praktis, kami membantu mengubah minatmu menjadi keahlian yang diakui secara
+                            optimal.
                         </p>
                     </div>
                 </div>
@@ -203,8 +206,9 @@
                     <!-- Content -->
                     <div class="p-8 flex-grow relative">
                         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Sertifikat</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-lg">
-                            Dapatkan sertifikat keaktifan sebagai anggota UKM LAOS, dukung CV kamu agar jauh lebih baik lagi
+                        <p class="text-gray-600 dark:text-gray-400 text-lg text-justify">
+                            Dapatkan sertifikat keaktifan resmi sebagai bukti kontribusimu di UKM LAOS. Perkuat portofolio
+                            dan CV kamu untuk meningkatkan daya saing di dunia profesional dan industri teknologi
                         </p>
                     </div>
                 </div>

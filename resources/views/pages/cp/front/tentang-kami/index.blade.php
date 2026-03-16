@@ -11,7 +11,7 @@
             <div class="relative container mx-auto px-6 md:px-12 grid md:grid-cols-4 items-center gap-3">
                 <div class="text-left md:col-span-2">
                     <h1 class="text-4xl md:text-5xl font-extrabold leading-tight dark:text-white">
-                        Kenali yuk dengan <span class="text-green-500 dark:text-emerald-400">UKM LAOS</span>
+                        Kenal Lebih Dekat Dengan <span class="text-green-500 dark:text-emerald-400">UKM LAOS</span>
                     </h1>
                     <p class="mt-4 text-gray-700 dark:text-gray-300 text-lg max-w-md">
                         Tempat bagi kamu yang ingin belajar, berkreasi, dan berkontribusi di dunia digital.
@@ -38,6 +38,15 @@
             yang berfokus untuk memajukan kreativitas dalam pengembangan Linux dan Open Source di Fakultas Ilmu Komputer
             Universitas Jember. UKM LAOS berada di bawah naungan BEM Fakultas Ilmu Komputer. UKM LAOS didirikan pada tanggal
             19 Desember 2009 dengan berasaskan "Pancasila" dan bersifat "Kekeluargaan".
+
+        </p>
+        <br>
+        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+            Pada tanggal 8 - 9 November UKM LAOS Melaksanakan Musyawarah Besar yang salah satu Kesepakatan yang dihasilkan
+            adalah sebuah reformasi.
+            Nama Linux And Open Source Berganti Menjadi LogicWare And Open Source. Reformasi tersebut diambil sebagai
+            langkag adaptif terhadap perkembangan
+            teknologi dan juga kebutuhan anggota
         </p>
     </section>
 
@@ -98,8 +107,10 @@
                     </svg>
                 </div>
                 <p class="text-gray-600 dark:text-gray-300 text-center">
-                    Mendukung, mengenalkan dan mengembangkan Linux dan Open Source pada masyarakat luas khususnya Fakultas
-                    Ilmu Komputer.
+                    Mewujudkan UKM LAOS (Logicware And Open Source) sebagai wadah pengembangan teknologi yang menerapkan
+                    prinsip open-source dalam pengelolaan perangkat lunak secara utuh, mulai dari perancangan, pengembangan,
+                    hingga pengamanan sistem, untuk meningkatkan kemampuan, kolaborasi, dan kreativitas mahasiswa di bidang
+                    teknologi.
                 </p>
             </div>
         </div>
@@ -111,13 +122,14 @@
             <div class="grid md:grid-cols-3 gap-6 text-gray-700 dark:text-gray-300">
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm flex flex-col items-center">
                     <div class="text-green-500 dark:text-emerald-400 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2C9 2 7 4.5 7 7v2c0 1.5.5 2.5 1 3-2 1-4 3.5-4 6 0 2.5 2 4 4 4h8c2 0 4-1.5 4-4 0-2.5-2-5-4-6 .5-.5 1-1.5 1-3V7c0-2.5-2-5-5-5z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                            <path fill="currentColor"
+                                d="M15.5 1.125C7.278 1.125.59 7.815.59 16.035c0 6.263 3.88 11.635 9.36 13.84l3.64-9.076a5.131 5.131 0 1 1 3.818-.001l3.64 9.075c5.48-2.206 9.36-7.578 9.36-13.84c.002-8.22-6.687-14.91-14.908-14.91z" />
                         </svg>
                     </div>
                     <p class="text-center">
-                        Menjadi relasi berbagai pihak yang mendukung dan mengimplementasikan Linux dan Open Source
+                        Menerapkan prinsip open-source dalam seluruh tahapan pengelolaan perangkat lunak: perancangan,
+                        pengembangan, dan pengamanan sistem.
                     </p>
                 </div>
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm flex flex-col items-center">
@@ -128,17 +140,49 @@
                         </svg>
                     </div>
                     <p class="text-center">
-                        Mengenalkan Linux dan Open Source software kepada masyarakat khususnya pada instansi pendidikan
+                        Mengembangkan kompetensi anggota dalam manajemen siklus perangkat lunak berbasis teknologi terbuka.
                     </p>
                 </div>
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm flex flex-col items-center">
                     <div class="text-green-500 dark:text-emerald-400 mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2a10 10 0 0 0 0 20 10 10 0 0 0 0-20zm0 3a7 7 0 0 1 0 14 7 7 0 0 1 0-14z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h6l2 2h8q.825 0 1.413.588T22 8v10q0 .825-.587 1.413T20 20z" />
                         </svg>
                     </div>
                     <p class="text-center">
-                        Ikut serta dan aktif bersama aktivis Linux se-Indonesia mengenalkan OS Linux kepada masyarakat
+                        Membangun budaya kolaboratif antaranggota melalui proyek nyata dan kontribusi pada komunitas
+                        open-source.
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm flex flex-col items-center">
+                    <div class="text-green-500 dark:text-emerald-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5">
+                                <path d="M7 14a3 3 0 1 0 1 5.83" />
+                                <path
+                                    d="M4.264 15.605a4 4 0 0 1-.874-6.636m.03-.081A2.5 2.5 0 0 1 7 5.5m.238.065A2.5 2.5 0 1 1 12 4.5V20m-4 0a2 2 0 1 0 4 0m0-13a3 3 0 0 0 3 3m5.61-1.031A3.99 3.99 0 0 1 22 12c0 .703-.181 1.364-.5 1.938m-.92-5.05A2.5 2.5 0 0 0 17 5.5m-5-1a2.5 2.5 0 1 1 4.762 1.065M14 22a2 2 0 0 1-2-2m8.5.5L22 22m-6-3.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 0 0-5 0" />
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-center">
+                        Menjadi wadah eksplorasi, riset, dan inovasi di bidang teknologi terbuka di lingkungan kampus.
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm flex flex-col items-center">
+                    <div class="text-green-500 dark:text-emerald-400 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" width="24" height="24"
+                            viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 5a3 3 0 1 0 0 6a3 3 0 1 0 0-6m1 7h-2c-2.76 0-5 2.24-5 5v.5c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5V17c0-2.76-2.24-5-5-5m-6.5-1c.47 0 .9-.12 1.27-.33a5.03 5.03 0 0 1-.42-4.52C7.09 6.06 6.8 6 6.5 6C5.06 6 4 7.06 4 8.5S5.06 11 6.5 11m-.39 1H5.5C3.57 12 2 13.57 2 15.5v1c0 .28.22.5.5.5H4c0-1.96.81-3.73 2.11-5m11.39-1c1.44 0 2.5-1.06 2.5-2.5S18.94 6 17.5 6c-.31 0-.59.06-.85.15a5.03 5.03 0 0 1-.42 4.52c.37.21.79.33 1.27.33m1 1h-.61A6.97 6.97 0 0 1 20 17h1.5c.28 0 .5-.22.5-.5v-1c0-1.93-1.57-3.5-3.5-3.5" />
+                        </svg>
+                    </div>
+                    <p class="text-center">
+                        Mengedukasi masyarakat akademik tentang pentingnya open-source dalam pengembangan teknologi yang
+                        transparan, efisien, dan berkelanjutan.
                     </p>
                 </div>
             </div>
