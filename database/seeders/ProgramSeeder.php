@@ -31,8 +31,8 @@ class ProgramSeeder extends Seeder
                 'close_regis_peserta' => '2025-08-20',
                 'gform_peserta' => 'https://forms.gle/peserta1',
                 'jadwal_kegiatan' => json_encode([
-                    ['tanggal' => '2025-09-01', 'kegiatan' => 'Pembukaan'],
-                    ['tanggal' => '2025-09-02', 'kegiatan' => 'Materi Laravel'],
+                    ['waktu' => '2025-09-01', 'kegiatan' => 'Pembukaan'],
+                    ['waktu' => '2025-09-02', 'kegiatan' => 'Materi Laravel'],
                 ]),
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -53,8 +53,8 @@ class ProgramSeeder extends Seeder
                 'close_regis_peserta' => '2025-09-20',
                 'gform_peserta' => 'https://forms.gle/peserta2',
                 'jadwal_kegiatan' => json_encode([
-                    ['tanggal' => '2025-10-01', 'kegiatan' => 'Pembukaan'],
-                    ['tanggal' => '2025-10-02', 'kegiatan' => 'Materi UI/UX'],
+                    ['waktu' => '2025-10-01', 'kegiatan' => 'Pembukaan'],
+                    ['waktu' => '2025-10-02', 'kegiatan' => 'Materi UI/UX'],
                 ]),
                 'created_at' => now(),
                 'updated_at' => now(),

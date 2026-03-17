@@ -13,41 +13,35 @@ class DivisiSeeder extends Seeder
     {
         $divisis = [
             [
-                'nama' => 'Divisi Teknologi Informasi',
-                'slug' => 'teknologi-informasi',
-                'deskripsi' => 'Divisi yang menangani pengembangan teknologi dan sistem informasi',
+                'nama' => 'Software Development',
+                'slug' => 'software development',
+                'deskripsi' => 'Divisi yang bertanggung jawab terhadap perancangan dan pengembangan website dari UKM LAOS',
                 'logo'      => null,
             ],
             [
-                'nama' => 'Divisi Pemasaran',
-                'slug' => 'pemasaran',
-                'deskripsi' => 'Divisi yang menangani strategi pemasaran dan branding',
+                'nama' => 'Cyber Security',
+                'slug' => 'cyber security',
+                'deskripsi' => 'Divisi Cyber Security merupakan divisi yang bertanggungjawab dalam menjaga keamanan serta keberlangsungan infrastuktur teknologi UKM LAOS',
                 'logo'      => null,
             ],
             [
-                'nama' => 'Divisi Keuangan',
-                'slug' => 'keuangan',
-                'deskripsi' => 'Divisi yang menangani pengelolaan keuangan dan akuntansi',
+                'nama' => 'Multimedia',
+                'slug' => 'multimedia',
+                'deskripsi' => 'Divisi Multimedia bertanggungjawab dalam editing feed dan konten UKM LAOS',
                 'logo'      => null,
             ],
             [
-                'nama' => 'Divisi Operasional',
-                'slug' => 'operasional',
-                'deskripsi' => 'Divisi yang menangani operasional harian dan administrasi',
+                'nama' => 'Humas',
+                'slug' => 'humas',
+                'deskripsi' => 'Divisi Humas merupakan divisi yang bertanggung jawab menjadi jembatan antara internal UKM dengan Pihak Eksternal sekaligus mengelola instagram UKM LAOS',
                 'logo'      => null,
             ],
             [
-                'nama' => 'Divisi Penjualan',
-                'slug' => 'penjualan',
-                'deskripsi' => 'Divisi yang menangani penjualan produk dan layanan kepada konsumen',
+                'nama' => 'HRM',
+                'slug' => 'hrm',
+                'deskripsi' => 'Human Resource Management merupakan divisi yang bertanggung jawab dalam mengelola pengembangan sumberdaya manusia yang ada dalam UKM LAOS',
                 'logo'      => null,
             ],
-            [
-                'nama' => 'Divisi Penelitian dan Pengembangan',
-                'slug' => 'penelitian-pengembangan',
-                'deskripsi' => 'Divisi yang menangani penelitian dan pengembangan produk/layanan',
-                'logo'      => null,
-            ]
 
         ];
 

@@ -61,23 +61,27 @@
                         src="{{ asset('assets/cp/img/maskot-2.png') }}" alt="LAOS Mascot"> --}}
 
                     <div class="grid h-[28rem] grid-flow-col grid-cols-2 grid-rows-5 gap-4">
-                        <div class="row-span-2 overflow-hidden rounded-2xl hover:scale-105 p-1 border border-gray-100 dark:border-gray-700">
-                            <img class="h-full w-full object-cover rounded-xl" src="{{ asset('assets/cp/img/proker-hero/Gola.png') }}"
-                                alt="">
-                        </div>
-                        <div class="col-start-1 row-start-3 overflow-hidden rounded-2xl hover:scale-105 p-1 border border-gray-100 dark:border-gray-700">
-                            <img class="h-full w-full object-cover rounded-xl" src="{{ asset('assets/cp/img/proker-hero/Lawos.jpg') }}"
-                                alt="">
-
-                        </div>
-                        <div class="col-start-2 row-span-3 row-start-1 overflow-hidden rounded-2xl hover:scale-105 p-1 border border-gray-100 dark:border-gray-700">
+                        <div
+                            class="row-span-2 overflow-hidden rounded-2xl hover:scale-105 p-1 border border-gray-100 dark:border-gray-700">
                             <img class="h-full w-full object-cover rounded-xl"
-                                src="{{ asset('assets/cp/img/proker-hero/Bashrc.png') }}" alt="">
+                                src="{{ asset('assets/cp/img/proker-hero/2.jpg') }}" alt="">
+                        </div>
+                        <div
+                            class="col-start-1 row-start-3 overflow-hidden rounded-2xl hover:scale-105 p-1 border border-gray-100 dark:border-gray-700">
+                            <img class="h-full w-full object-cover  rounded-xl"
+                                src="{{ asset('assets/cp/img/proker-hero/1.jpg') }}" alt="">
 
                         </div>
-                        <div class="col-span-2 row-span-2 row-start-4 overflow-hidden rounded-2xl hover:scale-105 p-1 border border-gray-100 dark:border-gray-700">
-                            <img class="h-full w-full object-cover rounded-xl object-center"
+                        <div
+                            class="col-start-2 row-span-3 row-start-1 overflow-hidden rounded-2xl hover:scale-105 p-1 border border-gray-100 dark:border-gray-700">
+                            <img class="h-full w-full object-cover rounded-xl"
                                 src="{{ asset('assets/cp/img/proker-hero/Lawos2.jpg') }}" alt="">
+
+                        </div>
+                        <div
+                            class="col-span-2 row-span-2 row-start-4 overflow-hidden rounded-2xl hover:scale-105 p-1 border border-gray-100 dark:border-gray-700">
+                            <img class="h-full w-full object-cover rounded-xl object-center"
+                                src="{{ asset('assets/cp/img/proker-hero/3.jpg') }}" alt="">
                         </div>
                     </div>
 
@@ -150,7 +154,8 @@
                     </div> --}}
 
                     <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
-                        <div class="rounded-xl border border-gray-100 p-2 shadow-lg dark:border-gray-700 dark:bg-gray-800 hover:scale-105">
+                        <div
+                            class="rounded-xl border border-gray-100 p-2 shadow-lg dark:border-gray-700 dark:bg-gray-800 hover:scale-105">
                             <div class="relative">
                                 <img class="h-full max-h-60 w-full rounded-lg object-cover transition-all duration-500 "
                                     src="{{ $program->getFirstMediaUrl('program-thumbnail', 'thumb') }}"

@@ -104,7 +104,7 @@ class RoleSeeder extends Seeder
         ];
         $mentor->syncPermissions($mentorPermissions);
 
-        $adminUser = User::where('email', 'admin@laos.test')->first();
+        $adminUser = User::where('email', 'admin@ukmlaos.com')->first();
         if ($adminUser && !$adminUser->hasRole('super_admin')) {
             $adminUser->assignRole('super_admin');
             echo "Assigned super_admin role to {$adminUser->email}\n";
