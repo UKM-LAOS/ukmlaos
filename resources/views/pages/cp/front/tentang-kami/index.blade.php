@@ -119,7 +119,7 @@
     <section class="py-12">
         <div class="max-w-6xl mx-auto text-center">
             <h2 class="text-2xl font-bold mb-8 dark:text-white">Misi UKM LAOS</h2>
-            <div class="grid md:grid-cols-3 gap-6 text-gray-700 dark:text-gray-300">
+            <div class="grid md:grid-cols-3 gap-6 justify-center text-gray-700 dark:text-gray-300">
                 <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm flex flex-col items-center">
                     <div class="text-green-500 dark:text-emerald-400 mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -253,7 +253,7 @@
                                     </div>
                                 </div>
 
-                                <div class="relative px-6 -mt-12 flex-grow flex flex-col">
+                                <div class="relative px-6 -mt-7 flex-grow flex flex-col">
                                     <div class="relative flex justify-center">
                                         <div class="bg-white dark:bg-gray-900 p-1.5 rounded-2xl shadow-xl">
                                             <div class="relative overflow-hidden w-28 h-28 sm:w-32 sm:h-32 rounded-xl">

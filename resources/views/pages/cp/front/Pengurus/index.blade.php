@@ -117,10 +117,13 @@
                     @endforeach
                 </div>
 
-                <div
-                    class="mt-12 w-full px-4 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                    {{ $pengurus->links() }}
-                </div>
+                @if ($pengurus->count() > 8)
+                    <div
+                        class="mt-12 w-full px-4 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                        {{ $pengurus->links() }}
+                    </div>
+                @endif
+
             </div>
         </div>
     </section>

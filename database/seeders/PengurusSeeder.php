@@ -322,7 +322,62 @@ class PengurusSeeder extends Seeder
                 'urutan' => 23,
                 'aktif' => true
             ],
-
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2026-2027',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 1,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2026-2027',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 2,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2026-2027',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 3,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2026-2027',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 4,
+                'aktif' => true
+            ],
         ];
 
         foreach ($pengurusData as $pengurus) {
