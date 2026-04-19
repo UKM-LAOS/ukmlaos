@@ -15,7 +15,7 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>{{ $title }} | UKM LAOS</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('styles')
+    @stack('styles')C
     <script>
         // Check if dark mode is enabled
         function isDarkMode() {
@@ -214,7 +214,9 @@
 
             const url = new URL(window.location);
             url.searchParams.set('periode', selectedPeriod);
+            url.hash = "struktur-pengurus";
             window.location.href = url.toString();
+
         }
 
         document.addEventListener('DOMContentLoaded', function() {

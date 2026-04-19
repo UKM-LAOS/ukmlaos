@@ -70,78 +70,259 @@ class PengurusSeeder extends Seeder
                 'urutan' => 4,
                 'aktif' => true
             ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 5,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 6,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 7,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 8,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 9,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 10,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 11,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 12,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 14,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 15,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 16,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 17,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 18,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 19,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 20,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 21,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 22,
+                'aktif' => true
+            ],
+            [
+                'nama' => 'Ahmad Rizki',
+                'jabatan' => 'Bendahara',
+                'periode' => '2024-2025',
+                'foto' => 'assets/cp/img/foto-pengurus/2425/rizki.png',
+                'sosmed' => [
+                    'instagram' => 'https://instagram.com/ahmadrizki',
+                    'facebook' => 'https://facebook.com/ahmadrizki',
+                    'github' => 'https://github.com/ahmadrizki',
+                    'linkedin' => 'https://linkedin.com/in/ahmadrizki'
+                ],
+                'urutan' => 23,
+                'aktif' => true
+            ],
 
-            [
-                'nama' => 'Bashori Al-Munir',
-                'jabatan' => 'Ketua Umum',
-                'periode' => '2023-2024',
-                'foto' => 'assets/cp/img/foto-pengurus/2324/Bashori1.png',
-                'sosmed' => [
-                    'instagram' => 'https://instagram.com/bashori',
-                    'facebook' => 'https://facebook.com/bashori',
-                    'github' => 'https://github.com/bashori',
-                    'linkedin' => 'https://linkedin.com/in/bashori'
-                ],
-                'urutan' => 1,
-                'aktif' => true
-            ],
-            [
-                'nama' => 'Sarah Putri',
-                'jabatan' => 'Wakil Ketua Umum',
-                'periode' => '2023-2024',
-                'foto' => 'assets/cp/img/foto-pengurus/2324/sarah.png',
-                'sosmed' => [
-                    'instagram' => 'https://instagram.com/sarahputri',
-                    'facebook' => 'https://facebook.com/sarahputri',
-                    'github' => 'https://github.com/sarahputri',
-                    'linkedin' => 'https://linkedin.com/in/sarahputri'
-                ],
-                'urutan' => 2,
-                'aktif' => true
-            ],
-            [
-                'nama' => 'Dimas Prakoso',
-                'jabatan' => 'Sekretaris',
-                'periode' => '2023-2024',
-                'foto' => 'assets/cp/img/foto-pengurus/2324/dimas.png',
-                'sosmed' => [
-                    'instagram' => 'https://instagram.com/dimasprakoso',
-                    'facebook' => 'https://facebook.com/dimasprakoso',
-                    'github' => 'https://github.com/dimasprakoso',
-                    'linkedin' => 'https://linkedin.com/in/dimasprakoso'
-                ],
-                'urutan' => 3,
-                'aktif' => true
-            ],
-
-            [
-                'nama' => 'Lisa Permata',
-                'jabatan' => 'Ketua Umum',
-                'periode' => '2022-2023',
-                'foto' => 'assets/cp/img/foto-pengurus/2223/lisa.png',
-                'sosmed' => [
-                    'instagram' => 'https://instagram.com/lisapermata',
-                    'facebook' => 'https://facebook.com/lisapermata',
-                    'github' => 'https://github.com/lisapermata',
-                    'linkedin' => 'https://linkedin.com/in/lisapermata'
-                ],
-                'urutan' => 1,
-                'aktif' => true
-            ],
-            [
-                'nama' => 'Andi Firmansyah',
-                'jabatan' => 'Wakil Ketua Umum',
-                'periode' => '2022-2023',
-                'foto' => 'assets/cp/img/foto-pengurus/2223/andi.png',
-                'sosmed' => [
-                    'instagram' => 'https://instagram.com/andifirmansyah',
-                    'facebook' => 'https://facebook.com/andifirmansyah',
-                    'github' => 'https://github.com/andifirmansyah',
-                    'linkedin' => 'https://linkedin.com/in/andifirmansyah'
-                ],
-                'urutan' => 2,
-                'aktif' => true
-            ]
         ];
 
         foreach ($pengurusData as $pengurus) {

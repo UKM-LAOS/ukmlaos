@@ -4,6 +4,7 @@ use App\Http\Controllers\CP\Front\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CP\Front\BlogController;
 use App\Http\Controllers\CP\Front\HomeController;
+use App\Http\Controllers\CP\Front\PengurusController;
 use App\Http\Controllers\CP\Front\ProgramController;
 
 Route::name('cp.')->group(function () {
@@ -26,6 +27,10 @@ Route::name('cp.')->group(function () {
 
     Route::prefix('tentang-kami')->name('tentang-kami.')->group(function () {
         Route::get('/', [AboutController::class, 'index'])->name('index');
+    });
+
+    Route::prefix('pengurus')->name('pengurus.')->group(function () {
+        Route::get('/', [PengurusController::class, 'index'])->name('index');
     });
 })
 

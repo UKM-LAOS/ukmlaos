@@ -21,6 +21,11 @@ return [
         'active' => 'cp.tentang-kami*',
     ],
     [
+        'title' => 'Pengurus',
+        'route' => 'cp.pengurus.index',
+        'active' => 'cp.pengurus.*',
+    ],
+    [
         'title' => 'Produk',
         'children' => [
             //! gunakan url sebagai key karena merupakan produk external

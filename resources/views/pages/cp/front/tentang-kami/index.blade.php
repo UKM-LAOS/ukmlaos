@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="relative bg-gray-50 dark:bg-gray-900 overflow-hidden">
-        <div class="mt-12">
+        <div class="mt-28 md:mt-16">
             <div class="absolute inset-0">
                 <img src="{{ asset('assets/cp/hero/hero-transparant.png') }}" alt="Background Faces"
                     class="w-full h-full object-cover opacity-30 dark:opacity-10">
@@ -209,7 +209,7 @@
                 </p>
 
                 {{-- Dropdown Pemilihan Periode --}}
-                <div class="mt-8 flex justify-center">
+                <div class="mt-8 flex justify-center" id="struktur-pengurus">
                     <div class="relative inline-block">
                         <select id="periodSelector" onchange="changePeriod()"
                             class="bg-white dark:bg-gray-800 border-2 border-green-300 dark:border-emerald-600 text-gray-700 dark:text-gray-300 px-6 py-3 pr-10 rounded-full focus:outline-none focus:border-green-500 dark:focus:border-emerald-400 focus:ring-2 focus:ring-green-200 dark:focus:ring-emerald-800 transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg">
@@ -231,98 +231,105 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                @foreach ($pengurus as $p)
-                    <div class="relative group">
-                        <div
-                            class="absolute -inset-1 bg-gradient-to-r from-green-400 to-emerald-500 dark:from-emerald-500 dark:to-green-400 rounded-3xl opacity-75 group-hover:opacity-100 blur transition duration-500">
-                        </div>
-
-                        <div
-                            class="relative h-full bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-2 flex flex-col">
+            <div class="container mx-auto p-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    @foreach ($pengurus as $p)
+                        <div class="relative group">
                             <div
-                                class="relative bg-gradient-to-r from-emerald-500 to-green-400 dark:from-emerald-600 dark:to-green-500 h-48 p-4 overflow-hidden">
-                                <div
-                                    class="absolute bg-white/10 dark:bg-gray-900/20 w-24 h-24 rounded-lg -top-4 -left-16 transform rotate-45 animate-float">
-                                </div>
-                                <div
-                                    class="absolute bg-white/10 dark:bg-gray-900/20 w-28 h-28 rounded-lg -bottom-16 right-4 transform rotate-12 animate-float-delay">
-                                </div>
-                                <div
-                                    class="absolute bg-white/5 dark:bg-gray-900/10 w-20 h-20 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse">
-                                </div>
-
-                                <div class="relative flex items-center -mt-10 justify-center space-x-3 h-full">
-                                    <div
-                                        class="bg-white dark:bg-gray-900 w-10 h-10 rounded-md flex items-center justify-center shadow-sm transform group-hover:rotate-12 transition duration-300">
-                                        <img src="{{ asset('logo.png') }}" alt="Logo" class="w-6 h-6 object-contain">
-                                    </div>
-                                    <span class="text-white font-bold text-xl drop-shadow-md">UKM LAOS</span>
-                                </div>
+                                class="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-emerald-600 rounded-3xl opacity-0 group-hover:opacity-60 transition duration-500 blur-md transform-gpu">
                             </div>
 
-                            <div class="relative px-6 -mt-20 flex-grow flex flex-col">
-                                <div class="relative flex justify-center">
-                                    <div
-                                        class="bg-white dark:bg-gray-900 p-1.5 rounded-2xl shadow-lg transform group-hover:scale-105 transition duration-300">
-                                        <div class="relative overflow-hidden w-28 h-28 sm:w-32 sm:h-32 rounded-xl">
-                                            <img src="{{ asset($p['foto']) }}" alt="Foto Profil {{ $p['nama'] }}"
-                                                class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                                            <div
-                                                class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                            <div
+                                class="relative h-full bg-white dark:bg-gray-800 rounded-3xl shadow-md transition-all duration-300 group-hover:-translate-y-2 flex flex-col overflow-hidden border border-gray-100 dark:border-gray-700">
+
+                                <div class="relative bg-gradient-to-br from-emerald-500 to-green-400 h-32 p-4">
+                                    <div class="relative flex items-center justify-center space-x-2 h-full">
+                                        <div
+                                            class="bg-white dark:bg-gray-900 w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transform group-hover:rotate-12 transition duration-300">
+                                            <img src="{{ asset('logo.png') }}" alt="Logo"
+                                                class="w-6 h-6 object-contain">
+                                        </div>
+                                        <span class="text-white font-bold text-xl tracking-wider">UKM LAOS</span>
+                                    </div>
+                                </div>
+
+                                <div class="relative px-6 -mt-12 flex-grow flex flex-col">
+                                    <div class="relative flex justify-center">
+                                        <div class="bg-white dark:bg-gray-900 p-1.5 rounded-2xl shadow-xl">
+                                            <div class="relative overflow-hidden w-28 h-28 sm:w-32 sm:h-32 rounded-xl">
+                                                <img src="{{ asset($p->foto) }}" alt="Foto {{ $p->nama }}"
+                                                    loading="lazy"
+                                                    class="w-full h-full object-cover transform-gpu transition duration-500 group-hover:scale-110">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="text-center mt-5">
-                                    <h2
-                                        class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition duration-300">
-                                        {{ $p['nama'] }}
-                                    </h2>
-                                    <p
-                                        class="text-gray-500 dark:text-gray-400 mt-1 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition duration-300">
-                                        {{ $p['jabatan'] }}
-                                    </p>
-                                </div>
+                                    <div class="text-center mt-5">
+                                        <h2 class="text-xl font-bold text-gray-800 dark:text-white">{{ $p->nama }}
+                                        </h2>
+                                        <p class="text-gray-500 dark:text-gray-400 mt-1 font-medium italic">
+                                            {{ $p->jabatan }}</p>
+                                    </div>
 
-                                <div class="flex justify-center items-center space-x-3 mt-auto pt-6 pb-4">
-                                    <a href="{{ $p['sosmed']['instagram'] ?? '#' }}" title="Instagram"
-                                        class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center hover:bg-gradient-to-br hover:from-pink-600 hover:to-amber-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                                        </svg>
-                                    </a>
+                                    <div class="flex justify-center items-center space-x-3 mt-auto pt-8 pb-6">
+                                        @if (isset($p->sosmed['instagram']))
+                                            <a href="{{ $p->sosmed['instagram'] }}" title="Instagram"
+                                                class="w-9 h-9 rounded-full bg-gray-50 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-500 hover:text-white">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                                </svg>
+                                            </a>
+                                        @endif
 
-                                    <a href="{{ $p['sosmed']['facebook'] ?? '#' }}" title="Facebook"
-                                        class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M22.675 0h-21.35C.732 0 .192.593.192 1.325v21.351c0 .731.54 1.324 1.213 1.324h11.495v-9.294H9.77v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.673 0 1.213-.593 1.213-1.325V1.325C23.888.593 23.348 0 22.675 0z" />
-                                        </svg>
-                                    </a>
+                                        @if (isset($p->sosmed['github']))
+                                            <a href="{{ $p->sosmed['github'] }}" title="GitHub"
+                                                class="w-9 h-9 rounded-full bg-gray-50 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 hover:bg-gray-900 hover:text-white">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                                                </svg>
+                                            </a>
+                                        @endif
 
-                                    <a href="{{ $p['sosmed']['github'] ?? '#' }}" title="GitHub"
-                                        class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center hover:bg-gray-800 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                                        </svg>
-                                    </a>
-
-                                    <a href="{{ $p['sosmed']['linkedin'] ?? '#' }}" title="LinkedIn"
-                                        class="w-9 h-9 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path
-                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764S7.466 6.732 6.5 6.732zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                        </svg>
-                                    </a>
+                                        @if (isset($p->sosmed['linkedin']))
+                                            <a href="{{ $p->sosmed['linkedin'] }}" title="LinkedIn"
+                                                class="w-9 h-9 rounded-full bg-gray-50 dark:bg-gray-700 text-gray-500 dark:text-gray-400 flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 hover:bg-blue-700 hover:text-white">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764S7.466 6.732 6.5 6.732zM20 19h-3v-5.604c0-3.368-4-3.113-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                                </svg>
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
+
+                <div class="mt-12 flex justify-center md:justify-end">
+                    <a href="{{ route('cp.pengurus.index') }}"
+                        class="group relative inline-flex items-center gap-2 px-8 py-3 bg-white dark:bg-gray-800 text-emerald-600 dark:text-emerald-400 font-bold rounded-2xl shadow-md border border-emerald-100 dark:border-emerald-900/30 hover:bg-emerald-50 dark:hover:bg-gray-700 transition-all duration-300">
+
+                        <span>Lihat Seluruh Pengurus</span>
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+
+                        <div
+                            class="absolute inset-0 rounded-2xl bg-emerald-400/10 blur opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                    </a>
+                </div>
+                {{-- <div
+                    class="mt-12 w-full px-4 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
+                    {{ $pengurus->links() }}
+                </div> --}}
             </div>
         </div>
     </section>

@@ -43,12 +43,28 @@ class Pengurus extends Model
             ->toArray();
     }
 
+
     public static function getByPeriode($periode)
     {
-        return self::periode($periode)
+        return self::query()
+            ->periode($periode)
             ->aktif()
             ->orderBy('urutan')
             ->orderBy('nama')
-            ->get();
+            ->paginate(8)
+            ->withQueryString()
+            ;
+    }
+
+    public static function getByPeriodeLimit($periode)
+    {
+        return self::query()
+            ->periode($periode)
+            ->aktif()
+            ->orderBy('urutan')
+            ->orderBy('nama')
+            ->limit(8)
+            ->get()
+            ;
     }
 }

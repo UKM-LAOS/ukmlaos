@@ -1,5 +1,5 @@
 <nav
-    class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
+    class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <!-- Logo -->
@@ -9,7 +9,6 @@
                     <span class="gradient-text">LAOS</span>
                 </span>
             </a>
-
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
                 @foreach ($menus as $menu)

@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class PengurusController extends Controller
 {
-    public function index(Request $request)
+     public function index(Request $request)
     {
         $availablePeriods = Pengurus::getAvailablePeriods();
 
@@ -22,12 +22,12 @@ class AboutController extends Controller
             $selectedPeriod = $availablePeriods[0];
         }
 
-        $pengurus = Pengurus::getByPeriodeLimit($selectedPeriod)->Map(function ($p) {
+        $pengurus = Pengurus::getByPeriode($selectedPeriod)->through(function ($p) {
         $p->foto = $p->foto ? 'storage/' . $p->foto : 'logo.png';
         return $p;
         });
 
-        return view('pages.cp.front.tentang-kami.index', [
+        return view('pages.cp.front.Pengurus.index', [
             'title' => 'Tentang Kami',
             'pengurus' => $pengurus,
             'selectedPeriod' => $selectedPeriod,
